@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\enrico.veloso\\source\\repos\\ATS.Web\\ATS.Service.ViewModels\\ATS.Service.ViewModels.csproj",
+      "projectUniqueName": "C:\\Users\\enrico.veloso\\Documents\\GitHub\\ATS\\ATS.Service.ViewModels\\ATS.Service.ViewModels.csproj",
       "projectName": "ATS.Service.ViewModels",
-      "projectPath": "C:\\Users\\enrico.veloso\\source\\repos\\ATS.Web\\ATS.Service.ViewModels\\ATS.Service.ViewModels.csproj",
+      "projectPath": "C:\\Users\\enrico.veloso\\Documents\\GitHub\\ATS\\ATS.Service.ViewModels\\ATS.Service.ViewModels.csproj",
       "packagesPath": "C:\\Users\\enrico.veloso\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\enrico.veloso\\source\\repos\\ATS.Web\\ATS.Service.ViewModels\\obj\\",
+      "outputPath": "C:\\Users\\enrico.veloso\\Documents\\GitHub\\ATS\\ATS.Service.ViewModels\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

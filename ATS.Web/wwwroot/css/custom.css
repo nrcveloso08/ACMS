@@ -525,3 +525,26 @@ body.aside-minimize .app-footer {
     #complete h5 {
         color: #50cd89 !important;
     }
+
+
+.aside-dark {
+    background-color: #001b0a !important;
+}
+
+    .aside-dark .menu-link {
+        color: #c8e6c9 !important;
+    }
+
+        .aside-dark .menu-link:hover,
+        .aside-dark .menu-item.show > .menu-link {
+            background-color: #004d1a !important;
+            color: #ffffff !important;
+        }
+
+    .aside-dark .menu-bullet .bullet {
+        background-color: #28a745 !important;
+    }
+
+    .aside-dark .menu-icon i {
+        color: #28a745 !important;
+    }

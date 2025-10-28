@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hMf+9+IgKHE=",
+  "dgSpecHash": "JzFKgs+o7kE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\enrico.veloso\\source\\repos\\ATS.Web\\ATS.Web\\ATS.Web.csproj",
+  "projectFilePath": "C:\\Users\\enrico.veloso\\Documents\\GitHub\\ATS\\ATS.Web\\ATS.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\enrico.veloso\\.nuget\\packages\\newtonsoft.json\\13.0.4\\newtonsoft.json.13.0.4.nupkg.sha512"
   ],

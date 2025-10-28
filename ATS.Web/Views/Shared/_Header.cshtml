@@ -34,26 +34,49 @@
 
 <nav aria-label="breadcrumb" class="mt-3 mb-3">
     <ol class="breadcrumb breadcrumb-separatorless fw-semibold fs-7">
+        <!-- 🏠 Home -->
         <li class="breadcrumb-item text-gray-700">
             <a href="@Url.Action("Index", "Home")" class="text-gray-700 text-hover-primary">
                 <i class="ki-outline ki-home fs-6"></i>
             </a>
         </li>
+
         <li class="breadcrumb-item">
             <span class="bullet bg-gray-400 w-5px h-2px"></span>
         </li>
+
+        <!-- 📊 Dashboard -->
         <li class="breadcrumb-item text-gray-700 text-hover-primary">
-            <a href="@Url.Action("Index", controller)" class="text-gray-700 text-hover-primary">
-                @controllerTitle
+            <a href="@Url.Action("Index", "Dashboard")" class="text-gray-700 text-hover-primary">
+                Dashboard
             </a>
         </li>
+
+        @* Use the existing controller/action variables *@
+        @if (!string.Equals(controller, "Dashboard", StringComparison.OrdinalIgnoreCase))
+        {
+            <li class="breadcrumb-item">
+                <span class="bullet bg-gray-400 w-5px h-2px"></span>
+            </li>
+
+            <li class="breadcrumb-item text-gray-700 text-hover-primary">
+                <a href="@Url.Action("Index", controller)" class="text-gray-700 text-hover-primary">
+                    @controllerTitle
+                </a>
+            </li>
+        }
+
+        @* ✅ Add Action (like /Edit) when not Index *@
         @if (!string.Equals(action, "Index", StringComparison.OrdinalIgnoreCase))
         {
             <li class="breadcrumb-item">
                 <span class="bullet bg-gray-400 w-5px h-2px"></span>
             </li>
+
             <li class="breadcrumb-item text-gray-500">@actionTitle</li>
         }
     </ol>
 </nav>
+
+
 <!--end::Breadcrumb Section-->

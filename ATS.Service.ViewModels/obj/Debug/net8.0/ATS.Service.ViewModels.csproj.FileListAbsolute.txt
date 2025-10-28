@@ -9,3 +9,15 @@ C:\Users\enrico.veloso\source\repos\ATS.Web\ATS.Service.ViewModels\obj\Debug\net
 C:\Users\enrico.veloso\source\repos\ATS.Web\ATS.Service.ViewModels\obj\Debug\net8.0\refint\ATS.Service.ViewModels.dll
 C:\Users\enrico.veloso\source\repos\ATS.Web\ATS.Service.ViewModels\obj\Debug\net8.0\ATS.Service.ViewModels.pdb
 C:\Users\enrico.veloso\source\repos\ATS.Web\ATS.Service.ViewModels\obj\Debug\net8.0\ref\ATS.Service.ViewModels.dll
+C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service.ViewModels\obj\Debug\net8.0\ATS.Service.ViewModels.dll
+C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service.ViewModels\obj\Debug\net8.0\ATS.Service.ViewModels.pdb
+C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service.ViewModels\bin\Debug\net8.0\ATS.Service.ViewModels.deps.json
+C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service.ViewModels\bin\Debug\net8.0\ATS.Service.ViewModels.dll
+C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service.ViewModels\bin\Debug\net8.0\ATS.Service.ViewModels.pdb
+C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service.ViewModels\obj\Debug\net8.0\ATS.Service.ViewModels.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service.ViewModels\obj\Debug\net8.0\ATS.Service.ViewModels.AssemblyInfoInputs.cache
+C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service.ViewModels\obj\Debug\net8.0\ATS.Service.ViewModels.AssemblyInfo.cs
+C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service.ViewModels\obj\Debug\net8.0\ATS.Service.ViewModels.csproj.CoreCompileInputs.cache
+C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service.ViewModels\obj\Debug\net8.0\ATS.Service.ViewModels.sourcelink.json
+C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service.ViewModels\obj\Debug\net8.0\refint\ATS.Service.ViewModels.dll
+C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service.ViewModels\obj\Debug\net8.0\ref\ATS.Service.ViewModels.dll

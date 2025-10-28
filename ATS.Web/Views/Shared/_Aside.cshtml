@@ -1,53 +1,272 @@
 ﻿<!--begin::Aside-->
-<aside id="kt_app_aside" class="app-aside">
+<aside id="kt_app_aside" class="app-aside bg-dark text-light" style="background-color:#001b0a;">
     <!--begin::Brand-->
-    <div class="aside-brand">
+    <div class="aside-brand d-flex justify-content-between align-items-center px-3 py-3 border-bottom border-secondary">
         <a href="/" class="brand-logo">
-            <img src="~/images/IntouchCX_White_Green.png" alt="Logo" class="logo-img" />
+            <img src="~/images/IntouchCX_White_Green.png" alt="Logo" class="logo-img h-30px" />
         </a>
-
-        <!--begin::Toggle Button-->
-        <button id="kt_aside_toggle" class="aside-toggle-btn btn btn-icon">
-            <span class="svg-icon svg-icon-2x">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    <path d="M5.3 6.7a1 1 0 011.4 0L12 12l-5.3 5.3a1 1 0 11-1.4-1.4L9.2 12 5.3 8.1a1 1 0 010-1.4z" fill="currentColor" />
-                </svg>
-            </span>
+        <button id="kt_aside_toggle" class="aside-toggle-btn btn btn-icon text-light">
+            <i class="fa fa-angle-double-left"></i>
         </button>
-        <!--end::Toggle Button-->
     </div>
     <!--end::Brand-->
     <!--begin::Menu-->
     <div class="aside-menu">
-        <ul class="menu-nav">
-            <li class="menu-item active">
-                <a href="#" class="menu-link">
-                    <i class="fas fa-wrench menu-icon"></i>
-                    <span class="menu-text">ATS Config</span>
-                </a>
-            </li>
+        <ul class="menu-nav list-unstyled m-0 p-0">
+
+            <!-- ATS -->
             <li class="menu-item">
-                <a href="#" class="menu-link">
-                    <i class="fas fa-user menu-icon"></i>
+                <a href="#atsSub" class="menu-link" data-toggle="sidebar-collapse">
+                    <i class="fas fa-user menu-icon text-success"></i>
                     <span class="menu-text">ATS</span>
+                    <i class="fa fa-chevron-down ml-auto"></i>
                 </a>
+                <ul id="atsSub" class="sidebar-submenu">
+                    <li><a href="/Dashboard">Dashboard</a></li>
+                    <li><a href="/Dashboard/Edit">Candidates</a></li>
+                    <li><a href="/Dashboard/Edit">CSI SChedules</a></li>
+                </ul>
             </li>
+
+            <!-- ATS Config -->
             <li class="menu-item">
-                <a href="#" class="menu-link">
-                    <i class="fas fa-user-tie menu-icon"></i>
+                <a href="#atsConfigSub" class="menu-link" data-toggle="sidebar-collapse">
+                    <i class="fas fa-wrench menu-icon text-success"></i>
+                    <span class="menu-text">ATS Config</span>
+                    <i class="fa fa-chevron-down ml-auto"></i>
+                </a>
+                <ul id="atsConfigSub" class="sidebar-submenu">
+                    <li><a href="#">Advertisement Sources</a></li>
+                    <li><a href="#">Alternate System Locations</a></li>
+                    <li><a href="#">Email Templates</a></li>
+                    <li><a href="#">Harver Vacancies</a></li>
+                    <li><a href="#">Interview Status</a></li>
+                    <li><a href="#">Job Advertisements</a></li>
+                    <li><a href="#">Menu Config</a></li>
+                    <li><a href="#">Prescreening Questions</a></li>
+                    <li><a href="#">Schedule Exceptions</a></li>
+                    <li><a href="#">SMS Numbers</a></li>
+                    <li><a href="#">SMS Template</a></li>
+                    <li><a href="#">Status Maintenance</a></li>
+                    <li><a href="#">Timeslot Configuration</a></li>
+                    <li><a href="#">Vacancies</a></li>
+                </ul>
+            </li>
+
+            <!-- ATS HR -->
+            <li class="menu-item">
+                <a href="#atsHrSub" class="menu-link" data-toggle="sidebar-collapse">
+                    <i class="fas fa-user-tie menu-icon text-success"></i>
                     <span class="menu-text">ATS HR</span>
+                    <i class="fa fa-chevron-down ml-auto"></i>
                 </a>
+                <ul id="atsHrSub" class="sidebar-submenu">
+                    <li><a href="#">HR Processing</a></li>
+                    <li><a href="#">Recrcuitment Candidate Search</a></li>
+                    <li><a href="/Obeyaboard">Wave Dashboard</a></li>
+                </ul>
             </li>
+
+            <!-- ATS On-site Recruiting -->
             <li class="menu-item">
-                <a href="#" class="menu-link">
-                    <i class="fas fa-users menu-icon"></i>
+                <a href="#atsRecruitSub" class="menu-link" data-toggle="sidebar-collapse">
+                    <i class="fas fa-users menu-icon text-success"></i>
                     <span class="menu-text">ATS - On-site Recruiting</span>
+                    <i class="fa fa-chevron-down ml-auto"></i>
                 </a>
+                <ul id="atsRecruitSub" class="sidebar-submenu">
+                    <li><a href="#">Guatemala Job Applications</a></li>
+                    <li><a href="#">Follow Ups</a></li>
+                    <li><a href="/InterviewSchedule">Interview Schedules</a></li>
+                    <li><a href="/Obeyaboard">Wave Dashboard (Obeya Board)</a></li>
+
+                    <!-- Nested parent: Reports -->
+                    <li class="menu-item">
+                        <a href="#reportsSub" class="menu-link nested" data-toggle="sidebar-collapse">
+                            <i class="fa fa-chart-line menu-icon text-success"></i>
+                            <span class="menu-text">Reports</span>
+                            <i class="fa fa-chevron-down ml-auto"></i>
+                        </a>
+                        <ul id="reportsSub" class="sidebar-submenu nested">
+                            <li><a href="#">Furst Person</a></li>                            
+                        </ul>
+                    </li>
+
+                    <li><a href="/WaveRoster">Hiring Roster</a></li>
+                    <li><a href="/CandidateSearch">Recruitment Candidate Search</a></li>
+                    <li><a href="#">CSI Schedules</a></li>
+                </ul>
             </li>
+
+
         </ul>
     </div>
     <!--end::Menu-->
 </aside>
 <!--end::Aside-->
 
+<!--begin::Custom CSS-->
+<style>
+    /* ========== BASE ASIDE ========== */
+    .app-aside {
+        width: 250px;
+        background-color: #001b0a !important;
+        color: #c8e6c9 !important;
+        transition: width 0.3s ease;
+    }
 
+    .aside-menu {
+        overflow-y: auto;
+        overflow-x: hidden;
+        max-height: calc(100vh - 80px);
+    }
+
+        .aside-menu::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .aside-menu::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+    /* ========== MENU LINKS ========== */
+    .menu-link {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 6px;
+        padding: 8px 18px;
+        color: #c8e6c9 !important;
+        text-decoration: none;
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+        .menu-link:hover {
+            background-color: #004d1a !important;
+            color: #fff !important;
+        }
+
+        .menu-link.active {
+            background-color: #004d1a !important;
+            font-weight: bold;
+        }
+
+        /* --- FIXED ICON COLUMN WIDTH --- */
+        .menu-link i.menu-icon,
+        .menu-link i.fas,
+        .menu-link i.fa {
+            flex: 0 0 26px;
+            width: 26px;
+            text-align: center;
+            margin: 0;
+        }
+
+        .menu-link i.fa-chevron-down,
+        .menu-link i.fa-chevron-up {
+            margin-left: auto;
+            transition: transform 0.2s ease;
+        }
+
+        .menu-link.expanded i.fa-chevron-down {
+            transform: rotate(180deg);
+        }
+
+    /* ========== SUBMENUS (ALIGNMENT FIX) ========== */
+    .sidebar-submenu {
+        /* 20px parent padding + 28px icon width + 10px gap = 58px */
+        padding-left: calc(18px + 26px + 6px) !important;
+        margin: 0;
+        list-style: none;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.3s ease;
+    }
+
+        .sidebar-submenu.show {
+            max-height: 1000px;
+        }
+
+        .sidebar-submenu li {
+            margin: 2px 0;
+        }
+
+            .sidebar-submenu li a {
+                display: inline-block;
+                padding: 4px 0;
+                font-size: 0.95rem;
+                color: #c8e6c9 !important;
+                text-decoration: none;
+                margin-left: 0;
+            }
+
+                .sidebar-submenu li a:hover {
+                    color: #fff !important;
+                }
+
+            /* Optional bullet styling (aligned with submenu text) */
+            .sidebar-submenu li::before {
+                content: "•";
+                display: inline-block;
+                width: 18px;
+                margin-left: -18px; /* aligns the bullet neatly */
+                margin-right: 6px;
+                color: #28a745;
+            }
+
+            .sidebar-submenu li.menu-item::before {
+                content: none !important;
+            }
+
+    /* ========== MINI-ASIDE ========== */
+    .app-aside.aside-mini {
+        width: 70px !important;
+    }
+
+        .app-aside.aside-mini .menu-text,
+        .app-aside.aside-mini .fa-chevron-down,
+        .app-aside.aside-mini .fa-chevron-up {
+            display: none !important;
+        }
+
+        .app-aside.aside-mini .menu-link {
+            justify-content: center !important;
+            padding: 12px 0 !important;
+        }
+
+            .app-aside.aside-mini .menu-link i.menu-icon {
+                margin: 0 !important;
+                font-size: 1.25rem;
+            }
+
+        .app-aside.aside-mini .sidebar-submenu {
+            display: none !important;
+        }
+
+        /* Tooltips for mini mode */
+        .app-aside.aside-mini .menu-link[title]::after {
+            content: attr(title);
+            position: absolute;
+            left: 80px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 3px 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+            z-index: 9999;
+        }
+
+        .app-aside.aside-mini .menu-link:hover::after {
+            opacity: 1;
+        }
+</style>
+
+
+
+<!--end::Custom CSS-->

@@ -13,8 +13,8 @@ namespace ATS.Web.Controllers
             TimeSlot = "08:30 AM",
             Applicants = new List<ApplicantViewModel>
             {
-                new ApplicantViewModel { Name = "Kassandra Barrios", Phone = "+1 (480) 388-7748", Email = "kassandra.barrios@gmail.com", Status = "Not Right Now" },
-                new ApplicantViewModel { Name = "Rey Singh", Phone = "+1 (760) 604-4834", Email = "reysingh@gmail.com", Status = "NCNS" }
+                new ApplicantViewModel { Name = "Test Dummy1", Phone = "+9 (999) 999-9999", Email = "test@example.com", Status = "Not Right Now" },
+                new ApplicantViewModel { Name = "Test Dummy2", Phone = "+9 (999) 999-9999", Email = "test@example.com", Status = "NCNS" }
             }
         },
         new InterviewScheduleVM
@@ -22,7 +22,7 @@ namespace ATS.Web.Controllers
             TimeSlot = "09:00 AM",
             Applicants = new List<ApplicantViewModel>
             {
-                new ApplicantViewModel { Name = "Amy Okinwa", Phone = "+1 (404) 625-9029", Email = "amy.okinwa@gmail.com", Status = "Hired" }
+                new ApplicantViewModel { Name = "Test Dummy3", Phone = "+9 (999) 999-999", Email = "test01@example.com", Status = "Hired" }
             }
         }
     };
@@ -54,9 +54,9 @@ namespace ATS.Web.Controllers
                 var applicant = new ApplicantViewModel
                 {
                     Id = applicantId,
-                    Name = "Shamarie Prawl",
-                    Email = "shamarie@example.com",
-                    Phone = "(204) 987-6543"
+                    Name = "Test Dummy",
+                    Email = "test@example.com",
+                    Phone = "(999) 999-999"
                 };
 
                 return PartialView("~/Views/InterviewSchedule/Partials/_InterviewFlyout.cshtml", applicant);
