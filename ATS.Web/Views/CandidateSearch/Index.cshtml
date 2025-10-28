@@ -11,95 +11,108 @@
 
 <div class="card">
     <div class="card-body">
-        <form id="applicantSearchForm" class="form">
-            <div class="row mb-5">
-                <div class="col-md-4">
-                    <label class="form-label fw-bold">Dayforce ID</label>
-                    <input type="text" class="form-control" placeholder="E.g: 1234567" name="DayforceId" />
-                </div>
-                <div class="col-md-4">
-                    <label class="form-label fw-bold">Name</label>
-                    <input type="text" class="form-control" placeholder="E.g: Firstname Lastname" name="Name" />
-                </div>
-                <div class="col-md-4">
-                    <label class="form-label fw-bold">Email</label>
-                    <input type="email" class="form-control" placeholder="E.g: bob@24-7intouch.com" name="Email" />
+        <div class="card card-custom bg-light mb-5">
+            <div class="card-header cursor-pointer d-flex justify-content-between align-items-center"
+                 data-toggle="collapse" data-target="#collapseSearch" aria-expanded="true">
+                <h6 class="mb-0">
+                    <i class="fa fa-search text-primary mr-2"></i> Search
+                </h6>
+                <i class="fa fa-minus text-muted"></i>
+            </div>
+            <div id="collapseSearch" class="collapse show">
+                <div class="card-body">
+                    <form id="applicantSearchForm" class="form">
+                        <div class="row mb-5">
+                            <div class="col-md-4">
+                                <label class="form-label fw-bold">Dayforce ID</label>
+                                <input type="text" class="form-control" placeholder="E.g: 1234567" name="DayforceId" />
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label fw-bold">Name</label>
+                                <input type="text" class="form-control" placeholder="E.g: Firstname Lastname" name="Name" />
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label fw-bold">Email</label>
+                                <input type="email" class="form-control" placeholder="E.g: bob@24-7intouch.com" name="Email" />
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <div class="col-md-4">
+                                <label class="form-label fw-bold">Phone Number</label>
+                                <input type="text" class="form-control" placeholder="E.g: Phone Number" name="PhoneNumber" />
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label fw-bold">Status</label>
+                                <select class="form-select form-control" name="Status">
+                                    <option value="">Select a Status</option>
+                                    <option>Active</option>
+                                    <option>Inactive</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label fw-bold">Status Disposition</label>
+                                <select class="form-select form-control" name="StatusDisposition">
+                                    <option value="">Select a Status Disposition</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <div class="col-md-4">
+                                <label class="form-label fw-bold">Line Of Business</label>
+                                <select class="form-select form-control" name="LineOfBusiness">
+                                    <option value="">Select a Line Of Business</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label fw-bold">Hire Type</label>
+                                <select class="form-select form-control" name="HireType">
+                                    <option value="">Select Hire Type</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 d-flex align-items-end">
+                                <div class="form-check form-switch form-check-custom form-check-solid form-check-primary d-flex align-items-center">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="withPendingFollowUps"
+                                           name="WithPendingFollowUps"
+                                           value="1" /> &nbsp;
+                                    <label class="form-check-label ms-3 fw-semibold text-gray-700 mb-0 d-flex align-items-center"
+                                           for="withPendingFollowUps">
+                                        With Pending Follow Ups
+                                    </label>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="row mb-5">
+                            <div class="col-md-4">
+                                <label class="form-label fw-bold">Show Profiles</label>
+                                <select class="form-select form-control" name="ShowProfiles">
+                                    <option>Active</option>
+                                    <option>Inactive</option>
+                                    <option>All</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="d-flex mt-3">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-search"></i>
+                                <span class="fw-semibold">Search</span>
+                            </button> &nbsp;&nbsp;
+                            <button type="reset" class="btn btn-secondary">
+                                <i class="fa fa-times"></i>
+                                <span class="fw-semibold">Reset</span>
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
-
-            <div class="row mb-5">
-                <div class="col-md-4">
-                    <label class="form-label fw-bold">Phone Number</label>
-                    <input type="text" class="form-control" placeholder="E.g: Phone Number" name="PhoneNumber" />
-                </div>
-                <div class="col-md-4">
-                    <label class="form-label fw-bold">Status</label>
-                    <select class="form-select form-control" name="Status">
-                        <option value="">Select a Status</option>
-                        <option>Active</option>
-                        <option>Inactive</option>
-                    </select>
-                </div>
-                <div class="col-md-4">
-                    <label class="form-label fw-bold">Status Disposition</label>
-                    <select class="form-select form-control" name="StatusDisposition">
-                        <option value="">Select a Status Disposition</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="row mb-5">
-                <div class="col-md-4">
-                    <label class="form-label fw-bold">Line Of Business</label>
-                    <select class="form-select form-control" name="LineOfBusiness">
-                        <option value="">Select a Line Of Business</option>
-                    </select>
-                </div>
-                <div class="col-md-4">
-                    <label class="form-label fw-bold">Hire Type</label>
-                    <select class="form-select form-control" name="HireType">
-                        <option value="">Select Hire Type</option>
-                    </select>
-                </div>
-                <div class="col-md-4 d-flex align-items-end">
-                    <div class="form-check form-switch form-check-custom form-check-solid form-check-primary d-flex align-items-center">
-                        <input class="form-check-input"
-                               type="checkbox"
-                               id="withPendingFollowUps"
-                               name="WithPendingFollowUps"
-                               value="1" /> &nbsp;
-                        <label class="form-check-label ms-3 fw-semibold text-gray-700 mb-0 d-flex align-items-center"
-                               for="withPendingFollowUps">
-                            With Pending Follow Ups
-                        </label>
-                    </div>
-                </div>
-
-
-            </div>
-
-            <div class="row mb-5">
-                <div class="col-md-4">
-                    <label class="form-label fw-bold">Show Profiles</label>
-                    <select class="form-select form-control" name="ShowProfiles">
-                        <option>Active</option>
-                        <option>Inactive</option>
-                        <option>All</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="d-flex gap-3">
-                <button type="submit" class="btn btn-primary">
-                    <i class="ki ki-filter fs-2 me-2"></i>
-                    <span class="fw-semibold">Search</span>
-                </button>
-                <button type="reset" class="btn btn-light">
-                    <i class="ki ki-reload fs-2 me-2"></i>
-                    <span class="fw-semibold">Reset</span>
-                </button>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 
@@ -110,8 +123,8 @@
             <thead>
                 <tr class="fw-bold text-muted">
                     <th>Name</th>
-                    <th>Phone Number</th>
                     <th>Email</th>
+                    <th>Phone Number</th>
                     <th>Language</th>
                     <th>Employment Type</th>
                     <th>Dayforce ID</th>
@@ -128,21 +141,5 @@
 </div>
 
 @section Scripts {
-    <script>
-        $(function () {
-            console.log("Applicant Index initialized");
-
-            // Example: handle form submit
-            $('#applicantSearchForm').on('submit', function (e) {
-                e.preventDefault();
-                console.log('Searching applicants...');
-                // TODO: call your API / AJAX endpoint here
-            });
-
-            // Reset handler
-            $('button[type="reset"]').on('click', function () {
-                $('#applicantSearchForm')[0].reset();
-            });
-        });
-    </script>
+    <script src="~/js/candidate-search/candidate-search.js"></script>
 }
