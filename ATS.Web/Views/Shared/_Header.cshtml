@@ -1,0 +1,59 @@
+﻿@using Microsoft.AspNetCore.Mvc.Controllers
+@inject Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor ActionContextAccessor
+
+<!-- HEADER WRAPPER -->
+<div class="app-header py-4 px-5 d-flex align-items-center justify-content-between bg-success" style="background-color: #28d56a !important;">
+    <h1 class="fw-bold fs-2 text-white mb-0">@ViewData["Title"]</h1>
+
+    <div class="d-flex align-items-center">
+        <!--begin::User Bubble-->
+        <div class="user-menu">
+            <button id="btnProfileModal" class="btn btn-warning fw-semibold rounded-pill">
+                Hi, Enrico V <i class="ki-outline ki-user fs-5 ms-1"></i>
+            </button>
+        </div>
+        <!--end::User Bubble-->
+
+    </div>
+</div>
+<!--end::Header-->
+
+<!--begin::Breadcrumb Section-->
+@{
+    var actionContext = ActionContextAccessor.ActionContext;
+    var routeData = actionContext?.RouteData;
+    var controller = routeData?.Values["controller"]?.ToString() ?? "";
+    var action = routeData?.Values["action"]?.ToString() ?? "";
+
+    string FormatTitle(string input) =>
+        System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(input?.Replace("_", " ") ?? "");
+
+    var controllerTitle = FormatTitle(controller);
+    var actionTitle = FormatTitle(action);
+}
+
+<nav aria-label="breadcrumb" class="mt-3 mb-3">
+    <ol class="breadcrumb breadcrumb-separatorless fw-semibold fs-7">
+        <li class="breadcrumb-item text-gray-700">
+            <a href="@Url.Action("Index", "Home")" class="text-gray-700 text-hover-primary">
+                <i class="ki-outline ki-home fs-6"></i>
+            </a>
+        </li>
+        <li class="breadcrumb-item">
+            <span class="bullet bg-gray-400 w-5px h-2px"></span>
+        </li>
+        <li class="breadcrumb-item text-gray-700 text-hover-primary">
+            <a href="@Url.Action("Index", controller)" class="text-gray-700 text-hover-primary">
+                @controllerTitle
+            </a>
+        </li>
+        @if (!string.Equals(action, "Index", StringComparison.OrdinalIgnoreCase))
+        {
+            <li class="breadcrumb-item">
+                <span class="bullet bg-gray-400 w-5px h-2px"></span>
+            </li>
+            <li class="breadcrumb-item text-gray-500">@actionTitle</li>
+        }
+    </ol>
+</nav>
+<!--end::Breadcrumb Section-->

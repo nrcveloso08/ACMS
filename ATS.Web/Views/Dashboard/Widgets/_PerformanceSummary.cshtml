@@ -1,0 +1,37 @@
+﻿@section Scripts {
+    <script>
+        "use strict";
+
+        KTUtil.onDOMContentLoaded(function () {
+            const element = document.querySelector("#kt_chart_performance");
+            if (!element) return;
+
+            const options = {
+                series: [
+                    { name: 'Interviews', data: [30, 40, 45, 50, 49, 60] },
+                    { name: 'Hires', data: [10, 15, 14, 20, 18, 22] }
+                ],
+                chart: { type: 'bar', height: 350, toolbar: { show: false } },
+                plotOptions: {
+                    bar: { columnWidth: '55%', borderRadius: 6 }
+                },
+                stroke: { show: true, width: 2, colors: ['transparent'] },
+                xaxis: {
+                    categories: ['Anna', 'Brian', 'Clara', 'David', 'Ella', 'Frank'],
+                    labels: { style: { colors: KTUtil.getCssVariableValue('--bs-gray-500') } }
+                },
+                colors: [
+                    KTUtil.getCssVariableValue('--bs-primary'),
+                    KTUtil.getCssVariableValue('--bs-success')
+                ],
+                fill: { opacity: 1 },
+                tooltip: {
+                    y: { formatter: val => val + " cases" }
+                }
+            };
+
+            const chart = new ApexCharts(element, options);
+            chart.render();
+        });
+    </script>
+}

@@ -1,0 +1,61 @@
+﻿@model IEnumerable<InterviewScheduleVM>
+@{
+    ViewData["Title"] = "Interview Schedule";
+    Layout = "_Layout";
+}
+
+<div class="card shadow-sm">
+    <!-- Header Filter -->
+    <partial name="Partials/_HeaderFilters" />
+
+    <!-- Schedule Timeline -->
+    <div id="scheduleContent" class="card-body">
+        <div class="timeline timeline-2">
+            <div class="timeline-bar"></div>
+
+            @if (Model != null && Model.Any())
+            {
+                foreach (var slot in Model)
+                {
+                    <partial name="Partials/_TimeSlotSection" model="slot" />
+                }
+            }
+            else
+            {
+                <partial name="Partials/_NoSchedule" />
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/interview-schedule/schedule-applicant.js"></script>
+    <script src="~/js/interview-schedule/flyout.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#scheduleDate, #modeFilter").on("change", function () {
+                const date = $("#scheduleDate").val();
+                const mode = $("#modeFilter").val();
+
+                $.ajax({
+                    url: '@Url.Action("GetSchedules", "InterviewSchedule")',
+                    data: { date: date, mode: mode },
+                    beforeSend: function () {
+                        KTApp.blockPage({ overlayColor: '#000', state: 'primary', message: 'Loading schedules...' });
+                    },
+                    success: function (html) {
+                        $("#scheduleContent").html(html);
+                        toastr.success("Interview schedules updated", "Success");
+                    },
+                    complete: function () {
+                        KTApp.unblockPage();
+                    },
+                    error: function (xhr) {
+                        console.error("Error loading schedules", xhr);
+                        toastr.error("Failed to load schedules", "Error");
+                    }
+                });
+            });
+        });
+    </script>
+}

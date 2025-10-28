@@ -1,0 +1,33 @@
+﻿<div class="d-flex align-items-center justify-content-between w-100 mb-4">
+    <!-- Left side: View buttons and Export -->
+    <div class="d-flex align-items-center gap-3">
+        <div class="btn-group">
+            <button class="btn btn-light-primary fw-semibold active" id="btnCardView">
+                <i class="ki-outline ki-grid fs-2 me-1"></i> Card
+            </button>
+            <button class="btn btn-light fw-semibold" id="btnTabularView">
+                <i class="ki-outline ki-table fs-2 me-1"></i> Tabular
+            </button>
+        </div>
+
+        <div class="dropdown">
+            <button class="btn btn-light-primary dropdown-toggle fw-semibold" data-bs-toggle="dropdown">
+                <i class="ki-outline ki-export fs-2 me-1"></i> Export
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Excel</a></li>
+                <li><a class="dropdown-item" href="#">CSV</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Right side: Location dropdown -->
+    <div class="d-flex align-items-center gap-2">
+        <label for="regionSelect" class="fw-semibold mb-0 text-muted">Location: &nbsp;</label>
+        <select class=" form-select-sm w-auto form-control" id="regionSelect">
+            <option selected>Latin America</option>
+            <option>North America</option>
+            <option>Asia Pacific</option>
+        </select>
+    </div>
+</div>

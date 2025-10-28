@@ -1,0 +1,217 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = ATS.Web
+build_property.RootNamespace = ATS.Web
+build_property.ProjectDir = C:\Users\enrico.veloso\source\repos\ATS.Web\ATS.Web\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\enrico.veloso\source\repos\ATS.Web\ATS.Web
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/CandidateSearch/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FuZGlkYXRlU2VhcmNoXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/Dashboard/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/Dashboard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/Dashboard/Partials/_Activity.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFBhcnRpYWxzXF9BY3Rpdml0eS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/Dashboard/Partials/_AdditionalInformation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFBhcnRpYWxzXF9BZGRpdGlvbmFsSW5mb3JtYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/Dashboard/Partials/_Application.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFBhcnRpYWxzXF9BcHBsaWNhdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/Dashboard/Partials/_Attachment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFBhcnRpYWxzXF9BdHRhY2htZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/Dashboard/Partials/_DayforceInformation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFBhcnRpYWxzXF9EYXlmb3JjZUluZm9ybWF0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/Dashboard/Partials/_Interview.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFBhcnRpYWxzXF9JbnRlcnZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/Dashboard/Partials/_PersonalInformation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFBhcnRpYWxzXF9QZXJzb25hbEluZm9ybWF0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/Dashboard/Partials/_Requisition.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFBhcnRpYWxzXF9SZXF1aXNpdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/Dashboard/Partials/_Skill.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFBhcnRpYWxzXF9Ta2lsbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/Dashboard/Widgets/_ApplicantChart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFdpZGdldHNcX0FwcGxpY2FudENoYXJ0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/Dashboard/Widgets/_InterviewActivity.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFdpZGdldHNcX0ludGVydmlld0FjdGl2aXR5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/Dashboard/Widgets/_JobOpenings.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFdpZGdldHNcX0pvYk9wZW5pbmdzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/Dashboard/Widgets/_PerformanceSummary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFdpZGdldHNcX1BlcmZvcm1hbmNlU3VtbWFyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/Dashboard/Widgets/_SummaryCards.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFdpZGdldHNcX1N1bW1hcnlDYXJkcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/InterviewSchedule/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW50ZXJ2aWV3U2NoZWR1bGVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/InterviewSchedule/Partials/_ApplicantCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW50ZXJ2aWV3U2NoZWR1bGVcUGFydGlhbHNcX0FwcGxpY2FudENhcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/InterviewSchedule/Partials/_HeaderFilters.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW50ZXJ2aWV3U2NoZWR1bGVcUGFydGlhbHNcX0hlYWRlckZpbHRlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/InterviewSchedule/Partials/_InterviewFlyout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW50ZXJ2aWV3U2NoZWR1bGVcUGFydGlhbHNcX0ludGVydmlld0ZseW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/InterviewSchedule/Partials/_NoSchedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW50ZXJ2aWV3U2NoZWR1bGVcUGFydGlhbHNcX05vU2NoZWR1bGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/InterviewSchedule/Partials/_RenderSchedulePartials.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW50ZXJ2aWV3U2NoZWR1bGVcUGFydGlhbHNcX1JlbmRlclNjaGVkdWxlUGFydGlhbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/InterviewSchedule/Partials/_ScheduleApplicant.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW50ZXJ2aWV3U2NoZWR1bGVcUGFydGlhbHNcX1NjaGVkdWxlQXBwbGljYW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/InterviewSchedule/Partials/_TimeSlotSection.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW50ZXJ2aWV3U2NoZWR1bGVcUGFydGlhbHNcX1RpbWVTbG90U2VjdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/InterviewSchedule/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW50ZXJ2aWV3U2NoZWR1bGVcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/ObeyaBoard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2JleWFCb2FyZFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/ObeyaBoard/Partials/_BoardCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2JleWFCb2FyZFxQYXJ0aWFsc1xfQm9hcmRDYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/ObeyaBoard/Partials/_BoardColumn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2JleWFCb2FyZFxQYXJ0aWFsc1xfQm9hcmRDb2x1bW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/ObeyaBoard/Partials/_BoardHeader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2JleWFCb2FyZFxQYXJ0aWFsc1xfQm9hcmRIZWFkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/ObeyaBoard/Partials/_BoardScripts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2JleWFCb2FyZFxQYXJ0aWFsc1xfQm9hcmRTY3JpcHRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/Shared/_Aside.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Bc2lkZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/Shared/_Footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Gb290ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/Shared/_Header.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9IZWFkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/WaveRoster/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2F2ZVJvc3RlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/WaveRoster/Partials/_CSISchedulepartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2F2ZVJvc3RlclxQYXJ0aWFsc1xfQ1NJU2NoZWR1bGVwYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/WaveRoster/Partials/_HiringGoalPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2F2ZVJvc3RlclxQYXJ0aWFsc1xfSGlyaW5nR29hbFBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/WaveRoster/Partials/_HiringRosterPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2F2ZVJvc3RlclxQYXJ0aWFsc1xfSGlyaW5nUm9zdGVyUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/WaveRoster/Partials/_OrientationSchedulePartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2F2ZVJvc3RlclxQYXJ0aWFsc1xfT3JpZW50YXRpb25TY2hlZHVsZVBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/WaveRoster/Partials/_TrainingInfoPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2F2ZVJvc3RlclxQYXJ0aWFsc1xfVHJhaW5pbmdJbmZvUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/WaveRoster/Partials/_WaveInfoPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2F2ZVJvc3RlclxQYXJ0aWFsc1xfV2F2ZUluZm9QYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/WaveRoster/Partials/_WaveNotesPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2F2ZVJvc3RlclxQYXJ0aWFsc1xfV2F2ZU5vdGVzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/source/repos/ATS.Web/ATS.Web/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-c3zysx8wxf

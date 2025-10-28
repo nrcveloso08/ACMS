@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Obeya Board";
+}
+
+<div class="d-flex flex-column flex-lg-row align-items-center justify-content-between mb-5">
+    @Html.Partial("Partials/_BoardHeader")
+</div>
+
+<div class="container-fluid">
+    <div class="row g-5 justify-content-center board-container">
+        <div class="col-12 col-sm-6 col-lg-3">
+            @Html.Partial("Partials/_BoardColumn", new { ColumnId = "notStarted", Title = "Not Started", Color = "text-primary" })
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3">
+            @Html.Partial("Partials/_BoardColumn", new { ColumnId = "inProgress", Title = "In Progress", Color = "text-warning" })
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3">
+            @Html.Partial("Partials/_BoardColumn", new { ColumnId = "priority", Title = "Priority", Color = "text-danger" })
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3">
+            @Html.Partial("Partials/_BoardColumn", new { ColumnId = "complete", Title = "Complete", Color = "text-success" })
+        </div>
+    </div>
+</div>
+
+
+@Html.Partial("Partials/_BoardScripts")

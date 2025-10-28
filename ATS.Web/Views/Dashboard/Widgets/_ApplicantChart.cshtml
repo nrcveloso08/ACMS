@@ -1,0 +1,120 @@
+﻿@* Views/Dashboard/Partials/_ApplicantChart.cshtml *@
+<div class="card card-flush h-md-100">
+    <div class="card-header pt-5">
+        <h3 class="card-title align-items-start flex-column">
+            <span class="card-label fw-bold text-dark fs-4 mb-1">Applicant Trends Weekly Overview</span>
+        </h3>
+
+        <div class="card-toolbar">
+            <div class="d-flex align-items-center gap-2">
+                <button class="btn btn-sm btn-light" id="applicant_chart_filter">
+                    <i class="ki-outline ki-filter fs-5"></i> Filter
+                </button>
+                <input type="text" id="applicant_chart_daterange" class="form-control form-control-sm w-150px" placeholder="Select Date Range" />
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body pt-6">
+        <div id="kt_applicant_overview_chart" style="height: 350px;"></div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        "use strict";
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Ensure dependencies are available
+            if (typeof KTUtil === "undefined" || typeof ApexCharts === "undefined") {
+                console.error("❌ Missing Metronic core dependencies (KTUtil / ApexCharts). Check _Layout.cshtml ordering.");
+                return;
+            }
+
+            // ✅ Correct element ID
+            const chartElement = document.querySelector("#kt_applicant_overview_chart");
+            if (!chartElement) {
+                console.error("❌ Chart element not found: #kt_applicant_overview_chart");
+                return;
+            }
+
+            const labelColor = KTUtil.getCssVariableValue("--bs-gray-500");
+            const borderColor = KTUtil.getCssVariableValue("--bs-border-dashed-color");
+
+            const options = {
+                series: [
+                    { name: "Hired", data: [5, 15, 25, 35, 45, 30, 40] },
+                    { name: "Pending", data: [10, 20, 25, 15, 35, 20, 25] },
+                    { name: "Rejected", data: [2, 5, 7, 10, 6, 8, 4] }
+                ],
+                chart: {
+                    type: "area",
+                    height: 350,
+                    fontFamily: "inherit",
+                    toolbar: { show: false },
+                    animations: { enabled: true, easing: "easeinout", speed: 700 }
+                },
+                legend: {
+                    show: true,
+                    position: "bottom",
+                    horizontalAlign: "center",
+                    labels: { colors: KTUtil.getCssVariableValue("--bs-gray-600") },
+                    markers: { width: 10, height: 10, radius: 12 }
+                },
+                colors: [
+                    KTUtil.getCssVariableValue("--bs-success"),
+                    KTUtil.getCssVariableValue("--bs-warning"),
+                    KTUtil.getCssVariableValue("--bs-danger")
+                ],
+                stroke: { curve: "smooth", width: 3 },
+                fill: {
+                    type: "gradient",
+                    gradient: {
+                        shadeIntensity: 1,
+                        opacityFrom: 0.45,
+                        opacityTo: 0.05,
+                        stops: [25, 90, 100]
+                    }
+                },
+                grid: {
+                    borderColor: borderColor,
+                    strokeDashArray: 4,
+                    yaxis: { lines: { show: true } },
+                    xaxis: { lines: { show: false } }
+                },
+                xaxis: {
+                    categories: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+                    labels: {
+                        style: { colors: labelColor, fontSize: "12px" }
+                    },
+                    axisBorder: { show: false },
+                    axisTicks: { show: false }
+                },
+                yaxis: {
+                    labels: {
+                        style: { colors: labelColor, fontSize: "12px" }
+                    }
+                },
+                tooltip: {
+                    y: { formatter: val => `${val} Applicants` }
+                }
+            };
+
+            // Render chart safely when container is visible
+            const renderChart = () => {
+                if (chartElement.offsetHeight === 0) {
+                    setTimeout(renderChart, 300);
+                    return;
+                }
+                const chart = new ApexCharts(chartElement, options);
+                chart.render();
+            };
+
+            // ✅ Initialize chart
+            KTUtil.onDOMContentLoaded(() => {
+                renderChart();
+            });
+        });
+    </script>
+}
+

@@ -1,0 +1,77 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Wave Roster";
+}
+
+<!-- Top Info -->
+<div class="row mt-5">
+    <div class="col-xl-4">@Html.Partial("Partials/_WaveInfoPartial")</div>
+    <div class="col-xl-4">@Html.Partial("Partials/_HiringGoalPartial")</div>
+    <div class="col-xl-4">@Html.Partial("Partials/_TrainingInfoPartial")</div>
+</div>
+
+<!-- Hiring Roster -->
+<div class="card card-custom mt-8">
+    <div class="card-header flex-wrap border-0 pt-6 pb-0">
+        <div class="card-title">
+            <h3 class="card-label">Hiring Roster</h3>
+        </div>
+        <div class="card-toolbar">
+            <!-- Add Applicant Button -->
+            <a href="#" class="btn btn-primary font-weight-bold btn-sm" id="btnAddApplicant">
+                <i class="la la-plus"></i> Add Applicant
+            </a>
+
+            <!-- Download Dropdown -->
+            <div class="dropdown dropdown-inline ml-2">
+                <button type="button" class="btn btn-light-primary font-weight-bold btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="la la-download"></i> Download
+                </button>
+                <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                    <ul class="navi flex-column navi-hover py-2">
+                        <li class="navi-header font-weight-bold text-uppercase font-size-sm text-primary pb-2">Export Options:</li>
+                        <li class="navi-item">
+                            <a href="#" class="navi-link" id="exportExcel">
+                                <span class="navi-icon"><i class="la la-file-excel"></i></span>
+                                <span class="navi-text">Export to Excel</span>
+                            </a>
+                        </li>
+                        <li class="navi-item">
+                            <a href="#" class="navi-link" id="exportCsv">
+                                <span class="navi-icon"><i class="la la-file-text"></i></span>
+                                <span class="navi-text">Export to CSV</span>
+                            </a>
+                        </li>
+                        <li class="navi-item">
+                            <a href="#" class="navi-link" id="exportPdf">
+                                <span class="navi-icon"><i class="la la-file-pdf"></i></span>
+                                <span class="navi-text">Export to PDF</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        @Html.Partial("Partials/_HiringRosterPartial")
+    </div>
+</div>
+
+<!-- Wave Notes / Orientation -->
+<div class="row mt-8">
+    <div class="col-xl-6">@Html.Partial("Partials/_WaveNotesPartial")</div>
+    <div class="col-xl-6">@Html.Partial("Partials/_OrientationSchedulePartial")</div>
+</div>
+
+<!-- CSS Schedule -->
+<div class="row mt-8">
+    <div class="col-xl-12">@Html.Partial("Partials/_CSISchedulePartial")</div>
+</div>
+
+@section Scripts {
+
+    <script src="~/js/wave-roster/hiring-roster.js"></script>
+    <script src="~/js/wave-roster/wave-notes.js"></script>
+
+}

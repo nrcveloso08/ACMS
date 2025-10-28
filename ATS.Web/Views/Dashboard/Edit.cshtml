@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Edit Applicant";
+}
+
+<div class="container-fluid py-4">
+
+    @await Html.PartialAsync("Partials/_PersonalInformation")
+    @await Html.PartialAsync("Partials/_AdditionalInformation")
+    @await Html.PartialAsync("Partials/_DayforceInformation")
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            @await Html.PartialAsync("Partials/_Activity")
+            @await Html.PartialAsync("Partials/_Attachment")
+        </div>
+        <div class="col-md-6 right-column">
+            @await Html.PartialAsync("Partials/_Skill")
+            @await Html.PartialAsync("Partials/_Interview")
+            @await Html.PartialAsync("Partials/_Requisition")
+        </div>
+    </div>
+</div>

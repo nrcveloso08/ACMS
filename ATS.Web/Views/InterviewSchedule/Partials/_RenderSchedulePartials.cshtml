@@ -1,0 +1,17 @@
+﻿@model IEnumerable<InterviewScheduleVM>
+
+<div class="timeline timeline-2">
+    <div class="timeline-bar"></div>
+
+    @if (Model != null && Model.Any())
+    {
+        foreach (var slot in Model)
+        {
+            <partial name="Partials/_TimeSlotSection" model="slot" />
+        }
+    }
+    else
+    {
+        <partial name="Partials/_NoSchedule" />
+    }
+</div>

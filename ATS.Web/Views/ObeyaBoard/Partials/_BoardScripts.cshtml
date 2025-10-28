@@ -1,0 +1,21 @@
+﻿@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const columns = document.querySelectorAll(".kanban-cards");
+            columns.forEach(col => {
+                new Sortable(col, {
+                    group: "shared",
+                    animation: 150,
+                    ghostClass: "bg-light-primary",
+                    onEnd: (evt) => {
+                        const item = evt.item;
+                        const newStatus = evt.to.getAttribute("data-status");
+                        console.log(`Card moved to: ${newStatus}`);
+                        // Optional: AJAX call to save status change
+                    }
+                });
+            });
+        });
+    </script>
+}

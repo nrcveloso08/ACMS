@@ -1,0 +1,72 @@
+﻿@model ApplicantViewModel
+
+<div class="d-flex justify-content-between align-items-center border-bottom py-4 flex-wrap">
+    <!-- Left: Applicant Info -->
+    <div class="flex-grow-1 me-4 mb-3 mb-md-0">
+        <div class="fw-bold text-gray-900">
+            Name: @Model.Name
+        </div>
+        <div class="text-gray-600 fs-7">
+            Phone:
+            <a href="tel:@Model.Phone" class="text-primary">@Model.Phone</a>
+            <i class="ki ki-copy fs-7 text-muted cursor-pointer ms-1" title="Copy phone"></i>
+        </div>
+        <div class="text-gray-600 fs-7">
+            Email:
+            <a href="mailto:@Model.Email" class="text-primary">@Model.Email</a>
+            <i class="ki ki-copy fs-7 text-muted cursor-pointer ms-1" title="Copy email"></i>
+        </div>
+    </div>
+
+    <!-- Right: Action Buttons + Dropdown -->
+    <div class="d-flex align-items-center flex-nowrap gap-2 ms-auto">
+        <button type="button"
+                class="btn btn-sm btn-outline btn-outline-success btn-active-success d-flex align-items-center">
+            <i class="ki ki-check-circle me-1"></i>
+            Check In
+        </button>
+
+        <button type="button"
+                class="btn btn-sm btn-outline btn-outline-primary btn-active-primary d-flex align-items-center btnInterview" data-id="@Model.Id">
+            <i class="ki ki-calendar me-1"></i>
+            Interview
+        </button>
+
+        <button type="button"
+                class="btn btn-sm btn-outline btn-outline-danger btn-active-danger d-flex align-items-center">
+            <i class="ki ki-cross-circle me-1"></i>
+            NCNS
+        </button>
+
+        <!-- Ellipsis Dropdown -->
+        <div class="dropdown">
+            <button type="button"
+                    class="btn btn-icon btn-sm btn-light btn-active-light-primary"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                <i class="ki ki-dots-vertical fs-2 text-gray-600"></i>
+            </button>
+
+            <ul class="dropdown-menu dropdown-menu-sm dropdown-menu-end shadow">
+                <li>
+                    <a href="#" class="dropdown-item">
+                        <i class="ki ki-edit fs-5 me-2 text-primary"></i>
+                        Edit
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-item">
+                        <i class="ki ki-refresh fs-5 me-2 text-warning"></i>
+                        Reschedule
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-item text-danger">
+                        <i class="ki ki-trash fs-5 me-2 text-danger"></i>
+                        Remove
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

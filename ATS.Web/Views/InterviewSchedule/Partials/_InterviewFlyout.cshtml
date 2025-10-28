@@ -1,0 +1,106 @@
+﻿@model ApplicantViewModel
+
+<div id="interviewFlyout" class="flyout-overlay">
+    <div class="flyout-panel shadow-lg">
+        <div class="flyout-header d-flex justify-content-between align-items-center border-bottom p-3">
+            <h5 class="fw-bold text-primary mb-0">
+                <i class="fa fa-calendar-alt mr-2"></i> In Interview
+            </h5>
+            <button type="button" class="close" id="btnCloseFlyout">
+                <span>&times;</span>
+            </button>
+        </div>
+
+        <div class="flyout-body p-4">
+            <h6 class="fw-bold">@Model.Name</h6>
+            <a href="#" class="text-primary small fw-semibold mb-3 d-block">
+                <i class="fa fa-eye mr-1"></i> View Details
+            </a>
+
+            <div class="form-group">
+                <label class="font-weight-semibold">Location</label>
+                <select class="form-control">
+                    <option>Altamonte Springs, Florida</option>
+                    <option>Orlando, Florida</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="font-weight-semibold">Requisition Request</label>
+                <select class="form-control">
+                    <option>26493 - Wave #75 ORL (L'Oreal USA Orlando)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="font-weight-semibold">Wage</label>
+                <input type="text" class="form-control" value="15.00" />
+            </div>
+
+            <div class="form-group">
+                <label class="font-weight-semibold">Hire Type</label>
+                <select class="form-control">
+                    <option>External</option>
+                    <option>Internal</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="font-weight-semibold">Mode of Interview</label>
+                <select class="form-control">
+                    <option>On Site</option>
+                    <option>Online</option>
+                </select>
+            </div>
+
+            <hr />
+            <h6 class="font-weight-bold text-muted">Interview Responses</h6>
+            <div class="border rounded bg-light p-3">
+                <p class="text-muted small mb-0">No responses recorded yet.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* === Flyout Overlay === */
+    .flyout-overlay {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0);
+        display: none;
+        z-index: 1050;
+        transition: background 0.35s ease;
+    }
+
+    /* === Panel === */
+    .flyout-panel {
+        position: absolute;
+        right: -600px;
+        top: 0;
+        width: 600px;
+        height: 100%;
+        background: #fff;
+        box-shadow: -2px 0 15px rgba(0,0,0,0.2);
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow-y: auto;
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    /* === When visible === */
+    .flyout-overlay.show {
+        display: block;
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+        .flyout-overlay.show .flyout-panel {
+            right: 0;
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+</style>

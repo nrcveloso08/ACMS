@@ -1,0 +1,84 @@
+﻿@* _HiringRosterPartial.cshtml *@
+
+<!-- Hiring Roster Filters + Table (no card-header, no toolbar) -->
+<div class="card-body">
+
+    <!-- Filters Row -->
+    <div class="row mb-5 align-items-end">
+        <div class="col-md-3 mb-2">
+            <div class="form-group">
+                <input type="text" id="searchInput" class="form-control" placeholder="🔍 Search applicant...">
+            </div>
+        </div>
+
+        <div class="col-md-2 mb-2">
+            <div class="form-group">
+                <label class="font-weight-bold text-muted small mb-1">Status:</label>
+                <select id="statusFilter" class="form-control">
+                    <option value="">All</option>
+                    <option value="Active">Active</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Hired">Hired</option>
+                    <option value="Not Right Now">Not Right Now</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-2 mb-2">
+            <div class="form-group">
+                <label class="font-weight-bold text-muted small mb-1">Employment Status:</label>
+                <select id="employmentFilter" class="form-control">
+                    <option value="">All</option>
+                    <option value="FullTime">Full Time</option>
+                    <option value="PartTime">Part Time</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-2 mb-2">
+            <div class="form-group">
+                <label class="font-weight-bold text-muted small mb-1">Language:</label>
+                <select id="languageFilter" class="form-control">
+                    <option value="">All</option>
+                    <option value="English">English</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="French">French</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Table Section -->
+    <div class="table-responsive">
+        <table id="kt_hiring_roster" class="table table-bordered table-hover align-middle">
+            <thead class="thead-light">
+                <tr>
+                    <th>Applicant Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Employment Status</th>
+                    <th>Language</th>
+                    <th>Orientation Date</th>
+                    <th>Status</th>
+                    <th>Background Check</th>
+                    <th>Reference Code</th>
+                    <th>Wave Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Jane Smith</td>
+                    <td>jane.smith@email.com</td>
+                    <td>+63 912 345 6789</td>
+                    <td>Full-time</td>
+                    <td>English</td>
+                    <td>2025-11-02</td>
+                    <td>Active</td>
+                    <td>Completed</td>
+                    <td>REF-001</td>
+                    <td>AFS</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

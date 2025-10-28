@@ -1,0 +1,15 @@
+﻿@model dynamic
+
+@{
+    var columnId = Model?.ColumnId ?? "column";
+    var title = Model?.Title ?? "Column";
+    var color = Model?.Color ?? "text-muted";
+}
+
+<div class="kanban-column flex-grow-1 min-w-300px status-column" id="@columnId">
+    <h5 class="fw-bold text-center mb-4 @color">@title</h5>
+    <div class="kanban-cards d-flex flex-column gap-4 pt-3 pb-3" data-status="@title">
+        @Html.Partial("Partials/_BoardCard", new { Title = "Cloudbreak Tegucigalpa VRI", Location = "Tegucigalpa", D = "17D", Count = 37, Total = 20, Done = 0, Percent = "0%" })
+        @Html.Partial("Partials/_BoardCard", new { Title = "Lululemon Jamaica Montego Bay", Location = "Jamaica", D = "20D", Count = 35, Total = 24, Done = 7, Percent = "29%" })
+    </div>
+</div>

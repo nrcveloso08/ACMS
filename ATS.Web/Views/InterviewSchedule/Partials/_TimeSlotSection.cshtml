@@ -1,0 +1,14 @@
+﻿@model InterviewScheduleVM
+
+<div class="timeline-item">
+    <span class="timeline-badge bg-success"></span>
+
+    <div class="timeline-content d-flex flex-column">
+        <div class="fw-bold text-gray-800 fs-5 mb-3">@Model.TimeSlot</div>
+
+        @foreach (var applicant in Model.Applicants)
+        {
+            <partial name="Partials/_ApplicantCard" model="applicant" />
+        }
+    </div>
+</div>

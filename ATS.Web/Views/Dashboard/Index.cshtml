@@ -1,0 +1,42 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container-fluid py-5">
+    <div class="row g-6 g-xl-9 mb-6">
+        <div class="col-xl-3">
+            @await Html.PartialAsync("Widgets/_SummaryCards")
+        </div>
+
+        <div class="col-xl-9">
+            @await Html.PartialAsync("Widgets/_ApplicantChart")
+        </div>
+    </div>
+
+    <div class="row g-6 g-xl-9 mb-6">
+        <div class="col-xl-6">
+            @await Html.PartialAsync("Widgets/_InterviewActivity")
+        </div>
+        <div class="col-xl-6">
+            @await Html.PartialAsync("Widgets/_JobOpenings")
+        </div>
+    </div>
+
+    <div class="row g-6 g-xl-9">
+        <div class="col-xl-12">
+            @await Html.PartialAsync("Widgets/_PerformanceSummary")
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+            $("#applicantContainer").load("/Dashboard/RenderApplicantChart", function () {
+                if (typeof _initApplicantOverview === "function") {
+                    _initApplicantOverview();
+                }
+            });
+
+    </script>
+}
