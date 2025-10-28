@@ -1,0 +1,154 @@
+﻿@{
+    ViewData["Title"] = "New Applicant";
+}
+
+<!-- INFORMATION CARD -->
+<div class="card mb-5">
+    <div class="card-header d-flex justify-content-between align-items-center px-3 py-3">
+        <div class="card-title d-flex align-items-center mb-0">
+            <i class="fa fa-user text-primary mr-2"></i>
+            <span class="font-weight-bold h5 mb-0">Information</span>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <form id="frmNewApplicant">
+            <!-- Personal Info -->
+            <div class="row mb-4">
+                <div class="col-md-4 mb-3">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" placeholder="E.g: Firstname" required />
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" placeholder="E.g: Lastname" required />
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label>Date of Birth</label>
+                    <input type="date" class="form-control" required />
+                </div>
+            </div>
+
+            <!-- Address -->
+            <div class="row mb-4">
+                <div class="col-md-4 mb-3">
+                    <label>Street</label>
+                    <input type="text" class="form-control" placeholder="Street" />
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label>Apartment Number</label>
+                    <input type="text" class="form-control" placeholder="Apartment Number" />
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label>City</label>
+                    <input type="text" class="form-control" placeholder="City" />
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label>State</label>
+                    <input type="text" class="form-control" placeholder="State" />
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label>Postal Code</label>
+                    <input type="text" class="form-control" placeholder="Postal Code" />
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label>Country Name</label>
+                    <input type="text" class="form-control" placeholder="Country Name" />
+                </div>
+            </div>
+
+            <!-- Contact -->
+            <div class="row mb-4">
+                <div class="col-md-6 mb-3">
+                    <label>Phone</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-warning text-white">
+                                <i class="fa fa-star"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Phone" />
+                        <div class="input-group-append">
+                            <button class="btn btn-danger" type="button">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-warning btn-sm mt-2">
+                        <i class="fa fa-plus"></i> Add
+                    </button>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label>Email</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-warning text-white">
+                                <i class="fa fa-star"></i>
+                            </span>
+                        </div>
+                        <input type="email" class="form-control" placeholder="Email Address" />
+                        <div class="input-group-append">
+                            <button class="btn btn-danger" type="button">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-warning btn-sm mt-2">
+                        <i class="fa fa-plus"></i> Add
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- APPLICATION INFORMATION CARD -->
+<div class="card">
+    <div class="card-header d-flex align-items-center px-3 py-3">
+        <div class="card-title d-flex align-items-center mb-0">
+            <i class="fa fa-briefcase text-primary mr-2"></i>
+            <span class="font-weight-bold h5 mb-0">Application Information</span>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="row mb-4">
+            <div class="col-md-6 mb-3">
+                <label>Location</label>
+                <select class="form-control">
+                    <option value="">Select a Location</option>
+                </select>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Job Post</label>
+                <select class="form-control">
+                    <option value="">Select a Job Post</option>
+                </select>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Advertisement Source</label>
+                <select class="form-control">
+                    <option value="">Select an Advertisement Source</option>
+                </select>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Hire Type</label>
+                <select class="form-control">
+                    <option value="">Select Hire Type</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Create Button -->
+        <div class="d-flex justify-content-end">
+            <button type="submit" id="btnCreateApplicant" class="btn btn-success">
+                <i class="fa fa-save mr-2"></i> Create Applicant
+            </button>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/dashboard//new-applicant.js"></script>
+}

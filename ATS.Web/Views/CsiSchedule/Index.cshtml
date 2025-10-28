@@ -1,0 +1,100 @@
+﻿@{
+    ViewData["Title"] = "CSI Schedules";
+}
+
+<div class="card">
+    <div class="card-header d-flex justify-content-end align-items-center px-3 py-3">
+        <div class="card-toolbar d-flex align-items-center">
+            <button id="btnCreateCsiSchedule" class="btn btn-primary ml-2">
+                <i class="fa fa-plus mr-1"></i> Create New CSI Schedule
+            </button>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="mb-5">
+            <div class="bg-light p-4 rounded">
+                <h6 class="mb-4">
+                    <i class="fa fa-search text-primary mr-2"></i> Search
+                </h6>
+
+                <form id="frmSearch" class="row">
+                    <!-- Date Range -->
+                    <div class="form-group col-md-3 mb-4">
+                        <label for="startDate">Date Range</label>
+                        <div class="d-flex">
+                            <input type="date" id="startDate" class="form-control mr-2" />
+                            <input type="date" id="endDate" class="form-control" />
+                        </div>
+                    </div>
+
+                    <!-- Status -->
+                    <div class="form-group col-md-3 mb-4">
+                        <label for="status">Status</label>
+                        <select id="status" class="form-control">
+                            <option value="">Select a Status</option>
+                        </select>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="form-group col-md-3 mb-4">
+                        <label for="location">Location</label>
+                        <select id="location" class="form-control">
+                            <option value="">Select a Location</option>
+                        </select>
+                    </div>
+
+                    <!-- Program -->
+                    <div class="form-group col-md-3 mb-4">
+                        <label for="program">Program</label>
+                        <select id="program" class="form-control">
+                            <option value="">Select a Program</option>
+                        </select>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="col-md-12 mt-3">
+                        <button type="button" id="btnSearch" class="btn btn-primary mr-2">
+                            <i class="fa fa-search"></i> Search
+                        </button>
+                        <button type="button" id="btnReset" class="btn btn-secondary mr-2">
+                            <i class="fa fa-sync-alt"></i> Reset
+                        </button>
+                        <button type="button" id="btnExportCsv" class="btn btn-outline-success float-right">
+                            <i class="fa fa-file-csv"></i> Export CSV
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table id="tblCsiSchedule" class="table table-bordered table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Id</th>
+                        <th>Program</th>
+                        <th>Location</th>
+                        <th>Capacity</th>
+                        <th>No. of Booked Applicants</th>
+                        <th>Status</th>
+                        <th>Start Date Time</th>
+                        <th>End Date Time</th>
+                        <th>Created</th>
+                        <th>Created By</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="11" class="text-center">No data available in table</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/csi/csi-schedule.js"></script>
+}

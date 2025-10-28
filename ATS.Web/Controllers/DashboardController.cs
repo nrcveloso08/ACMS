@@ -16,6 +16,11 @@ namespace ATS.Web.Controllers
             return PartialView("~/Views/Dashboard/Partials/_ApplicantChart.cshtml");
         }
 
+        public IActionResult NewApplicant()
+        {
+            return View();
+        }
+
         // GET: DashboardController/Details/5
         public ActionResult Details(int id)
         {
