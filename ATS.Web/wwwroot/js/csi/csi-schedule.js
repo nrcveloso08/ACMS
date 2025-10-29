@@ -1,31 +1,17 @@
-﻿// wwwroot/js/pages/_csi-schedule.js
+﻿// ================================
+// CSI Schedule Page Script
+// Handles CSI Schedule creation modal, form, and save process
+// ================================
 
-$(document).ready(function () {
+"use strict";
 
-    // Create New CSI Schedule button
-    $(document).on("click", "#btnCreateCsiSchedule", function () {
-        AppUtils.loadModal("csiScheduleModal", {
-            title: "Scheduler",
-            body: getCsiModalBody(),
-            buttons: {
-                Save: {
-                    Enabled: true,
-                    text: "Save",
-                    btnClass: "btn btn-primary",
-                    action: saveCsiSchedule
-                },
-                Cancel: {
-                    Enabled: true,
-                    text: "Cancel",
-                    btnClass: "btn btn-secondary",
-                    autoDismiss: true
-                }
-            },
-            settings: "modal-dialog-centered modal-md"
-        });
-    });
+var CsiSchedulePage = (function () {
 
-    // Build modal body content
+    // =========================
+    // 🔹 1. Private Functions
+    // =========================
+
+    // --- Modal Body Builder ---
     function getCsiModalBody() {
         return `
             <form id="frmCsiSchedule">
@@ -56,7 +42,7 @@ $(document).ready(function () {
         `;
     }
 
-    // Handle Save action
+    // --- Save CSI Schedule Handler ---
     function saveCsiSchedule() {
         if (!AppUtils.validateForm("#frmCsiSchedule")) {
             return;
@@ -82,10 +68,56 @@ $(document).ready(function () {
         });
     }
 
-    // Reload schedule list (placeholder)
+    // --- Reload Schedule List (Placeholder) ---
     function loadCsiScheduleList() {
         console.log("Reload CSI schedule table...");
-        // You can later integrate DataTables or reload via AJAX
+        // Future: Integrate DataTables or AJAX refresh
     }
 
+    // --- Bind Events ---
+    function bindEvents() {
+        // Create New CSI Schedule Button
+        $(document).on("click", "#btnCreateCsiSchedule", function () {
+            AppUtils.loadModal("csiScheduleModal", {
+                title: "Scheduler",
+                body: getCsiModalBody(),
+                buttons: {
+                    Save: {
+                        Enabled: true,
+                        text: "Save",
+                        btnClass: "btn btn-primary",
+                        action: saveCsiSchedule
+                    },
+                    Cancel: {
+                        Enabled: true,
+                        text: "Cancel",
+                        btnClass: "btn btn-secondary",
+                        autoDismiss: true
+                    }
+                },
+                settings: "modal-dialog-centered modal-md"
+            });
+        });
+    }
+
+    // =========================
+    // 🔹 2. Public Init Function
+    // =========================
+    function init() {
+        bindEvents();
+        console.log("✅ CSI Schedule page initialized");
+    }
+
+    // Expose public methods
+    return {
+        init: init
+    };
+
+})();
+
+// =========================
+// 🔹 3. Initialize on Ready
+// =========================
+$(document).ready(function () {
+    CsiSchedulePage.init();
 });

@@ -2264,6 +2264,7 @@ wwwroot\js\common\profileModal.js
 wwwroot\js\csi\csi-schedule.js
 wwwroot\js\dashboard\edit.js
 wwwroot\js\dashboard\new-applicant.js
+wwwroot\js\followup\applicant-followup.js
 wwwroot\js\interview-schedule\flyout.js
 wwwroot\js\interview-schedule\schedule-applicant.js
 wwwroot\js\layout\layout.js

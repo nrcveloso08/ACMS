@@ -112,6 +112,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFdpZGdldHNcX1N1bW1hcnlDYXJkcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/FollowUp/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9sbG93VXBcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/InterviewSchedule/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW50ZXJ2aWV3U2NoZWR1bGVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

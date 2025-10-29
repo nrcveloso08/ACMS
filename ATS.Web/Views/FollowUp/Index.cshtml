@@ -1,0 +1,93 @@
+﻿@{
+    ViewData["Title"] = "Applicants for Follow Ups";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card card-custom gutter-b shadow-sm">
+
+    <div class="card-body pt-0">
+        <div class="card card-custom mb-4">
+            <div class="card-header bg-light py-3">
+                <div class="card-title mb-0">
+                    <i class="la la-search text-primary mr-2"></i> Search
+                </div>
+            </div>
+            <div class="card-body bg-light">
+                <form id="filterForm" class="form">
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label>Start Date</label>
+                            <input type="date" id="startDate" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>End Date</label>
+                            <input type="date" id="endDate" class="form-control" value="@DateTime.Now.AddMonths(1).ToString("yyyy-MM-dd")" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Line Of Business</label>
+                            <select id="lineOfBusiness" class="form-control selectpicker" data-live-search="true">
+                                <option value="">Select a Line Of Business</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Wave</label>
+                            <select id="wave" class="form-control selectpicker" data-live-search="true">
+                                <option value="">Select a Wave</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-3 d-flex align-items-center">
+                            <label class="mb-0 mr-3">Include Completed</label>
+                            <span class="switch switch-outline switch-icon switch-primary">
+                                <label>
+                                    <input type="checkbox" id="includeCompleted" />
+                                    <span></span>
+                                </label>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-row mt-3">
+                        <div class="col">
+                            <button type="button" id="btnSearch" class="btn btn-primary font-weight-bold mr-2">
+                                <i class="fa fa-search mr-1"></i> Search
+                            </button>
+                            <button type="button" id="btnReset" class="btn btn-secondary font-weight-bold">
+                                <i class="fa fa-times mr-1"></i> Reset
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table id="tblFollowUp" class="table table-hover table-bordered table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th style="width:5%"></th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Requested By</th>
+                        <th>Created By</th>
+                        <th>Created On</th>
+                        <th>Completed By</th>
+                        <th>Completed On</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="9" class="text-center text-muted">No Results available</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/followup/applicant-followup.js"></script>
+}
