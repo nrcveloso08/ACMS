@@ -1,5 +1,107 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    Layout = null; // Partial view loaded dynamically
+}
+
+<div class="card shadow-sm border-0">
+    <div class="card-header bg-light d-flex justify-content-between align-items-center py-3 px-4">
+        <h5 class="mb-0 fw-semibold text-primary">
+            <i class="fas fa-phone-alt me-2 text-primary"></i> SMS Numbers Maintenance
+        </h5>
+        <div class="d-flex align-items-center gap-2">
+            <button id="btnExportExcel" class="btn btn-success btn-sm shadow-sm">
+                <i class="fas fa-file-excel me-2"></i> Export to Excel
+            </button>&nbsp;&nbsp;
+            <button id="btnAddNumber" class="btn btn-primary btn-sm shadow-sm">
+                <i class="fas fa-plus-circle me-2"></i> New
+            </button>
+        </div>
+    </div>
+
+    <div class="card-body p-4">
+        <div class="table-responsive">
+            <table id="tblSMSNumbers" class="table table-hover align-middle table-bordered table-striped w-100">
+                <thead class="table-light">
+                    <tr>
+                        <th style="width: 80px;">Id</th>
+                        <th style="min-width: 250px;">Location Name</th>
+                        <th style="min-width: 200px;">Phone Number</th>
+                        <th style="min-width: 180px;">Phone Number Type</th>
+                        <th style="width: 100px;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Sample static data (replace with model data) -->
+                    <tr>
+                        <td>1</td>
+                        <td>Winnipeg - Kennedy</td>
+                        <td>+12045003106</td>
+                        <td>Long Code</td>
+                        <td class="text-center">
+                            <button class="btn btn-outline-primary btn-sm editNumber" title="Edit">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Orlando</td>
+                        <td>+14078016602</td>
+                        <td>Long Code</td>
+                        <td class="text-center">
+                            <button class="btn btn-outline-primary btn-sm editNumber" title="Edit">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Initialize DataTable
+            const table = $("#tblSMSNumbers").DataTable({
+                pageLength: 10,
+                lengthChange: true,
+                lengthMenu: [10, 25, 50, 100],
+                ordering: true,
+                responsive: true,
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'excelHtml5',
+                        text: '<i class="fas fa-file-excel me-2"></i>Export to Excel',
+                        className: 'd-none',
+                        title: 'SMS Numbers Maintenance',
+                        exportOptions: { columns: [0, 1, 2, 3] }
+                    }
+                ],
+                columnDefs: [
+                    { orderable: false, targets: 4 }
+                ]
+            });
+
+            // Export to Excel
+            $("#btnExportExcel").on("click", function () {
+                table.button('.buttons-excel').trigger();
+            });
+
+            // New Number Button
+            $("#btnAddNumber").on("click", function () {
+                alert("Open modal to add new SMS number");
+                // TODO: Implement modal popup logic
+            });
+
+            // Edit Button
+            $(document).on("click", ".editNumber", function () {
+                const id = $(this).closest("tr").find("td:first").text();
+                alert("Editing SMS number with ID: " + id);
+                // TODO: Implement edit modal logic
+            });
+        });
+    </script>
+
 }

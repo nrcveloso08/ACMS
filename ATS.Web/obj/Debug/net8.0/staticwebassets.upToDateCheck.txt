@@ -2258,7 +2258,14 @@ wwwroot\css\custom.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\images\IntouchCX_White_Green.png
+wwwroot\js\ats-config\advertisement\adv-source.js
 wwwroot\js\ats-config\ats-config.js
+wwwroot\js\ats-config\email-template\email-template.js
+wwwroot\js\ats-config\harver-vacancies\harver-vacancies.js
+wwwroot\js\ats-config\interview-status\interview-status.js
+wwwroot\js\ats-config\job-adv\job-adv.js
+wwwroot\js\ats-config\sms-template\sms-template.js
+wwwroot\js\ats-config\system-location\system-location.js
 wwwroot\js\candidate-search\candidate-search.js
 wwwroot\js\common\helpers.js
 wwwroot\js\common\profileModal.js

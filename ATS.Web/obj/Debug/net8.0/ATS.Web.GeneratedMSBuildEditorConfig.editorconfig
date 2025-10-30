@@ -96,12 +96,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVRTQ29uZmlnXFBhcnRpYWxzXF9WYWNhbmNpZXNQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/CandidateSearch/CsiSchedule/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FuZGlkYXRlU2VhcmNoXENzaVNjaGVkdWxlXEluZGV4LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/CandidateSearch/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FuZGlkYXRlU2VhcmNoXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/CsiSchedule/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3NpU2NoZWR1bGVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/Dashboard/Edit.cshtml]

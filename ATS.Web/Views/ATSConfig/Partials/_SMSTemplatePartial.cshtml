@@ -1,5 +1,94 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿<div class="card shadow-sm border-0">
+    <!-- Header -->
+    <div class="card-header bg-light d-flex justify-content-between align-items-start flex-wrap py-3 px-4">
+        <div>
+            <h5 class="mb-3 fw-semibold text-primary">
+                <i class="fas fa-sms me-2 text-primary"></i> SMS Templates Maintenance
+            </h5>
+
+            <!-- Filter Row -->
+            <div class="d-flex align-items-end justify-content-between flex-wrap gap-3">
+
+                <!-- 🔹 Left group -->
+                <div class="d-flex align-items-end gap-4">
+                    <div class="d-flex flex-column">
+                        <label for="activeFilter" class="form-label small fw-semibold mb-1">Active Filter</label>
+                        <select id="activeFilter" class="form-select form-select-sm form-control" style="width: 150px;">
+                            <option value="Active">Show Active</option>
+                            <option value="Inactive">Show Inactive</option>
+                            <option value="All">All</option>
+                        </select>
+                    </div>
+
+                    <div class="d-flex flex-column">
+                        <label for="providerFilter" class="form-label small fw-semibold mb-1">Provider</label>
+                        <select id="providerFilter" class="form-select form-select-sm form-control" style="width: 150px;">
+                            <option value="All">All</option>
+                            <option value="SMS">SMS</option>
+                            <option value="WhatsApp">WhatsApp</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 🔹 Right group (pushed automatically by justify-content-between) -->
+                <div class="d-flex flex-column">
+                    <label for="locationFilter" class="form-label small fw-semibold mb-1">Location</label>
+                    <input id="locationFilter" type="text" class="form-control form-control-sm"
+                           placeholder="Enter location" style="width: 200px;">
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="d-flex align-items-start gap-3 mt-3 mt-sm-0">
+            <button id="btnExportExcel" class="btn btn-success btn-sm shadow-sm">
+                <i class="fas fa-file-excel me-2"></i> Export to Excel
+            </button>
+            <button id="btnSyncWhatsApp" class="btn btn-info btn-sm shadow-sm">
+                <i class="fas fa-sync-alt me-2"></i> Sync WhatsApp
+            </button>
+            <button id="btnAddTemplate" class="btn btn-primary btn-sm shadow-sm">
+                <i class="fas fa-plus-circle me-2"></i> New Template
+            </button>
+        </div>
+    </div>
+
+    <!-- Body -->
+    <div class="card-body p-4">
+        <div class="table-responsive">
+            <table id="tblSMSTemplates" class="table table-hover align-middle table-bordered table-striped w-100">
+                <thead class="table-light">
+                    <tr>
+                        <th>Template Name</th>
+                        <th>Message</th>
+                        <th>Location</th>
+                        <th>Provider</th>
+                        <th>Status</th>
+                        <th style="width: 180px;text-align:center">Action</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Script -->
+<script src="~/js/ats-config/sms-template/sms-template.js"></script>
+
+<style>
+    /* Adds a little breathing room between filter elements */
+    .gap-4 > * {
+        margin-right: 1.25rem;
+    }
+
+    /* Ensures alignment looks perfect on smaller screens */
+    @@media (max-width: 768px) {
+        .d-flex.flex-wrap.justify-content-between.align-items-end {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 1rem;
+        }
+    }
+</style>

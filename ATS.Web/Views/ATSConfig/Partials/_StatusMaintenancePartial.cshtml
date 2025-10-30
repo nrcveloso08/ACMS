@@ -1,5 +1,113 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    Layout = null; // This is a partial view loaded dynamically
+}
+
+<div class="card shadow-sm border-0">
+    <div class="card-header bg-light d-flex justify-content-between align-items-center py-3 px-4">
+        <h5 class="mb-0 fw-semibold text-primary">
+            <i class="fas fa-cogs me-2 text-primary"></i> Status Maintenance
+        </h5>
+        <div class="d-flex align-items-center gap-2">
+            <button id="btnExportExcel" class="btn btn-success btn-sm shadow-sm">
+                <i class="fas fa-file-excel me-2"></i> Export to Excel
+            </button>
+            <button id="btnAddStatus" class="btn btn-primary btn-sm shadow-sm">
+                <i class="fas fa-plus-circle me-2"></i> New Status
+            </button>
+        </div>
+    </div>
+
+    <div class="card-body p-4">
+        <div class="table-responsive">
+            <table id="tblStatusMaintenance" class="table table-hover align-middle table-bordered table-striped w-100">
+                <thead class="table-light">
+                    <tr>
+                        <th style="width: 120px;">Record ID</th>
+                        <th style="min-width: 250px;">Status Name</th>
+                        <th style="min-width: 200px;">Prerequisite</th>
+                        <th style="min-width: 300px;">Template</th>
+                        <th style="width: 100px;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example static data — replace with actual model data -->
+                    <tr>
+                        <td>1</td>
+                        <td>Unset</td>
+                        <td></td>
+                        <td></td>
+                        <td class="text-center">
+                            <button class="btn btn-outline-primary btn-sm editStatus" title="Edit">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>New Applicant</td>
+                        <td></td>
+                        <td></td>
+                        <td class="text-center">
+                            <button class="btn btn-outline-primary btn-sm editStatus" title="Edit">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- DataTables Export Buttons -->
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css" />
+}
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Initialize DataTable with Excel Export
+            const table = $("#tblStatusMaintenance").DataTable({
+                pageLength: 10,
+                lengthChange: true,
+                lengthMenu: [10, 25, 50, 100],
+                ordering: true,
+                responsive: true,
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'excelHtml5',
+                        text: '<i class="fas fa-file-excel me-2"></i>Export to Excel',
+                        className: 'd-none', // Hidden; triggered by custom button
+                        title: 'Status Maintenance',
+                        exportOptions: { columns: [0, 1, 2, 3] }
+                    }
+                ],
+                columnDefs: [
+                    { orderable: false, targets: 4 }
+                ]
+            });
+
+            // Custom Export trigger
+            $("#btnExportExcel").on("click", function () {
+                table.button('.buttons-excel').trigger();
+            });
+
+            // New Status
+            $("#btnAddStatus").on("click", function () {
+                alert("Open modal to add new status");
+                // TODO: Implement modal popup logic
+            });
+
+            // Edit Status
+            $(document).on("click", ".editStatus", function () {
+                const recordId = $(this).closest("tr").find("td:first").text();
+                alert("Edit status with Record ID: " + recordId);
+                // TODO: Implement edit modal logic
+            });
+        });
+    </script>
 }

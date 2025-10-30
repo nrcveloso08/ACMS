@@ -424,3 +424,32 @@ AppUtils.hideLoader = function (target) {
     $(target).find('.app-loader').remove();
 };
 
+
+AppUtils.toastMessage = function (message, type = "info") {
+    const icons = {
+        success: "fa-check-circle text-success",
+        warning: "fa-exclamation-triangle text-warning",
+        error: "fa-times-circle text-danger",
+        info: "fa-info-circle text-info"
+    };
+    const icon = icons[type] || icons.info;
+
+    const toast = $(`
+        <div class="toast align-items-center text-white bg-dark border-0 show" role="alert"
+             style="position: fixed; bottom: 20px; right: 20px; z-index: 99999; min-width: 280px;">
+            <div class="d-flex p-2">
+                <i class="fas ${icon} me-2 mt-1"></i>
+                <div class="toast-body flex-grow-1">${message}</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" aria-label="Close"></button>
+            </div>
+        </div>
+    `);
+
+    $("body").append(toast);
+
+    // Auto close and manual close support
+    toast.find(".btn-close").on("click", () => toast.remove());
+    setTimeout(() => toast.fadeOut(500, () => toast.remove()), 4000);
+};
+
+

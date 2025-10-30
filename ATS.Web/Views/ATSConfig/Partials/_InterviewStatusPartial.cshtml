@@ -1,14 +1,17 @@
 ﻿@{
-    Layout = null; // since this is dynamically loaded
+    Layout = null;
 }
 
 <div class="card shadow-sm border-0">
     <div class="card-header bg-light d-flex justify-content-between align-items-center py-3 px-4">
-        <h5 class="mb-0 fw-semibold text-primary">
-            <i class="fas fa-cogs me-2 text-primary"></i> Interview Status Maintenance
+        <h5 class="mb-0 fw-semibold text-success">
+            <i class="fas fa-comments me-2 text-success"></i> Interview Status Maintenance
         </h5>
         <div class="d-flex align-items-center gap-3">
-            <button id="btnAddInterviewStatus" class="btn btn-primary btn-sm shadow-sm">
+            <button id="btnExportExcel" class="btn btn-success btn-sm shadow-sm">
+                <i class="fas fa-file-excel me-2"></i> Export to Excel
+            </button>
+            <button id="btnNewStatus" class="btn btn-primary btn-sm shadow-sm">
                 <i class="fas fa-plus-circle me-2"></i> New Status
             </button>
         </div>
@@ -19,87 +22,17 @@
             <table id="tblInterviewStatus" class="table table-hover align-middle table-bordered table-striped w-100">
                 <thead class="table-light">
                     <tr>
-                        <th style="width: 80px;">ID</th>
+                        <th style="width: 60px;">ID</th>
                         <th style="min-width: 200px;">Name</th>
-                        <th style="width: 100px;">Active?</th>
-                        <th style="min-width: 280px;">Next Status (Default)</th>
+                        <th style="min-width: 100px;">Active?</th>
+                        <th style="min-width: 300px;">Next Status (Default)</th>
                         <th style="width: 120px;">Action</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <!-- Example rows; replace with server-side data -->
-                    <tr>
-                        <td>1</td>
-                        <td>New Applicant</td>
-                        <td>Yes</td>
-                        <td>In Testing</td>
-                        <td class="text-center">
-                            <div class="btn-group">
-                                <button class="btn btn-outline-primary btn-sm me-2 editStatus" title="Edit">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                <button class="btn btn-outline-primary btn-sm nextStatus" title="Next Status">
-                                    <i class="fas fa-list-ul"></i>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Scheduled</td>
-                        <td>Yes</td>
-                        <td>In Testing</td>
-                        <td class="text-center">
-                            <div class="btn-group">
-                                <button class="btn btn-outline-primary btn-sm me-2 editStatus" title="Edit">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                <button class="btn btn-outline-primary btn-sm nextStatus" title="Next Status">
-                                    <i class="fas fa-list-ul"></i>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
+                <tbody></tbody>
             </table>
         </div>
     </div>
 </div>
 
-@section Scripts {
-    <script>
-        $(document).ready(function () {
-            // Initialize DataTable
-            $("#tblInterviewStatus").DataTable({
-                pageLength: 10,
-                lengthChange: true,
-                lengthMenu: [10, 25, 50, 100],
-                ordering: true,
-                responsive: true,
-                columnDefs: [
-                    { orderable: false, targets: 4 }
-                ]
-            });
-
-            // Add New button
-            $("#btnAddInterviewStatus").on("click", function () {
-                alert("Open modal to add new interview status");
-                // TODO: Implement modal or flyout
-            });
-
-            // Edit button
-            $(document).on("click", ".editStatus", function () {
-                const id = $(this).closest("tr").find("td:first").text();
-                alert("Edit Interview Status ID: " + id);
-                // TODO: Implement edit logic
-            });
-
-            // Next Status button
-            $(document).on("click", ".nextStatus", function () {
-                const id = $(this).closest("tr").find("td:first").text();
-                alert("Manage next statuses for ID: " + id);
-                // TODO: Open modal or dropdown for managing next statuses
-            });
-        });
-    </script>
-}
+<script src="~/js/ats-config/interview-status/interview-status.js"></script>

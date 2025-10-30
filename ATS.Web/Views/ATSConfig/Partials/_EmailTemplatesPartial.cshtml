@@ -1,123 +1,42 @@
 ﻿@{
-    Layout = null; // Dynamically loaded as a partial view
+    Layout = null;
 }
 
 <div class="card shadow-sm border-0">
     <div class="card-header bg-light d-flex justify-content-between align-items-center py-3 px-4">
         <h5 class="mb-0 fw-semibold text-success">
-            <i class="fas fa-envelope-open-text me-2 text-success"></i> Email Templates Maintenance
+            <i class="fas fa-envelope me-2 text-success"></i> Email Templates Maintenance
         </h5>
-
         <div class="d-flex align-items-center gap-3">
-            <button id="btnAddEmailTemplate" class="btn btn-primary btn-sm shadow-sm">
+            <button id="btnExportExcel" class="btn btn-success btn-sm shadow-sm">
+                <i class="fas fa-file-excel me-2"></i> Export to Excel
+            </button>
+            <button id="btnNewTemplate" class="btn btn-primary btn-sm shadow-sm">
                 <i class="fas fa-plus-circle me-2"></i> New
             </button>
         </div>
     </div>
 
     <div class="card-body p-4">
-        <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" id="chkShowInactive">
-            <label class="form-check-label fw-semibold ms-2" for="chkShowInactive">
-                Show Inactive
-            </label>
-        </div>
-
         <div class="table-responsive">
             <table id="tblEmailTemplates" class="table table-hover align-middle table-bordered table-striped w-100">
                 <thead class="table-light">
                     <tr>
+                        <th>ID</th>
                         <th>Template Name</th>
                         <th>Subject</th>
-                        <th style="width: 120px;">Application</th>
-                        <th style="width: 100px;">Status</th>
-                        <th style="width: 180px;">Action</th>
+                        <th>Category</th>
+                        <th>Created By</th>
+                        <th>Date Created</th>
+                        <th>Status</th>
+                        <th style="width: 120px;">Action</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <!-- Example static data (replace with dynamic DataTable load) -->
-                    <tr>
-                        <td>Assessment Follow-up</td>
-                        <td>Next Steps: Assessment Needed</td>
-                        <td>ATS</td>
-                        <td>Active</td>
-                        <td class="text-center">
-                            <div class="btn-group">
-                                <button class="btn btn-success btn-sm me-2 editEmail" title="Edit">
-                                    <i class="fas fa-edit me-1"></i> Edit
-                                </button>
-                                <button class="btn btn-outline-success btn-sm detailsEmail" title="Details">
-                                    <i class="fas fa-info-circle me-1"></i> Details
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>ATS-Assessment-URL</td>
-                        <td>Next Steps: Complete Assessment</td>
-                        <td>ATS</td>
-                        <td>Active</td>
-                        <td class="text-center">
-                            <div class="btn-group">
-                                <button class="btn btn-success btn-sm me-2 editEmail" title="Edit">
-                                    <i class="fas fa-edit me-1"></i> Edit
-                                </button>
-                                <button class="btn btn-outline-success btn-sm detailsEmail" title="Details">
-                                    <i class="fas fa-info-circle me-1"></i> Details
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
+                <tbody></tbody>
             </table>
         </div>
     </div>
 </div>
 
-@section Scripts {
+<script src="~/js/ats-config/email-template/email-template.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            // Initialize DataTable
-            $("#tblEmailTemplates").DataTable({
-                pageLength: 10,
-                lengthChange: true,
-                lengthMenu: [10, 25, 50, 100],
-                ordering: true,
-                responsive: true,
-                autoWidth: false,
-                search:true,
-                columnDefs: [
-                    { orderable: false, targets: 4 }
-                ]
-            });
-
-            // New button
-            $("#btnAddEmailTemplate").on("click", function () {
-                alert("Open modal to add new email template");
-                // TODO: Implement modal for new template
-            });
-
-            // Edit button
-            $(document).on("click", ".editEmail", function () {
-                const name = $(this).closest("tr").find("td:first").text();
-                alert("Edit email template: " + name);
-                // TODO: Implement edit modal or flyout
-            });
-
-            // Details button
-            $(document).on("click", ".detailsEmail", function () {
-                const name = $(this).closest("tr").find("td:first").text();
-                alert("View details for: " + name);
-                // TODO: Implement details modal or preview
-            });
-
-            // Show inactive checkbox
-            $("#chkShowInactive").on("change", function () {
-                const showInactive = $(this).is(":checked");
-                alert("Show Inactive: " + showInactive);
-                // TODO: Apply filtering or AJAX reload logic here
-            });
-        });
-    </script>
-}
