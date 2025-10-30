@@ -1,0 +1,165 @@
+﻿@{
+    ViewData["Title"] = "ATS Configuration";
+}
+
+<div class="container-fluid mt-4 mb-5">
+    <h2 class="fw-bold text-success mb-3">Setup Modules</h2>
+    <p class="text-muted mb-5">
+        Manage all configuration modules used throughout the Applicant Tracking System.
+        Each section below contains the setup options required by the ATS features.
+    </p>
+
+    <div class="row g-4 mb-5">
+
+        <!-- Applicant Setup -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card h-100 shadow-sm hover-card border-0">
+                <div class="card-body p-4">
+                    <h5 class="card-title text-success">
+                        <i class="fas fa-users-cog me-2"></i> Applicant Setup
+                    </h5>
+                    <p class="text-muted small mb-3">
+                        Configure applicant-related modules used across hiring processes.
+                    </p>
+                    <ul class="config-list list-unstyled mb-0">
+                        <li><i class="fas fa-bullhorn me-2 text-secondary"></i><a href="#" data-partial="AdvertisementSource">Advertisement Sources</a></li>
+                        <li><i class="fas fa-map-marker-alt me-2 text-secondary"></i><a href="#" data-partial="AlternateSystemLocations">Alternate System Locations</a></li>
+                        <li><i class="fas fa-briefcase me-2 text-secondary"></i><a href="#" data-partial="HarverVacancies">Harver Vacancies</a></li>
+                        <li><i class="fas fa-users me-2 text-secondary"></i><a href="#" data-partial="Vacancies">Vacancies</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interview Setup -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card h-100 shadow-sm hover-card border-0">
+                <div class="card-body p-4">
+                    <h5 class="card-title text-success">
+                        <i class="fas fa-comments me-2"></i> Interview Setup
+                    </h5>
+                    <p class="text-muted small mb-3">
+                        Manage statuses, prescreening, and configurations for interview processes.
+                    </p>
+                    <ul class="config-list list-unstyled mb-0">
+                        <li><i class="fas fa-comment-dots me-2 text-secondary"></i><a href="#" data-partial="InterviewStatus">Interview Status</a></li>
+                        <li><i class="fas fa-question me-2 text-secondary"></i><a href="#" data-partial="PrescreeningQuestions">Prescreening Questions</a></li>
+                        <li><i class="fas fa-calendar-times me-2 text-secondary"></i><a href="#" data-partial="ScheduleExceptions">Schedule Exceptions</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Communication Setup -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card h-100 shadow-sm hover-card border-0">
+                <div class="card-body p-4">
+                    <h5 class="card-title text-success">
+                        <i class="fas fa-envelope me-2"></i> Communication Setup
+                    </h5>
+                    <p class="text-muted small mb-3">
+                        Configure templates, numbers, and communication tools for the ATS.
+                    </p>
+                    <ul class="config-list list-unstyled mb-0">
+                        <li><i class="fas fa-envelope-open-text me-2 text-secondary"></i><a href="#" data-partial="EmailTemplates">Email Templates</a></li>
+                        <li><i class="fas fa-sms me-2 text-secondary"></i><a href="#" data-partial="SMSTemplate">SMS Template</a></li>
+                        <li><i class="fas fa-hashtag me-2 text-secondary"></i><a href="#" data-partial="SMSNumbers">SMS Numbers</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Setup -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card h-100 shadow-sm hover-card border-0">
+                <div class="card-body p-4">
+                    <h5 class="card-title text-success">
+                        <i class="fas fa-cogs me-2"></i> System Setup
+                    </h5>
+                    <p class="text-muted small mb-3">
+                        Configure global system options and maintenance modules.
+                    </p>
+                    <ul class="config-list list-unstyled mb-0">
+                        <li><i class="fas fa-bars me-2 text-secondary"></i><a href="/ATSConfig/MenuConfig">Menu Config</a></li>
+                        <li><i class="fas fa-wrench me-2 text-secondary"></i><a href="/ATSConfig/StatusMaintenance">Status Maintenance</a></li>
+                        <li><i class="fas fa-clock me-2 text-secondary"></i><a href="/ATSConfig/TimeslotConfiguration">Timeslot Configuration</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Job Advertisement Setup -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card h-100 shadow-sm hover-card border-0">
+                <div class="card-body p-4">
+                    <h5 class="card-title text-success">
+                        <i class="fas fa-bullhorn me-2"></i> Job Advertisement Setup
+                    </h5>
+                    <p class="text-muted small mb-3">
+                        Manage job posting and related configurations.
+                    </p>
+                    <ul class="config-list list-unstyled mb-0">
+                        <li><i class="fas fa-clipboard-list me-2 text-secondary"></i><a href="#" data-partial="JobAdvertisement">Job Advertisements</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Placeholder for Partial -->
+    <div id="configContent" class="mt-5"></div>
+</div>
+
+<!-- Styling -->
+<style>
+    .hover-card {
+        transition: all 0.25s ease-in-out;
+        border-radius: 12px;
+    }
+
+        .hover-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+    .config-list li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.45rem;
+        font-size: 0.95rem;
+        transition: all 0.2s ease-in-out;
+    }
+
+        .config-list li i {
+            font-size: 1rem;
+            opacity: 0.8;
+            width: 18px;
+        }
+
+        .config-list li a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .config-list li:hover i {
+            color: #28a745; /* Green hover accent */
+            opacity: 1;
+        }
+
+        .config-list li a:hover {
+            text-decoration: underline;
+        }
+
+    .row.g-4 {
+        row-gap: 2rem !important;
+    }
+
+    .container-fluid {
+        padding-bottom: 3rem !important;
+    }
+</style>
+
+
+@section Scripts{
+    <script src="~/js/ats-config/ats-config.js"></script>
+}

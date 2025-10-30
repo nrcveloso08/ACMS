@@ -36,12 +36,72 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/CandidateSearch/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FuZGlkYXRlU2VhcmNoXEluZGV4LmNzaHRtbA==
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/ATSConfig/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVRTQ29uZmlnXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/CsiSchedule/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3NpU2NoZWR1bGVcSW5kZXguY3NodG1s
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/ATSConfig/Partials/_AdvertisementSourcePartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVRTQ29uZmlnXFBhcnRpYWxzXF9BZHZlcnRpc2VtZW50U291cmNlUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/ATSConfig/Partials/_AlternateSystemLocationsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVRTQ29uZmlnXFBhcnRpYWxzXF9BbHRlcm5hdGVTeXN0ZW1Mb2NhdGlvbnNQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/ATSConfig/Partials/_EmailTemplatesPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVRTQ29uZmlnXFBhcnRpYWxzXF9FbWFpbFRlbXBsYXRlc1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/ATSConfig/Partials/_HarverVacanciesPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVRTQ29uZmlnXFBhcnRpYWxzXF9IYXJ2ZXJWYWNhbmNpZXNQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/ATSConfig/Partials/_InterviewStatusPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVRTQ29uZmlnXFBhcnRpYWxzXF9JbnRlcnZpZXdTdGF0dXNQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/ATSConfig/Partials/_JobAdvertisementPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVRTQ29uZmlnXFBhcnRpYWxzXF9Kb2JBZHZlcnRpc2VtZW50UGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/ATSConfig/Partials/_MenuConfigPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVRTQ29uZmlnXFBhcnRpYWxzXF9NZW51Q29uZmlnUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/ATSConfig/Partials/_PrescreeningQuestionsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVRTQ29uZmlnXFBhcnRpYWxzXF9QcmVzY3JlZW5pbmdRdWVzdGlvbnNQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/ATSConfig/Partials/_ScheduleExceptionsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVRTQ29uZmlnXFBhcnRpYWxzXF9TY2hlZHVsZUV4Y2VwdGlvbnNQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/ATSConfig/Partials/_SMSNumbersPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVRTQ29uZmlnXFBhcnRpYWxzXF9TTVNOdW1iZXJzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/ATSConfig/Partials/_SMSTemplatePartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVRTQ29uZmlnXFBhcnRpYWxzXF9TTVNUZW1wbGF0ZVBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/ATSConfig/Partials/_StatusMaintenancePartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVRTQ29uZmlnXFBhcnRpYWxzXF9TdGF0dXNNYWludGVuYW5jZVBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/ATSConfig/Partials/_TimeSlotConfigurationPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVRTQ29uZmlnXFBhcnRpYWxzXF9UaW1lU2xvdENvbmZpZ3VyYXRpb25QYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/ATSConfig/Partials/_VacanciesPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVRTQ29uZmlnXFBhcnRpYWxzXF9WYWNhbmNpZXNQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/CandidateSearch/CsiSchedule/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FuZGlkYXRlU2VhcmNoXENzaVNjaGVkdWxlXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/CandidateSearch/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FuZGlkYXRlU2VhcmNoXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/Dashboard/Edit.cshtml]
@@ -116,6 +176,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9sbG93VXBcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/HrProcessing/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSHJQcm9jZXNzaW5nXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/HrProcessing/Partials/_FlyoutPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSHJQcm9jZXNzaW5nXFBhcnRpYWxzXF9GbHlvdXRQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/InterviewSchedule/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW50ZXJ2aWV3U2NoZWR1bGVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -150,6 +218,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/InterviewSchedule/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW50ZXJ2aWV3U2NoZWR1bGVcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/JobResponse/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iUmVzcG9uc2VcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/ObeyaBoard/Index.cshtml]

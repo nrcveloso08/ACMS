@@ -1,0 +1,103 @@
+﻿@{
+    ViewData["Title"] = "Job Response";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card card-custom shadow-sm gutter-b">
+    <div class="card-header border-0 py-4 px-6">
+        <div class="card-title">
+            <h3 class="card-label font-weight-bold text-dark mb-0">
+                <i class="la la-magnify text-primary mr-2"></i> Search
+            </h3>
+        </div>
+    </div>
+
+    <div class="card-body px-6 pt-2 pb-4">
+        <!-- =========================
+             FILTERS (Top Section)
+        ========================== -->
+        <form id="frmJobResponseSearch" class="mb-6">
+            <div class="form-row align-items-end">
+                <div class="form-group col-md-3">
+                    <label class="font-weight-bold text-muted">Geo Location</label>
+                    <select id="geoLocation" class="form-control">
+                        <option value="">Select Geo Location</option>
+                        <option value="LATAM">Latin America</option>
+                        <option value="NORAM">North America</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="font-weight-bold text-muted">Country</label>
+                    <select id="country" class="form-control">
+                        <option value="">Select Country</option>
+                        <option value="Guatemala">Guatemala</option>
+                        <option value="USA">USA</option>
+                        <option value="Canada">Canada</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="font-weight-bold text-muted">Location</label>
+                    <select id="location" class="form-control">
+                        <option value="">Select Location</option>
+                        <option value="Guatemala">Guatemala</option>
+                        <option value="Toronto">Toronto</option>
+                        <option value="New York">New York</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="font-weight-bold text-muted">Date Range</label>
+                    <div class="input-group">
+                        <input type="date" id="startDate" class="form-control" />
+                        <div class="input-group-prepend input-group-append">
+                            <span class="input-group-text bg-white border-left-0 border-right-0">to</span>
+                        </div>
+                        <input type="date" id="endDate" class="form-control" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row mt-3">
+                <div class="col d-flex">
+                    <button type="button" id="btnSearch" class="btn btn-primary font-weight-bold mr-2">
+                        <i class="fa fa-search mr-1"></i> Search
+                    </button>
+                    <button type="button" id="btnReset" class="btn btn-secondary font-weight-bold">
+                        <i class="fa fa-times mr-1"></i> Reset
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <!-- =========================
+             TABLE (Bottom Section)
+        ========================== -->
+        <div class="table-responsive">
+            <table id="tblJobResponse" class="table table-hover table-striped table-bordered mb-0">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Date</th>
+                        <th>Applicant Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Geo Location</th>
+                        <th>Country</th>
+                        <th>Location</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="8" class="text-center text-muted">No Results available</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/jobresponse/job-response.js"></script>
+}

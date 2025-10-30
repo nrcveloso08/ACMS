@@ -1,0 +1,108 @@
+﻿@{
+    Layout = null; // Loaded dynamically as a partial view
+}
+
+<div class="card shadow-sm border-0">
+    <div class="card-header bg-light d-flex justify-content-between align-items-center py-3 px-4">
+        <h5 class="mb-0 fw-semibold text-primary">
+            <i class="fas fa-cogs me-2 text-primary"></i> Vacancy Maintenance Page
+        </h5>
+        <div class="d-flex align-items-center gap-3">
+            <button id="btnAddVacancy" class="btn btn-primary btn-sm shadow-sm">
+                <i class="fas fa-plus-circle me-2"></i> New Vacancy
+            </button>
+        </div>
+    </div>
+
+    <div class="card-body p-4">
+        <div class="table-responsive">
+            <table id="tblHarverVacancies" class="table table-hover align-middle table-bordered table-striped w-100">
+                <thead class="table-light">
+                    <tr>
+                        <th style="width: 80px;">ID</th>
+                        <th style="min-width: 300px;">Name</th>
+                        <th style="min-width: 300px;">Vacancy Id</th>
+                        <th style="min-width: 150px;">Job Advertisement Id</th>
+                        <th style="width: 140px;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Sample static data, replace with actual database results or DataTable AJAX -->
+                    <tr>
+                        <td>1</td>
+                        <td>APAC-PH-Cebu-Generic-NCJ</td>
+                        <td>675865db5a36b300123b2585</td>
+                        <td>61</td>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                <button class="btn btn-outline-primary btn-sm me-2 editVacancy" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn btn-danger btn-sm deleteVacancy" title="Delete">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>APAC-PH-Manila-Generic-NCJ</td>
+                        <td>6758667891aacc0012a6befc</td>
+                        <td>62</td>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                <button class="btn btn-outline-primary btn-sm me-2 editVacancy" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn btn-danger btn-sm deleteVacancy" title="Delete">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Initialize DataTable
+            $("#tblHarverVacancies").DataTable({
+                pageLength: 10,
+                lengthChange: true,
+                lengthMenu: [10, 25, 50, 100],
+                ordering: true,
+                responsive: true,
+                columnDefs: [
+                    { orderable: false, targets: 4 }
+                ]
+            });
+
+            // New Vacancy Button
+            $("#btnAddVacancy").on("click", function () {
+                alert("Open modal to add new vacancy");
+                // TODO: Replace alert with modal logic
+            });
+
+            // Edit Button Action
+            $(document).on("click", ".editVacancy", function () {
+                const id = $(this).closest("tr").find("td:first").text();
+                alert("Edit vacancy ID: " + id);
+                // TODO: Implement edit modal/flyout
+            });
+
+            // Delete Button Action
+            $(document).on("click", ".deleteVacancy", function () {
+                const id = $(this).closest("tr").find("td:first").text();
+                if (confirm("Are you sure you want to delete vacancy ID: " + id + "?")) {
+                    alert("Vacancy deleted successfully.");
+                    // TODO: Add delete AJAX call here
+                }
+            });
+        });
+    </script>
+
+}

@@ -1,0 +1,99 @@
+﻿@{
+    Layout = null; // This partial is dynamically loaded into the ATS Config page
+}
+
+<div class="card shadow-sm border-0">
+    <div class="card-header bg-light d-flex justify-content-between align-items-center py-3 px-4">
+        <h5 class="mb-0 fw-semibold text-success">
+            <i class="fas fa-map-marker-alt me-2 text-success"></i> Alternate System Locations Maintenance
+        </h5>
+        <div class="d-flex align-items-center gap-3">
+            <button id="btnExportAlternateSystemLocations" class="btn btn-success btn-sm shadow-sm">
+                <i class="fas fa-file-excel me-2"></i> Export to Excel
+            </button> &nbsp;&nbsp;
+            <button id="btnAddAlternateSystemLocation" class="btn btn-primary btn-sm shadow-sm">
+                <i class="fas fa-plus-circle me-2"></i> New
+            </button>
+        </div>
+    </div>
+
+
+    <div class="card-body p-4">
+        <div class="table-responsive">
+            <table id="tblAlternateSystemLocations" class="table table-hover align-middle table-bordered table-striped">
+                <thead class="table-light">
+                    <tr>
+                        <th style="width: 60px;">Id</th>
+                        <th style="min-width: 200px;">Location Id (KITT Name)</th>
+                        <th style="min-width: 250px;">Alternate System Location Name</th>
+                        <th style="min-width: 220px;">Alternate System Name</th>
+                        <th style="width: 80px;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example static rows, replace with dynamic data or DataTables AJAX -->
+                    <tr>
+                        <td>40</td>
+                        <td>4 (Tampa)</td>
+                        <td>Clearwater, Florida, United States</td>
+                        <td>Recruitment - ATS</td>
+                        <td class="text-center">
+                            <button class="btn btn-light btn-sm text-primary border editLocation" title="Edit">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>41</td>
+                        <td>5 (Denver)</td>
+                        <td>Aurora, Colorado</td>
+                        <td>Recruitment - ATS</td>
+                        <td class="text-center">
+                            <button class="btn btn-light btn-sm text-primary border editLocation" title="Edit">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Initialize DataTable
+            $("#tblAlternateSystemLocations").DataTable({
+                pageLength: 10,
+                lengthChange: true,
+                lengthMenu: [10, 25, 50, 100],
+                ordering: true,
+                responsive: true,
+                columnDefs: [
+                    { orderable: false, targets: 4 }
+                ]
+            });
+
+            // Add new record
+            $("#btnAddAlternateSystemLocation").on("click", function () {
+                alert("Open modal to add new alternate system location");
+                // TODO: implement modal popup or flyout for new entry
+            });
+
+            // Export to Excel
+            $("#btnExportAlternateSystemLocations").on("click", function () {
+                alert("Exporting Alternate System Locations to Excel...");
+                // TODO: call export endpoint here
+            });
+
+            // Edit action
+            $(document).on("click", ".editLocation", function () {
+                const id = $(this).closest("tr").find("td:first").text();
+                alert("Edit alternate system location with ID: " + id);
+                // TODO: implement edit logic or open modal
+            });
+        });
+    </script>
+
+}

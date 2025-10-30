@@ -1,0 +1,81 @@
+﻿@{
+    ViewData["Title"] = "HR Processing";
+    Layout = "_Layout";
+}
+
+<div class="card card-custom gutter-b shadow-sm">
+    <div class="card-header border-0 py-4 px-6">
+        <div class="card-title">
+            <h3 class="card-label text-dark font-weight-bold">
+                <i class="la la-users text-primary mr-2"></i> Applicants
+            </h3>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <!-- Filters -->
+        <form id="frmSearch" class="mb-5">
+            <div class="form-row align-items-end">
+                <div class="form-group col-md-4">
+                    <label class="font-weight-bold text-muted">Line of Business</label>
+                    <select class="form-control" id="lineOfBusiness">
+                        <option value="">Select a Line Of Business</option>
+                        <option>Marshmallow</option>
+                        <option>Sephora</option>
+                        <option>New York Times</option>
+                        <option>PNI Media</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label class="font-weight-bold text-muted">Wave</label>
+                    <select class="form-control" id="wave">
+                        <option value="">Select a Wave</option>
+                        <option>Wave 15</option>
+                        <option>Wave 31</option>
+                        <option>Wave 92</option>
+                        <option>Wave 191</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <button type="button" id="btnSearch" class="btn btn-primary font-weight-bold mr-2">
+                        <i class="fa fa-search mr-1"></i> Search
+                    </button>
+                    <button type="button" id="btnReset" class="btn btn-secondary font-weight-bold">
+                        <i class="fa fa-times mr-1"></i> Reset
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Table -->
+        <div class="table-responsive">
+            <table id="tblHRProcessing" class="table table-hover table-striped table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Status</th>
+                        <th>Wave</th>
+                        <th>Wage</th>
+                        <th>Employment Type</th>
+                        <th>FCRA Status</th>
+                        <th>Rehire</th>
+                        <th>Hire Type</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Flyout container -->
+<div id="hrFlyoutContainer"></div>
+
+@section Scripts {
+    <script src="~/js/hr-processing/hr-processing.js"></script>
+    <script src="~/js/hr-processing/hr-flyout.js"></script>
+}

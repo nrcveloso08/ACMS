@@ -21,6 +21,7 @@
   <ItemGroup>
     <Folder Include="Model\" />
     <Folder Include="Pages\Shared\" />
+    <Folder Include="Views\JobResponse\Partials\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 

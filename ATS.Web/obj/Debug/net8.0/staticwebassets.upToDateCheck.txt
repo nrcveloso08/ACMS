@@ -2258,6 +2258,7 @@ wwwroot\css\custom.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\images\IntouchCX_White_Green.png
+wwwroot\js\ats-config\ats-config.js
 wwwroot\js\candidate-search\candidate-search.js
 wwwroot\js\common\helpers.js
 wwwroot\js\common\profileModal.js
@@ -2265,8 +2266,12 @@ wwwroot\js\csi\csi-schedule.js
 wwwroot\js\dashboard\edit.js
 wwwroot\js\dashboard\new-applicant.js
 wwwroot\js\followup\applicant-followup.js
+wwwroot\js\hr-processing\hr-flyout.js
+wwwroot\js\hr-processing\hr-processing.js
 wwwroot\js\interview-schedule\flyout.js
 wwwroot\js\interview-schedule\schedule-applicant.js
+wwwroot\js\jobresponse\guatemala.js
+wwwroot\js\jobresponse\job-response.js
 wwwroot\js\layout\layout.js
 wwwroot\js\prescreening\prescreen-candidate.js
 wwwroot\js\site.js
