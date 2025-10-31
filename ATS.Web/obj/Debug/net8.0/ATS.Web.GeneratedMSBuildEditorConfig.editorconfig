@@ -220,6 +220,38 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW50ZXJ2aWV3U2NoZWR1bGVcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/JobResponse/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iUmVzcG9uc2VcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/JobResponse/Guatemala/_1PersonalInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iUmVzcG9uc2VcR3VhdGVtYWxhXF8xUGVyc29uYWxJbmZvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/JobResponse/Guatemala/_2EmploymentHistory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iUmVzcG9uc2VcR3VhdGVtYWxhXF8yRW1wbG95bWVudEhpc3RvcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/JobResponse/Guatemala/_3Questions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iUmVzcG9uc2VcR3VhdGVtYWxhXF8zUXVlc3Rpb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/JobResponse/Guatemala/_4Education.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iUmVzcG9uc2VcR3VhdGVtYWxhXF80RWR1Y2F0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/JobResponse/Guatemala/_5Language.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iUmVzcG9uc2VcR3VhdGVtYWxhXF81TGFuZ3VhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/JobResponse/Guatemala/_6Documents.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iUmVzcG9uc2VcR3VhdGVtYWxhXF82RG9jdW1lbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/JobResponse/Guatemala/_7Reference.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iUmVzcG9uc2VcR3VhdGVtYWxhXF83UmVmZXJlbmNlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/JobResponse/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iUmVzcG9uc2VcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -240,10 +272,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2JleWFCb2FyZFxQYXJ0aWFsc1xfQm9hcmRIZWFkZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/ObeyaBoard/Partials/_BoardScripts.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2JleWFCb2FyZFxQYXJ0aWFsc1xfQm9hcmRTY3JpcHRzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/Prescreening/Search.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc2NyZWVuaW5nXFNlYXJjaC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -262,6 +290,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/Shared/_WizardArrowIcon.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9XaXphcmRBcnJvd0ljb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/enrico.veloso/Documents/GitHub/ATS/ATS.Web/Views/WaveRoster/Index.cshtml]

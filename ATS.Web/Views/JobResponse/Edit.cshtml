@@ -1,0 +1,154 @@
+﻿@{
+    ViewData["Title"] = "Applicant Wizard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-flex flex-column-fluid">
+    <div class="container">
+        <div class="card card-custom">
+            <div class="card-body p-0">
+                <!--begin::Wizard-->
+                <div class="wizard wizard-1" id="kt_wizard" data-wizard-state="step-first" data-wizard-clickable="true">
+
+                    <!--begin::Wizard Nav-->
+                    <div class="wizard-nav border-bottom">
+                        <div class="wizard-steps p-8 p-lg-10">
+                            <div class="wizard-step" data-wizard-type="step" data-wizard-state="current">
+                                <div class="wizard-label">
+                                    <div class="wizard-icon">
+                                        <i class="fa fa-solid fa-user"></i>
+                                    </div>
+                                    <h3 class="wizard-title">1. Personal</h3>
+                                </div>
+                                <span class="svg-icon svg-icon-xl wizard-arrow">
+                                    @Html.Partial("~/Views/Shared/_WizardArrowIcon.cshtml")
+                                </span>
+                            </div>
+
+                            <div class="wizard-step" data-wizard-type="step">
+                                <div class="wizard-label">
+                                    <div class="wizard-icon">
+                                        <i class="fa fa-solid fa-briefcase"></i>
+                                    </div>
+                                    <h3 class="wizard-title">2. Employment</h3>
+                                </div>
+                                <span class="svg-icon svg-icon-xl wizard-arrow">
+                                    @Html.Partial("~/Views/Shared/_WizardArrowIcon.cshtml")
+                                </span>
+                            </div>
+
+                            <div class="wizard-step" data-wizard-type="step">
+                                <div class="wizard-label">
+                                    <div class="wizard-icon">
+                                        <i class="fa fa-solild fa-comments"></i>
+                                    </div>
+                                    <h3 class="wizard-title">3. Questions</h3>
+                                </div>
+                                <span class="svg-icon svg-icon-xl wizard-arrow">
+                                    @Html.Partial("~/Views/Shared/_WizardArrowIcon.cshtml")
+                                </span>
+                            </div>
+
+                            <div class="wizard-step" data-wizard-type="step">
+                                <div class="wizard-label">
+                                    <div class="wizard-icon">
+                                        <i class="fa fa-solid fa-graduation-cap"></i>
+                                    </div>
+                                    <h3 class="wizard-title">4. Education</h3>
+                                </div>
+                                <span class="svg-icon svg-icon-xl wizard-arrow">
+                                    @Html.Partial("~/Views/Shared/_WizardArrowIcon.cshtml")
+                                </span>
+                            </div>
+
+                            <div class="wizard-step" data-wizard-type="step">
+                                <div class="wizard-label">
+                                    <div class="wizard-icon">
+                                        <i class="fa fa-solid fa-globe"></i>
+                                    </div>
+                                    <h3 class="wizard-title">5. Language</h3>
+                                </div>
+                                <span class="svg-icon svg-icon-xl wizard-arrow">
+                                    @Html.Partial("~/Views/Shared/_WizardArrowIcon.cshtml")
+                                </span>
+                            </div>
+
+                            <div class="wizard-step" data-wizard-type="step">
+                                <div class="wizard-label">
+                                    <div class="wizard-icon">
+                                        <i class="fa fa-solid fa-paperclip"></i>
+                                    </div>
+                                    <h3 class="wizard-title">6. Documents</h3>
+                                </div>
+                                <span class="svg-icon svg-icon-xl wizard-arrow">
+                                    @Html.Partial("~/Views/Shared/_WizardArrowIcon.cshtml")
+                                </span>
+                            </div>
+
+                            <div class="wizard-step" data-wizard-type="step">
+                                <div class="wizard-label">
+                                    <div class="wizard-icon">
+                                        <i class="fa fa-solid fa-users"></i>
+                                    </div>
+                                    <h3 class="wizard-title">7. References</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Wizard Nav-->
+                    <!--begin::Wizard Body-->
+                    <div class="row justify-content-center my-10 px-8 my-lg-15 px-lg-10">
+                        <div class="col-xl-12 col-xxl-10">
+                            <form class="form" id="ApplicantForm" method="post">
+                                <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
+                                    <div id="Step1Container"></div>
+                                </div>
+                                <div class="pb-5" data-wizard-type="step-content">
+                                    <div id="Step2Container"></div>
+                                </div>
+                                <div class="pb-5" data-wizard-type="step-content">
+                                    <div id="Step3Container"></div>
+                                </div>
+                                <div class="pb-5" data-wizard-type="step-content">
+                                    <div id="Step4Container"></div>
+                                </div>
+                                <div class="pb-5" data-wizard-type="step-content">
+                                    <div id="Step5Container"></div>
+                                </div>
+                                <div class="pb-5" data-wizard-type="step-content">
+                                    <div id="Step6Container"></div>
+                                </div>
+                                <div class="pb-5" data-wizard-type="step-content">
+                                    <div id="Step7Container"></div>
+                                </div>
+
+                                <!-- Actions -->
+                                <div class="d-flex justify-content-between border-top mt-5 pt-10">
+                                    <div class="mr-2">
+                                        <button type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-prev">
+                                            Previous
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <button type="button" class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-next">
+                                            Next
+                                        </button>
+                                        <button type="submit" id="btnSubmitFinal" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4 d-none">
+                                            Submit
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!--end::Wizard Body-->
+                </div>
+                <!--end::Wizard-->
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/jobresponse/guatemala-edit.js"></script>
+}

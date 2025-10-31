@@ -1,4 +1,4 @@
-﻿<div class="d-flex align-items-center justify-content-between w-100 mb-4">
+﻿<div class="d-flex align-items-center justify-content-between w-200 mb-4">
     <!-- Left side: View buttons and Export -->
     <div class="d-flex align-items-center gap-3">
         <div class="btn-group">
@@ -31,3 +31,127 @@
         </select>
     </div>
 </div>
+<style>
+    /* ===============================
+           MAIN BOARD STRUCTURE (existing)
+           =============================== */
+    .obeya-board-container {
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: normal !important; /* ✅ allow wrapping, fixes right-side space */
+        padding-bottom: 1rem;
+    }
+
+    .obeya-board {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important; /* ✅ allow wrapping */
+        justify-content: space-between; /* ✅ evenly spread columns */
+        gap: 1.5rem;
+        align-items: flex-start;
+        width: 100%; /* ✅ occupy full width */
+        min-height: 600px;
+    }
+
+    .obeya-column-wrapper {
+        display: flex;
+        flex-direction: column;
+        flex: 0 0 auto;
+    }
+
+    .obeya-column {
+        background: #f9fafb;
+        border-radius: 10px;
+        min-height: 500px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        transition: all 0.25s ease-in-out;
+        flex: 1 1 calc(25% - 1.5rem); /* ✅ auto-fit 4 per row */
+        max-width: calc(25% - 1.5rem);
+    }
+
+    .obeya-card-list {
+        overflow-y: auto;
+        padding-right: 4px;
+        flex: 1;
+    }
+
+    /* Allow drag events to pass through */
+    .obeya-board-container,
+    .obeya-board,
+    .obeya-column,
+    .obeya-card-list {
+        pointer-events: auto !important;
+    }
+
+        /* Drag & Drop visual feedback */
+        .obeya-column.drag-over {
+            border: 2px dashed #007bff;
+            background-color: #eef4ff;
+            transition: 0.2s ease;
+        }
+
+    .obeya-card.dragging {
+        opacity: 0.6;
+        transform: scale(1.02);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .no-cards-placeholder {
+        font-style: italic;
+        opacity: 0.6;
+        pointer-events: none;
+        text-align: center;
+        padding: 1rem 0;
+    }
+
+    /* ===============================
+           ENHANCEMENTS: Responsive Layout
+           =============================== */
+
+    /* Hover lift for columns */
+    .obeya-column:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Card styling and hover */
+    .obeya-card {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        .obeya-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+    /* Large screens (4 columns side-by-side) */
+    @@media (min-width: 1200px) {
+        .obeya-column {
+            flex: 1 1 calc(25% - 1.5rem);
+            max-width: calc(25% - 1.5rem);
+        }
+    }
+
+    /* Medium screens (2 columns per row) */
+    @@media (max-width: 1199px) and (min-width: 768px) {
+        .obeya-column {
+            flex: 1 1 calc(50% - 1rem);
+            max-width: calc(50% - 1rem);
+        }
+    }
+
+    /* Small screens (1 column per row) */
+    @@media (max-width: 767px) {
+        .obeya-board {
+            flex-direction: column !important;
+        }
+
+        .obeya-column {
+            flex: 1 1 100%;
+            max-width: 100%;
+        }
+    }
+</style>

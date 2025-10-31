@@ -1942,6 +1942,12 @@ wwwroot\assets\plugins\custom\jstree\jstree.bundle.js
 wwwroot\assets\plugins\custom\jstree\throbber.gif
 wwwroot\assets\plugins\custom\kanban\kanban.bundle.css
 wwwroot\assets\plugins\custom\kanban\kanban.bundle.js
+wwwroot\assets\plugins\custom\keenthemes\flaticon\flaticon.css
+wwwroot\assets\plugins\custom\keenthemes\flaticon\font\Flaticon.eot
+wwwroot\assets\plugins\custom\keenthemes\flaticon\font\Flaticon.svg
+wwwroot\assets\plugins\custom\keenthemes\flaticon\font\Flaticon.ttf
+wwwroot\assets\plugins\custom\keenthemes\flaticon\font\Flaticon.woff
+wwwroot\assets\plugins\custom\keenthemes\flaticon\license.html
 wwwroot\assets\plugins\custom\keenthemes\font\ki.css
 wwwroot\assets\plugins\custom\keenthemes\font\Ki.eot
 wwwroot\assets\plugins\custom\keenthemes\font\ki.min.rtl.css
@@ -2277,9 +2283,10 @@ wwwroot\js\hr-processing\hr-flyout.js
 wwwroot\js\hr-processing\hr-processing.js
 wwwroot\js\interview-schedule\flyout.js
 wwwroot\js\interview-schedule\schedule-applicant.js
-wwwroot\js\jobresponse\guatemala.js
+wwwroot\js\jobresponse\guatemala-edit.js
 wwwroot\js\jobresponse\job-response.js
 wwwroot\js\layout\layout.js
+wwwroot\js\obeyaboard\obeyaboard.js
 wwwroot\js\prescreening\prescreen-candidate.js
 wwwroot\js\site.js
 wwwroot\js\wave-roster\hiring-roster.js

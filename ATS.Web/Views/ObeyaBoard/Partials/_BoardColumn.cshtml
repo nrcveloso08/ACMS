@@ -1,15 +1,40 @@
-﻿@model dynamic
-
-@{
+﻿@{
     var columnId = Model?.ColumnId ?? "column";
     var title = Model?.Title ?? "Column";
     var color = Model?.Color ?? "text-muted";
+    var statusKey = title.Replace(" ", ""); // e.g., "NotStarted"
+    var cards = Model?.Cards as IEnumerable<dynamic>; // Optional card data
 }
 
-<div class="kanban-column flex-grow-1 min-w-300px status-column" id="@columnId">
+<!-- 🔹 Obeya Column -->
+<div class="obeya-column border rounded-3 shadow-sm p-3 bg-white"
+     id="@columnId"
+     data-status="@statusKey"
+     style="min-width: 320px; min-height: 500px; flex: 0 0 auto;">
+
+    <!-- Column Header -->
     <h5 class="fw-bold text-center mb-4 @color">@title</h5>
-    <div class="kanban-cards d-flex flex-column gap-4 pt-3 pb-3" data-status="@title">
-        @Html.Partial("Partials/_BoardCard", new { Title = "Cloudbreak Tegucigalpa VRI", Location = "Tegucigalpa", D = "17D", Count = 37, Total = 20, Done = 0, Percent = "0%" })
-        @Html.Partial("Partials/_BoardCard", new { Title = "Lululemon Jamaica Montego Bay", Location = "Jamaica", D = "20D", Count = 35, Total = 24, Done = 7, Percent = "29%" })
+
+    <!-- 🔹 Card List (Drop Zone) -->
+    <div class="obeya-card-list d-flex flex-column gap-3"
+         data-status="@statusKey"
+         style="min-height: 400px;">
+
+        @if (cards != null && cards.Any())
+        {
+            foreach (var card in cards)
+            {
+                @Html.Partial("Partials/_BoardCard", new {
+                Id = card.Id,
+                Title = card.Title,
+                Location = card.Location,
+                D = card.D,
+                Count = card.Count,
+                Total = card.Total,
+                Done = card.Done,
+                Percent = card.Percent
+                })
+            }
+        }
     </div>
 </div>

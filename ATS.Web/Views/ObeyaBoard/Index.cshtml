@@ -6,22 +6,68 @@
     @Html.Partial("Partials/_BoardHeader")
 </div>
 
-<div class="container-fluid">
-    <div class="row g-5 justify-content-center board-container">
-        <div class="col-12 col-sm-6 col-lg-3">
-            @Html.Partial("Partials/_BoardColumn", new { ColumnId = "notStarted", Title = "Not Started", Color = "text-primary" })
-        </div>
-        <div class="col-12 col-sm-6 col-lg-3">
-            @Html.Partial("Partials/_BoardColumn", new { ColumnId = "inProgress", Title = "In Progress", Color = "text-warning" })
-        </div>
-        <div class="col-12 col-sm-6 col-lg-3">
-            @Html.Partial("Partials/_BoardColumn", new { ColumnId = "priority", Title = "Priority", Color = "text-danger" })
-        </div>
-        <div class="col-12 col-sm-6 col-lg-3">
-            @Html.Partial("Partials/_BoardColumn", new { ColumnId = "complete", Title = "Complete", Color = "text-success" })
-        </div>
+<div class="obeya-board-container mt-4">
+    <div class="obeya-board d-flex flex-row flex-nowrap gap-4">
+
+        @Html.Partial("Partials/_BoardColumn", new {
+        Title = "Not Started",
+                Color = "text-primary",
+                ColumnId = "notstarted",
+                Cards = new[] {
+                new { Id = "card-1", Title = "Cloudbreak Tegucigalpa VRI", Location = "Tegucigalpa", D = "17D", Count = 37, Total = 20, Done = 0, Percent = "0%" },
+                new { Id = "card-2", Title = "Lululemon Jamaica Montego Bay", Location = "Jamaica", D = "20D", Count = 35, Total = 24, Done = 7, Percent = "29%" }
+                }
+                })
+
+        @Html.Partial("Partials/_BoardColumn", new {
+                Title = "In Progress",
+                Color = "text-warning",
+                ColumnId = "inprogress",
+                Cards = new[] {
+                new { Id = "card-3", Title = "Nike Customer Portal", Location = "Guatemala", D = "10D", Count = 22, Total = 18, Done = 4, Percent = "22%" }
+                }
+                })
+
+        @Html.Partial("Partials/_BoardColumn", new {
+                Title = "Priority",
+                Color = "text-danger",
+                ColumnId = "priority",
+                Cards = new object[] { } // no cards yet
+                })
+
+        @Html.Partial("Partials/_BoardColumn", new {
+                Title = "Complete",
+                Color = "text-success",
+                ColumnId = "complete",
+                Cards = new object[] { } // no cards yet
+                })
     </div>
 </div>
 
 
-@Html.Partial("Partials/_BoardScripts")
+
+@section Scripts {
+    <script src="~/js/obeyaboard/obeyaboard.js" asp-append-version="true"></script>
+}
+<style>
+    .kanban-column {
+        background: #f9fafb;
+        border-radius: 8px;
+    }
+
+    .obeya-card-list {
+        min-height: 300px;
+    }
+
+    .obeya-card {
+        cursor: grab;
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+        .obeya-card.dragging {
+            opacity: 0.6;
+            transform: scale(1.02);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+</style>

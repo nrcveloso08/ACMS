@@ -1,32 +1,46 @@
-﻿@{
-    // Safely extract the values from ViewData (anonymous model passed from Partial)
-    var title = ViewData["Title"]?.ToString() ?? "Obeya Board";
-    var location = ViewData["Location"]?.ToString() ?? "Unknown";
-    var d = ViewData["D"]?.ToString() ?? "0D";
-    var count = ViewData["Count"]?.ToString() ?? "0";
-    var total = ViewData["Total"]?.ToString() ?? "0";
-    var done = ViewData["Done"]?.ToString() ?? "0";
-    var percent = ViewData["Percent"]?.ToString() ?? "0%";
+﻿@model dynamic
+
+@{
+    var id = Model?.Id ?? "card-0";
+    var title = Model?.Title ?? "Obeya Board";
+    var location = Model?.Location ?? "Unknown";
+    var total = Model?.Total ?? "0";
+    var done = Model?.Done ?? "0";
+    var percent = Model?.Percent ?? "0%";
 }
 
-<div class="card shadow-sm border-0 rounded-3 draggable-card" draggable="true">
-    <div class="card-body p-4 pb-5">
-        <!-- Added bottom padding -->
-        <div class="fw-semibold fs-6 text-gray-700 mb-1">@title</div>
-        <div class="text-muted fs-7 mb-3">@location</div>
-        <div class="d-flex justify-content-between align-items-center text-center">
-            <div>
-                <div class="fs-3 fw-bold text-primary">@total</div>
-                <small class="text-muted">Total</small>
-            </div>
-            <div>
-                <div class="fs-3 fw-bold text-primary">@done</div>
-                <small class="text-muted">Done</small>
-            </div>
-            <div>
-                <div class="fs-3 fw-bold text-primary">@percent</div>
-                <small class="text-muted">Progress</small>
-            </div>
+<div class="obeya-card shadow-sm p-3 mb-3 bg-white rounded"
+     data-card-id="@id"
+     draggable="true">
+
+    <h6 class="fw-semibold mb-1 text-dark">@title</h6>
+    <div class="text-muted small">@location</div>
+
+    <div class="d-flex justify-content-between text-center mt-3">
+        <div>
+            <div class="fw-bold fs-5 text-primary">@total</div>
+            <div class="small text-muted">Total</div>
+        </div>
+        <div>
+            <div class="fw-bold fs-5 text-primary">@done</div>
+            <div class="small text-muted">Done</div>
+        </div>
+        <div>
+            <div class="fw-bold fs-5 text-primary">@percent</div>
+            <div class="small text-muted">Progress</div>
         </div>
     </div>
 </div>
+
+<style>
+    .board-metric {
+        font-size: 1.55rem; /* slightly larger */
+        font-weight: 600;
+        color: #007bff; /* Bootstrap primary color */
+    }
+
+    .board-label {
+        font-size: 1rem;
+        color: #6c757d; /* subtle gray */
+    }
+</style>

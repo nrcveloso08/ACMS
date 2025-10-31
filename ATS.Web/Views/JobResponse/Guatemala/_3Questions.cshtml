@@ -1,0 +1,128 @@
+﻿@* Views/JobResponse/Guatemala/_3Questions.cshtml *@
+
+<div class="px-4 pt-2">
+    <form id="formQuestions">
+        <div class="form-group">
+            <label>¿Ha trabajado anteriormente para ICS, 24-7intouch o IntouchCX?</label>
+            <div class="d-flex flex-row gap-3">
+                <div class="form-check mr-3">
+                    <input class="form-check-input" type="radio" name="WorkedBefore" id="WorkedYes" value="Si">
+                    <label class="form-check-label" for="WorkedYes">Sí</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="WorkedBefore" id="WorkedNo" value="No">
+                    <label class="form-check-label" for="WorkedNo">No</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row mt-3">
+            <div class="form-group col-md-3">
+                <label>Programa</label>
+                <input type="text" class="form-control" placeholder="E.g: Program" />
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label>Fecha de ingreso</label>
+                <input type="date" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label>¿Cuál fue el motivo de su retiro?</label>
+                <input type="text" class="form-control" placeholder="E.g: Reason for leaving" />
+            </div>
+        </div>
+
+        <div class="form-group mt-4">
+            <label>¿Está interesado en aplicar a un trabajo temporal o permanente?</label>
+            <div class="d-flex flex-row gap-3">
+                <div class="form-check mr-3">
+                    <input class="form-check-input" type="radio" name="Interested" id="InterestedYes" value="Si">
+                    <label class="form-check-label" for="InterestedYes">Sí</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Interested" id="InterestedNo" value="No">
+                    <label class="form-check-label" for="InterestedNo">No</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group mt-4">
+            <label>¿Tiene algún familiar o conocido trabajando actualmente en ICS / IntouchCX?</label>
+            <div class="d-flex flex-row gap-3">
+                <div class="form-check mr-3">
+                    <input class="form-check-input" type="radio" name="HasFamily" id="FamilyYes" value="Si">
+                    <label class="form-check-label" for="FamilyYes">Sí</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="HasFamily" id="FamilyNo" value="No">
+                    <label class="form-check-label" for="FamilyNo">No</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row mt-3">
+            <div class="form-group col-md-3">
+                <label>¿Cuál es el nombre?</label>
+                <input type="text" class="form-control" placeholder="E.g: Nombre del familiar o conocido" />
+            </div>
+        </div>
+
+        <div class="form-row mt-3">
+            <div class="form-group col-md-3">
+                <label>¿Qué relación tiene con esta persona?</label>
+                <select class="form-control">
+                    <option value="">Seleccione</option>
+                    <option value="Amigo">Amigo</option>
+                    <option value="Familiar">Familiar</option>
+                    <option value="Compañero">Compañero</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group mt-4">
+            <label>¿Está estudiando actualmente en la universidad?</label>
+            <div class="d-flex flex-row gap-3">
+                <div class="form-check mr-3">
+                    <input class="form-check-input" type="radio" name="CurrentlyStudying" id="StudyingYes" value="Si">
+                    <label class="form-check-label" for="StudyingYes">Sí</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="CurrentlyStudying" id="StudyingNo" value="No">
+                    <label class="form-check-label" for="StudyingNo">No</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row mt-3">
+            <div class="form-group col-md-5">
+                <label>Carrera estudiando actualmente <small>(Ej: MBA, Psicología, Administración, Marketing, Finanzas, etc.)</small></label>
+                <input type="text" class="form-control" placeholder="E.g: BS in Marketing" />
+            </div>
+        </div>
+
+        <div class="form-group mt-4">
+            <label>¿Tiene experiencia laboral?</label>
+            <div class="d-flex flex-row gap-3">
+                <div class="form-check mr-3">
+                    <input class="form-check-input" type="radio" name="WorkExperience" id="ExpYes" value="Si">
+                    <label class="form-check-label" for="ExpYes">Sí</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="WorkExperience" id="ExpNo" value="No">
+                    <label class="form-check-label" for="ExpNo">No</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-right mt-4">
+            <button type="submit" class="btn btn-success font-weight-bold px-10">
+                <i class="fa fa-save mr-2"></i> Save
+            </button>
+        </div>
+    </form>
+</div>

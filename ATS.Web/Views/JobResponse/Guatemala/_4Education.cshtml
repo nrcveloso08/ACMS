@@ -1,0 +1,47 @@
+﻿@* Views/JobResponse/Guatemala/_4Education.cshtml *@
+
+<div class="px-4 pt-2">
+    <form id="formEducation">
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label>Institución</label>
+                <input type="text" class="form-control" placeholder="E.g: Nombre de la institución" />
+            </div>
+
+            <div class="form-group col-md-3">
+                <label>Año inicio</label>
+                <input type="text" class="form-control" placeholder="E.g: BSECE / Año / Grado" />
+            </div>
+
+            <div class="form-group col-md-3">
+                <label>Fecha de inicio</label>
+                <input type="date" class="form-control" />
+            </div>
+
+            <div class="form-group col-md-3">
+                <label>Fecha de finalización</label>
+                <input type="date" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-row mt-3">
+            <div class="form-group col-md-4">
+                <label>Título obtenido</label>
+                <select class="form-control">
+                    <option value="">Seleccione un título</option>
+                    <option value="Basica">Educación Básica</option>
+                    <option value="Diversificado">Educación Diversificada</option>
+                    <option value="Superior">Educación Superior (Universidad)</option>
+                    <option value="Postgrado">Postgrado / Maestría</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="text-right mt-4">
+            <button type="submit" class="btn btn-success font-weight-bold px-10">
+                <i class="fa fa-save mr-2"></i> Save
+            </button>
+        </div>
+    </form>
+</div>
