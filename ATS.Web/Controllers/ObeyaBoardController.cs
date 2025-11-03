@@ -8,5 +8,10 @@ namespace ATS.Web.Controllers
         {
             return View();
         }
+
+        public IActionResult LoadTabular()
+        {
+            return PartialView("_Tabular");
+        }
     }
 }

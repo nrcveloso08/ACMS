@@ -1,11 +1,11 @@
 ﻿<div class="d-flex align-items-center justify-content-between w-200 mb-4">
     <!-- Left side: View buttons and Export -->
     <div class="d-flex align-items-center gap-3">
-        <div class="btn-group">
-            <button class="btn btn-light-primary fw-semibold active" id="btnCardView">
+        <div class="btn-group" role="group" aria-label="View toggle">
+            <button class="btn btn-light-primary fw-semibold active" id="btnCardView" data-view="card">
                 <i class="ki-outline ki-grid fs-2 me-1"></i> Card
             </button>
-            <button class="btn btn-light fw-semibold" id="btnTabularView">
+            <button class="btn btn-light fw-semibold" id="btnTabularView" data-view="tabular">
                 <i class="ki-outline ki-table fs-2 me-1"></i> Tabular
             </button>
         </div>

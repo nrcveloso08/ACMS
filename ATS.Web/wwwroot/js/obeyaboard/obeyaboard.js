@@ -125,14 +125,145 @@ var ObeyaBoard = (function () {
     }
 
     // ----------------------------------------
+    // Switch between Card and Tabular views
+    // ----------------------------------------
+    function showView(view) {
+        const cardView = document.getElementById("obeyaCardView");
+        const tabularContainer = document.getElementById("tabularContainer");
+
+        const btnCard = $("#btnCardView");
+        const btnTabular = $("#btnTabularView");
+
+        if (view === "card") {
+            btnCard.addClass("btn-light-primary fw-semibold active")
+                .removeClass("btn-light fw-semibold");
+            btnTabular.removeClass("btn-light-primary active")
+                .addClass("btn-light fw-semibold");
+
+            $(tabularContainer).addClass("d-none");
+            $(cardView).removeClass("d-none");
+        } else {
+            btnTabular.addClass("btn-light-primary fw-semibold active")
+                .removeClass("btn-light fw-semibold");
+            btnCard.removeClass("btn-light-primary active")
+                .addClass("btn-light fw-semibold");
+
+            $(cardView).addClass("d-none");
+
+            if (!tabularContainer.dataset.loaded) {
+                console.log("📡 Attempting to load /ObeyaBoard/LoadTabular...");
+                $("#tabularContainer").load("/ObeyaBoard/LoadTabular", function (response, status, xhr) {
+                    if (status === "error") {
+                        console.error("❌ Failed to load Tabular view:", xhr.status, xhr.statusText);
+                    } else {
+                        console.log("✅ Tabular partial loaded successfully!");
+                        tabularContainer.dataset.loaded = "true";
+                        $(tabularContainer).removeClass("d-none");
+
+                        // ✅ Initialize DataTable with dummy data
+                        initializeTabularTable();
+                    }
+                });
+            } else {
+                console.log("🔄 Showing already-loaded Tabular view");
+                $(tabularContainer).removeClass("d-none");
+            }
+
+        }
+    }
+
+    // ----------------------------------------
+    // Initialize DataTable for Tabular View
+    // ----------------------------------------
+    function initializeTabularTable() {
+        if (!$.fn.DataTable.isDataTable("#waveTable")) {
+
+            // Dummy data
+            const dummyData = [
+                [17, "In Progress", "Mesa", "Marshmallow Mesa Tier 1", "1D", 37, 13, "35%", "English"],
+                [18, "Not Started", "Mesa", "Marshmallow Mesa Tier 1", "28D", 25, 0, "0%", "English"],
+                [76, "In Progress", "Mesa", "FireWire Mesa", "10D", 40, 18, "45%", "English"],
+                [77, "Not Started", "Mesa", "FireWire Mesa", "30D", 50, 0, "0%", "English"],
+                [88, "In Progress", "Guatemala", "Choco Factory", "12D", 70, 50, "71%", "Spanish"],
+                [99, "In Progress", "Jamaica", "Lululemon Jamaica Montego Bay", "14D", 80, 75, "93%", "English"]
+            ];
+
+            // Initialize DataTable
+            const table = $("#waveTable").DataTable({
+                data: dummyData,
+                columns: [
+                    { title: "Wave" },
+                    { title: "Status" },
+                    { title: "Location" },
+                    { title: "Line of Business" },
+                    { title: "Days Left" },
+                    { title: "Adjusted Head Count" },
+                    { title: "In Progress + Hired" },
+                    { title: "Total %" },
+                    { title: "Language" }
+                ],
+                paging: true,
+                searching: true,
+                responsive: true,
+                order: [[0, "asc"]],
+                createdRow: function (row, data) {
+                    const totalPercent = parseInt(data[7].replace("%", "")) || 0;
+                    let bgColor = "";
+
+                    if (totalPercent < 40) bgColor = "#fdecea";       // 🔴 light red
+                    else if (totalPercent < 70) bgColor = "#fff8e1";  // 🟡 light yellow
+                    else bgColor = "#e8f5e9";                         // 🟢 light green
+
+                    // Apply colored background with rounded aesthetic
+                    const $cell = $("td:eq(5)", row);
+                    $cell.css({
+                        "position": "relative",
+                        "padding": "0.4rem 0.75rem",
+                        "font-weight": "600",
+                        "overflow": "hidden"
+                    });
+
+                    // Create an inner rounded element for soft aesthetic color
+                    $cell.html(`<div class="cell-highlight">${data[5]}</div>`);
+
+                    const $highlight = $cell.find(".cell-highlight");
+                    $highlight.css({
+                        "background-color": bgColor,
+                        "border-radius": "8px",
+                        "padding": "6px 10px",
+                        "display": "inline-block",
+                        "min-width": "45px",
+                        "text-align": "center",
+                        "font-weight": "600"
+                    });
+
+                }
+            });
+
+            console.log("📊 DataTable initialized with dummy data");
+        }
+    }
+
+
+    // ----------------------------------------
     // Public API
     // ----------------------------------------
     return {
-        init
+        init,
+        showView
     };
 })();
 
 // Initialize when DOM is ready
 $(document).ready(function () {
     ObeyaBoard.init();
+
+    // ✅ Event bindings for header buttons
+    $(document).on("click", "#btnCardView", function () {
+        ObeyaBoard.showView("card");
+    });
+
+    $(document).on("click", "#btnTabularView", function () {
+        ObeyaBoard.showView("tabular");
+    });
 });

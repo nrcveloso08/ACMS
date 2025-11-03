@@ -7,10 +7,10 @@
 }
 
 <!-- 🔹 Obeya Column -->
-<div class="obeya-column border rounded-3 shadow-sm p-3 bg-white"
+<div class="obeya-column border rounded-3 shadow-sm p-3 bg-white status-@columnId"
      id="@columnId"
      data-status="@statusKey"
-     style="min-width: 320px; min-height: 500px; flex: 0 0 auto;">
+     style="min-width: 320px; flex: 0 0 auto;">
 
     <!-- Column Header -->
     <h5 class="fw-bold text-center mb-4 @color">@title</h5>
@@ -18,7 +18,7 @@
     <!-- 🔹 Card List (Drop Zone) -->
     <div class="obeya-card-list d-flex flex-column gap-3"
          data-status="@statusKey"
-         style="min-height: 400px;">
+         style="min-height: 500px;">
 
         @if (cards != null && cards.Any())
         {
@@ -38,3 +38,46 @@
         }
     </div>
 </div>
+
+        <style>
+    /* ==============================
+       Column Top Border Accent
+       ============================== */
+    /* Force consistent height and internal layout */
+    .obeya-column {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        flex: 1 1 calc(25% - 0.75rem);
+        min-width: 320px;
+        height: 100%; /* ✅ equalize height via flex parent */
+        border-top-width: 5px;
+        border-top-style: solid;
+        border-radius: 10px 10px 0 0;
+        background-color: #fff;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        transition: all 0.25s ease-in-out;
+    }
+
+
+    /* Not Started (Blue) */
+    .status-notstarted {
+        border-top-color: #009ef7 !important;
+    }
+
+    /* In Progress (Yellow) */
+    .status-inprogress {
+        border-top-color: #ffc107 !important;
+    }
+
+    /* Priority (Red) */
+    .status-priority {
+        border-top-color: #f1416c !important;
+    }
+
+    /* Complete (Green) */
+    .status-complete {
+        border-top-color: #50cd89 !important;
+    }
+
+        </style>

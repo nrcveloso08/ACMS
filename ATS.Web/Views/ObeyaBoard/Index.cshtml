@@ -2,72 +2,139 @@
     ViewData["Title"] = "Obeya Board";
 }
 
+<!-- 🔹 HEADER SECTION -->
 <div class="d-flex flex-column flex-lg-row align-items-center justify-content-between mb-5">
     @Html.Partial("Partials/_BoardHeader")
 </div>
 
-<div class="obeya-board-container mt-4">
-    <div class="obeya-board d-flex flex-row flex-nowrap gap-4">
 
-        @Html.Partial("Partials/_BoardColumn", new {
-        Title = "Not Started",
-                Color = "text-primary",
-                ColumnId = "notstarted",
-                Cards = new[] {
-                new { Id = "card-1", Title = "Cloudbreak Tegucigalpa VRI", Location = "Tegucigalpa", D = "17D", Count = 37, Total = 20, Done = 0, Percent = "0%" },
-                new { Id = "card-2", Title = "Lululemon Jamaica Montego Bay", Location = "Jamaica", D = "20D", Count = 35, Total = 24, Done = 7, Percent = "29%" }
-                }
-                })
+<!-- 🔹 CARD VIEW (existing board wrapped in a div) -->
+<div id="obeyaCardView">
+    <div class="obeya-board-container mt-4">
+        <div class="obeya-board d-flex flex-row flex-nowrap gap-2">
 
-        @Html.Partial("Partials/_BoardColumn", new {
-                Title = "In Progress",
-                Color = "text-warning",
-                ColumnId = "inprogress",
-                Cards = new[] {
-                new { Id = "card-3", Title = "Nike Customer Portal", Location = "Guatemala", D = "10D", Count = 22, Total = 18, Done = 4, Percent = "22%" }
-                }
-                })
+            @Html.Partial("Partials/_BoardColumn", new {
+            Title = "Not Started",
+                        Color = "text-primary",
+                        ColumnId = "notstarted",
+                        Cards = new[] {
+                        new { Id = "card-1", Title = "Cloudbreak Tegucigalpa VRI", Location = "Tegucigalpa", D = "17D", Count = 37, Total = 20, Done = 0, Percent = "0%" },
+                        new { Id = "card-2", Title = "Lululemon Jamaica Montego Bay", Location = "Jamaica", D = "20D", Count = 35, Total = 24, Done = 7, Percent = "29%" }
+                        }
+                        })
 
-        @Html.Partial("Partials/_BoardColumn", new {
-                Title = "Priority",
-                Color = "text-danger",
-                ColumnId = "priority",
-                Cards = new object[] { } // no cards yet
-                })
+            @Html.Partial("Partials/_BoardColumn", new {
+                        Title = "In Progress",
+                        Color = "text-warning",
+                        ColumnId = "inprogress",
+                        Cards = new[] {
+                        new { Id = "card-3", Title = "Nike Customer Portal", Location = "Guatemala", D = "10D", Count = 22, Total = 18, Done = 4, Percent = "22%" }
+                        }
+                        })
 
-        @Html.Partial("Partials/_BoardColumn", new {
-                Title = "Complete",
-                Color = "text-success",
-                ColumnId = "complete",
-                Cards = new object[] { } // no cards yet
-                })
+            @Html.Partial("Partials/_BoardColumn", new {
+                        Title = "Priority",
+                        Color = "text-danger",
+                        ColumnId = "priority",
+                        Cards = new object[] { } // no cards yet
+                        })
+
+            @Html.Partial("Partials/_BoardColumn", new {
+                        Title = "Complete",
+                        Color = "text-success",
+                        ColumnId = "complete",
+                        Cards = new object[] { } // no cards yet
+                        })
+        </div>
     </div>
 </div>
 
-
+<!-- 🔹 TABULAR VIEW (will be loaded via Partial) -->
+<div id="tabularContainer" class="d-none"></div>
 
 @section Scripts {
     <script src="~/js/obeyaboard/obeyaboard.js" asp-append-version="true"></script>
 }
+
 <style>
-    .kanban-column {
-        background: #f9fafb;
-        border-radius: 8px;
+    /* =========================================
+       COMPACT LAYOUT FIX for Obeya Board Cards
+       ========================================= */
+
+    /* Reduce gap between columns */
+    .obeya-board {
+        display: flex;
+        flex-wrap: wrap !important;
+        align-items: stretch !important; /* ✅ all columns equal height */
+        justify-content: flex-start;
+        gap: 0.75rem !important;
+    }
+    /* Reduce vertical spacing between cards */
+    .obeya-column .obeya-card {
+        margin-bottom: 0.5rem !important;
     }
 
-    .obeya-card-list {
-        min-height: 300px;
+    /* Slightly shrink column width on large screens */
+    .obeya-column {
+        flex: 1 1 calc(25% - 0.75rem) !important;
+        max-width: calc(25% - 0.75rem) !important;
     }
 
-    .obeya-card {
-        cursor: grab;
-        transition: transform 0.15s ease, box-shadow 0.15s ease;
+    /* Two-column layout for tablets */
+   @@media (max-width: 1200px) {
+        .obeya-column
+
+    {
+        flex: 1 1 calc(50% - 0.5rem) !important;
+        max-width: calc(50% - 0.5rem) !important;
     }
 
-        .obeya-card.dragging {
-            opacity: 0.6;
-            transform: scale(1.02);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    /* Single-column layout for mobile */
+    @@media (max-width: 700px) {
+        .obeya-board
+
+    {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+    }
+
+    .obeya-column {
+        flex: 1 1 100% !important;
+        max-width: 100% !important;
+    }
+
+    }
+    /* ===============================
+       COLUMN TOP ACCENT STYLES
+       =============================== */
+    .border-top-accent {
+        border-top: 6px solid transparent;
+        border-radius: 8px 8px 0 0;
+        transition: all 0.3s ease;
+    }
+
+        /* Accent colors */
+        .border-top-accent.text-primary {
+            border-top-color: #007bff; /* Blue */
+        }
+
+        .border-top-accent.text-warning {
+            border-top-color: #ffc107; /* Yellow */
+        }
+
+        .border-top-accent.text-danger {
+            border-top-color: #dc3545; /* Red */
+        }
+
+        .border-top-accent.text-success {
+            border-top-color: #28a745; /* Green */
+        }
+
+        /* Optional hover effect */
+        .border-top-accent:hover {
+            filter: brightness(1.05);
         }
 
 </style>
