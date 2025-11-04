@@ -1,33 +1,57 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Specialized;
-using System.Web;
+﻿using System.Collections.Specialized;
+using System.Threading.Tasks;
 
 namespace ATS.Service.WebServiceHelper
 {
+    /// <summary>
+    /// Extension helpers for IWebServiceHelper.
+    /// These methods simply delegate to the new, generic versions
+    /// implemented in WebServiceHelper to keep your service calls clean.
+    /// </summary>
     public static class WebServiceHelperExtensions
     {
+        /// <summary>
+        /// Performs a GET request with optional query parameters.
+        /// Automatically uses the configured BaseUrl and handles deserialization.
+        /// </summary>
+        public static async Task<T> GetWithParamsAsync<T>(
+            this IWebServiceHelper helper,
+            string relativePath,
+            NameValueCollection parameters = null)
+        {
+            return await helper.GetAsync<T>(relativePath, parameters);
+        }
+
+        /// <summary>
+        /// Shortcut for simple GET requests with no parameters.
+        /// </summary>
         public static async Task<T> GetAsync<T>(
             this IWebServiceHelper helper,
-            string endpoint,
-            NameValueCollection parameters)
+            string relativePath)
         {
-            // Convert NameValueCollection to query string (e.g., "?id=123&status=active")
-            string query = string.Empty;
-            if (parameters != null && parameters.Count > 0)
-            {
-                var queryString = string.Join("&", parameters.AllKeys
-                    .Select(k => $"{HttpUtility.UrlEncode(k)}={HttpUtility.UrlEncode(parameters[k])}"));
-                query = "?" + queryString;
-            }
+            return await helper.GetAsync<T>(relativePath, null);
+        }
 
-            // Build full endpoint with query parameters
-            string fullEndpoint = endpoint + query;
+        /// <summary>
+        /// Performs a POST request with request and response types.
+        /// </summary>
+        public static async Task<TResponse> PostAsync<TRequest, TResponse>(
+            this IWebServiceHelper helper,
+            string relativePath,
+            TRequest body)
+        {
+            return await helper.PostAsync<TRequest, TResponse>(relativePath, body);
+        }
 
-            // Call your original IWebServiceHelper.GetAsync(string, string, string, string)
-            string json = await helper.GetAsync(fullEndpoint, null, null, null);
-
-            // Deserialize JSON response into any type you specify
-            return JsonConvert.DeserializeObject<T>(json);
+        /// <summary>
+        /// Performs a PUT request with request and response types.
+        /// </summary>
+        public static async Task<TResponse> PutAsync<TRequest, TResponse>(
+            this IWebServiceHelper helper,
+            string relativePath,
+            TRequest body)
+        {
+            return await helper.PutAsync<TRequest, TResponse>(relativePath, body);
         }
     }
 }

@@ -48,9 +48,9 @@ var JobResponsePage = (function () {
                     orderable: false,
                     render: function () {
                         return `
-                            <button class="btn btn-sm btn-light-primary btnEdit">
+                             <a href="/JobResponse/Edit" class="btn btn-sm btn-light-primary">
                                 <i class="fa fa-edit"></i> Edit
-                            </button>`;
+                             </a>`;
                     }
                 }
             ],

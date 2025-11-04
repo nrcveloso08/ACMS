@@ -1,148 +1,183 @@
 ﻿// =======================================
-// Harver Vacancies Maintenance Script
+// Harver Vacancies Maintenance Script (Final Fixed and Working)
 // =======================================
 
 "use strict";
 
 var HarverVacanciesPage = (function () {
+    let DataTable = null;
 
     // =========================
-    // 🔹 1. Private Variables
-    // =========================
-    let table;
-
-    const dummyVacancies = [
-        { id: 1, code: "VAC-001", name: "Customer Service Associate", unit: "Operations", location: "Manila, PH", dateCreated: "2024-01-10", status: "Active" },
-        { id: 2, code: "VAC-002", name: "Software Developer", unit: "IT Department", location: "Toronto, CA", dateCreated: "2024-02-15", status: "Active" },
-        { id: 3, code: "VAC-003", name: "Quality Analyst", unit: "QA", location: "Denver, US", dateCreated: "2024-03-01", status: "Inactive" },
-        { id: 4, code: "VAC-004", name: "Recruitment Specialist", unit: "HR", location: "Manila, PH", dateCreated: "2024-03-20", status: "Active" },
-        { id: 5, code: "VAC-005", name: "Finance Officer", unit: "Finance", location: "Cebu, PH", dateCreated: "2024-04-10", status: "Active" },
-        { id: 6, code: "VAC-006", name: "Project Manager", unit: "PMO", location: "Remote / WFH", dateCreated: "2024-05-05", status: "Inactive" },
-        { id: 7, code: "VAC-007", name: "Data Analyst", unit: "Analytics", location: "Lisbon, PT", dateCreated: "2024-06-10", status: "Active" },
-        { id: 8, code: "VAC-008", name: "Trainer", unit: "L&D", location: "Tampa, US", dateCreated: "2024-07-01", status: "Active" },
-        { id: 9, code: "VAC-009", name: "Sales Executive", unit: "Sales", location: "Guadalajara, MX", dateCreated: "2024-08-15", status: "Inactive" },
-        { id: 10, code: "VAC-010", name: "Marketing Specialist", unit: "Marketing", location: "Cebu, PH", dateCreated: "2024-09-25", status: "Active" }
-    ];
-
-    // =========================
-    // 🔹 2. Private Functions
+    // 🔹 Initialize DataTable
     // =========================
     const initDataTable = function () {
-        table = $("#tblHarverVacancies").DataTable({
-            data: dummyVacancies,
+        DataTable = $('#tblHarverVacancies').DataTable({
+            processing: true,
+            responsive: true,
+            autoWidth: true,
+            destroy: true,
+            search: true,
+            ajax: {
+                url: "/ATSConfig/GetHarverVacancies",
+                type: "GET",
+                dataSrc: function (json) {
+                    console.log("📦 API Response:", json);
+                    let raw = json?.data || json?.Data || json;
+                    let data = [];
+
+                    if (typeof raw === "string") {
+                        try { data = JSON.parse(raw); } catch (e) { console.error("❌ JSON parse failed:", e); }
+                    } else if (Array.isArray(raw)) {
+                        data = raw;
+                    } else if (raw && typeof raw === "object" && typeof raw.data === "string") {
+                        try { data = JSON.parse(raw.data); } catch (e) { console.error("❌ Nested JSON parse failed:", e); }
+                    }
+
+                    return data;
+                },
+                error: function (xhr, status, error) {
+                    console.error("❌ DataTable load failed:", error);
+                    AppUtils.toastMessage("Failed to load Harver Vacancies.", "error");
+                }
+            },
             columns: [
-                { data: "id", title: "ID" },
-                { data: "code", title: "Vacancy Code" },
-                { data: "name", title: "Vacancy Name" },
-                { data: "unit", title: "Business Unit" },
-                { data: "location", title: "Location" },
-                { data: "dateCreated", title: "Date Created" },
+                { data: "Id", title: "ID", visible: false },
+                { data: "Name", title: "Vacancy Name" },
+                { data: "VacancyId", title: "Vacancy Code" },
+                { data: "JobAdvertisement_Id", title: "Job Advertisement ID" },
                 {
-                    data: "status",
+                    data: "IsDeleted",
                     title: "Status",
                     render: function (data) {
-                        const color = data === "Active" ? "success" : "secondary";
-                        return `<span class="badge badge-${color}">${data}</span>`;
+                        const isDeleted = data === true;
+                        const color = isDeleted ? "secondary" : "success";
+                        const label = isDeleted ? "Inactive" : "Active";
+                        return `<span class="badge bg-${color}">${label}</span>`;
                     }
                 },
                 {
                     data: null,
-                    title: "Action",
+                    title: "Actions",
                     orderable: false,
                     className: "text-center",
                     render: function () {
                         return `
-                            <div class="dropdown">
-                                <button class="btn btn-sm btn-light btn-icon" data-toggle="dropdown">
-                                    <i class="fa fa-cog text-secondary"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right shadow-sm">
-                                    <a class="dropdown-item editVacancy" href="#">
-                                        <i class="fas fa-edit text-primary me-2"></i> Edit
-                                    </a>
-                                    <a class="dropdown-item detailsVacancy" href="#">
-                                        <i class="fas fa-info-circle text-info me-2"></i> Details
-                                    </a>
-                                </div>
-                            </div>`;
+                            <a class="btn btn-sm btn-light-primary action-item" href="#" 
+                               data-action="editVacancy" title="Edit">
+                                <i class="fa fa-edit"></i>
+                            </a>`;
                     }
                 }
             ],
-            responsive: true,
-            pageLength: 10,
-            autoWidth: false,
-            ordering: true,
-            dom: "Bfrtip",
-            buttons: [
-                {
-                    extend: "excelHtml5",
-                    text: '<i class="fas fa-file-excel me-2"></i> Export to Excel',
-                    className: "btn btn-success btn-sm shadow-sm d-none"
-                }
-            ]
+            dom: `<'row'<'col-sm-12 col-md-6'f>>
+                  <'row'<'col-sm-12'tr>>
+                  <'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7 dataTables_pager'lp>>`,
+            pageLength: 10
+        });
+
+        // ✅ Attach Edit click (inside scope)
+        DataTable.on("click", "a.action-item", function (e) {
+            e.preventDefault();
+            const $btn = $(this);
+            const action = $btn.data("action");
+            const rowData = DataTable.row($btn.parents("tr")).data();
+
+            if (!rowData) {
+                console.warn("⚠️ Missing rowData for clicked row");
+                return;
+            }
+
+            console.log("🟢 Selected Row Data:", rowData);
+
+            if (action === "editVacancy") {
+                renderEditModal(rowData);
+            }
         });
     };
 
-    const bindEvents = function () {
+    // =========================
+    // 🔹 New Button
+    // =========================
+    // =========================
+    // 🔹 New Button (with Job Advertisement Dropdown)
+    // =========================
+    const initNewButton = function () {
+        $(document).on("click", "#btnNewVacancy", async function (e) {
+            e.preventDefault();
 
-        // Export to Excel
-        $("#btnExportExcel").on("click", function () {
-            table.button(".buttons-excel").trigger();
-        });
+            const modalId = "newHarverVacancyModal_" + Date.now();
+            const bodyHtml = `
+            <form id="${modalId}_frmNewVacancy">
+                <div class="form-group mb-3">
+                    <label class="fw-semibold">Vacancy Code</label>
+                    <input type="text" id="${modalId}_newVacancyCode" class="form-control form-control-sm" required />
+                </div>
+                <div class="form-group mb-3">
+                    <label class="fw-semibold">Vacancy Name</label>
+                    <input type="text" id="${modalId}_newVacancyName" class="form-control form-control-sm" required />
+                </div>
+                <div class="form-group mb-3">
+                    <label class="fw-semibold">Job Advertisement</label>
+                    <select id="${modalId}_newJobAdId" class="form-select form-select-sm form-control">
+                        <option value="">Loading...</option>
+                    </select>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="fw-semibold">Status</label>
+                    <select id="${modalId}_newStatus" class="form-select form-select-sm">
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                    </select>
+                </div>
+            </form>`;
 
-        // Add New Vacancy
-        $("#btnNewVacancy").on("click", function () {
-            AppUtils.loadModal("newHarverVacancyModal", {
-                title: "<i class='fas fa-plus-circle me-2 text-primary'></i> New Harver Vacancy",
-                body: `
-                    <form id="frmNewVacancy">
-                        <div class="form-group mb-3">
-                            <label class="fw-semibold">Vacancy Code <span class="text-danger">*</span></label>
-                            <input type="text" id="txtVacancyCode" class="form-control form-control-sm" required />
-                        </div>
-                        <div class="form-group mb-3">
-                            <label class="fw-semibold">Vacancy Name <span class="text-danger">*</span></label>
-                            <input type="text" id="txtVacancyName" class="form-control form-control-sm" required />
-                        </div>
-                        <div class="form-group mb-3">
-                            <label class="fw-semibold">Business Unit</label>
-                            <input type="text" id="txtBusinessUnit" class="form-control form-control-sm" />
-                        </div>
-                        <div class="form-group mb-3">
-                            <label class="fw-semibold">Location</label>
-                            <input type="text" id="txtLocation" class="form-control form-control-sm" />
-                        </div>
-                        <div class="form-group mb-3">
-                            <label class="fw-semibold">Status</label>
-                            <select id="selStatus" class="form-select form-select-sm">
-                                <option value="Active">Active</option>
-                                <option value="Inactive">Inactive</option>
-                            </select>
-                        </div>
-                    </form>
-                `,
+            AppUtils.loadModal(modalId, {
+                title: "<i class='fas fa-plus-circle text-success me-2'></i> New Harver Vacancy",
+                body: bodyHtml,
                 buttons: {
                     Save: {
                         Enabled: true,
                         text: "<i class='fas fa-save me-2'></i> Save",
-                        btnClass: "btn btn-primary btn-sm",
+                        btnClass: "btn btn-success btn-sm",
                         autoDismiss: false,
-                        action: function () {
-                            if (!AppUtils.validateForm("#frmNewVacancy")) return;
+                        action: async () => {
+                            const vacancyCode = $(`#${modalId}_newVacancyCode`).val().trim();
+                            const vacancyName = $(`#${modalId}_newVacancyName`).val().trim();
+                            const jobAdIdValue = $(`#${modalId}_newJobAdId`).val();
+                            const parsedJobAdId = jobAdIdValue ? parseInt(jobAdIdValue, 10) : null;
+                            const status = $(`#${modalId}_newStatus`).val();
 
-                            const newVacancy = {
-                                id: table.data().count() + 1,
-                                code: $("#txtVacancyCode").val().trim(),
-                                name: $("#txtVacancyName").val().trim(),
-                                unit: $("#txtBusinessUnit").val().trim(),
-                                location: $("#txtLocation").val().trim(),
-                                dateCreated: new Date().toISOString().split("T")[0],
-                                status: $("#selStatus").val()
+                            if (!vacancyCode || !vacancyName || !parsedJobAdId) {
+                                AppUtils.toastMessage("Please complete all required fields.", "warning");
+                                return;
+                            }
+
+                            const payload = {
+                                Id: 0,
+                                VacancyId: vacancyCode,
+                                Name: vacancyName,
+                                JobAdvertisement_Id: parsedJobAdId,
+                                IsDeleted: (status === "Inactive")
                             };
 
-                            table.row.add(newVacancy).draw(false);
-                            AppUtils.showToast?.("New vacancy added successfully!", "success");
-                            $("#newHarverVacancyModal").modal("hide");
+                            console.log("📤 Sending new vacancy payload:", payload);
+
+                            await AppUtils.ajaxCall({
+                                url: "/ATSConfig/AddOrUpdate",
+                                type: "POST",
+                                contentType: "application/json; charset=utf-8",
+                                data: JSON.stringify(payload),
+                                successMessage: `"${vacancyName}" added successfully.`,
+                                onSuccess: (res) => {
+                                    if (res.success) HarverVacanciesPage.Refresh();
+                                },
+                                onError: (xhr) => {
+                                    console.error("❌ Error adding vacancy:", xhr);
+                                    AppUtils.toastMessage("Failed to add vacancy.", "error");
+                                }
+                            });
+
+                            $(`#${modalId}`).modal("hide");
                         }
                     },
                     Cancel: {
@@ -153,24 +188,228 @@ var HarverVacanciesPage = (function () {
                     }
                 }
             });
+
+            // ✅ Fetch and populate Job Advertisements dropdown
+            try {
+                const jobAdsResponse = await $.ajax({
+                    url: "/ATSConfig/GetJobAdvertisements",
+                    type: "GET"
+                });
+
+                console.log("📄 Job Ads Response (New Modal):", jobAdsResponse);
+
+                // Extract actual job ads list (based on your backend structure)
+                let jobAds = [];
+                if (Array.isArray(jobAdsResponse?.message)) {
+                    jobAds = jobAdsResponse.message;
+                } else if (Array.isArray(jobAdsResponse?.data)) {
+                    jobAds = jobAdsResponse.data;
+                } else if (Array.isArray(jobAdsResponse?.Data)) {
+                    jobAds = jobAdsResponse.Data;
+                } else {
+                    jobAds = jobAdsResponse;
+                }
+
+                const dropdown = $(`#${modalId}_newJobAdId`);
+                dropdown.empty();
+
+                if (Array.isArray(jobAds) && jobAds.length > 0) {
+                    jobAds.forEach(ad => {
+                        const id = ad.Id || ad.id || "";
+                        const displayText = `[${ad.CATSJobId || ad.catsJobId || id}] ${ad.Name || ad.name || ad.PublishedTitle || ad.publishedTitle || "Job Advertisement"}`;
+
+                        dropdown.append(`
+                        <option value="${id}">
+                            ${escapeHtml(displayText)}
+                        </option>
+                    `);
+                    });
+                } else {
+                    dropdown.append(`<option value="">No Job Advertisements found</option>`);
+                }
+            } catch (err) {
+                console.error("❌ Failed to load Job Advertisements:", err);
+                $(`#${modalId}_newJobAdId`)
+                    .html('<option value="">Failed to load options</option>');
+            }
         });
     };
 
+
     // =========================
-    // 🔹 3. Public Init
+    // 🔹 Edit Modal Renderer (with Job Advertisement Dropdown)
     // =========================
-    const init = function () {
-        initDataTable();
-        bindEvents();
+    const renderEditModal = async function (rowData) {
+        console.log("📦 renderEditModal triggered!");
+        const modalId = "editHarverVacancyModal_" + Date.now();
+
+        // Build initial modal layout (dropdown placeholder)
+        const bodyHtml = `
+        <form id="${modalId}_frmEditVacancy">
+            <div class="form-group mb-3">
+                <label class="fw-semibold">Vacancy Code</label>
+                <input type="text" id="${modalId}_editVacancyCode" class="form-control form-control-sm"
+                    value="${escapeHtml(rowData.VacancyId || "")}" required />
+            </div>
+            <div class="form-group mb-3">
+                <label class="fw-semibold">Vacancy Name</label>
+                <input type="text" id="${modalId}_editVacancyName" class="form-control form-control-sm"
+                    value="${escapeHtml(rowData.Name || "")}" required />
+            </div>
+            <div class="form-group mb-3">
+                <label class="fw-semibold">Job Advertisement</label>
+                <select id="${modalId}_editJobAdId" class="form-select form-select-sm form-control">
+                    <option value="">Loading...</option>
+                </select>
+            </div>
+            <div class="form-group mb-3">
+                <label class="fw-semibold">Status</label>
+                <select id="${modalId}_editStatus" class="form-select form-select-sm form-control">
+                    <option value="Active" ${rowData.IsDeleted ? "" : "selected"}>Active</option>
+                    <option value="Inactive" ${rowData.IsDeleted ? "selected" : ""}>Inactive</option>
+                </select>
+            </div>
+        </form>`;
+
+        // Render modal first
+        AppUtils.loadModal(modalId, {
+            title: "<i class='fas fa-edit text-primary me-2'></i> Edit Harver Vacancy",
+            body: bodyHtml,
+            buttons: {
+                Save: {
+                    Enabled: true,
+                    text: "<i class='fas fa-save me-2'></i> Update",
+                    btnClass: "btn btn-primary btn-sm",
+                    autoDismiss: false,
+                    action: async () => {
+                        const jobAdIdValue = $(`#${modalId}_editJobAdId`).val();
+                        const parsedJobAdId = jobAdIdValue ? parseInt(jobAdIdValue, 10) : null;
+
+                        const payload = {
+                            Id: rowData.Id,
+                            VacancyId: $(`#${modalId}_editVacancyCode`).val().trim(),
+                            Name: $(`#${modalId}_editVacancyName`).val().trim(),
+                            JobAdvertisement_Id: $(`#${modalId}_editJobAdId`).val(),
+                            IsDeleted: $(`#${modalId}_editStatus`).val() === "Inactive"
+                        };
+
+                        console.log("📤 Sending Payload to AddOrUpdate:", payload);
+
+                        await $.ajax({
+                            url: "/ATSConfig/HarverVacancyAddOrUpdate",
+                            type: "POST",
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            data: JSON.stringify({
+                                Id: rowData.Id,
+                                Name: $(`#${modalId}_editVacancyName`).val().trim(),
+                                VacancyId: $(`#${modalId}_editVacancyCode`).val().trim(),
+                                JobAdvertisement_Id: parseInt($(`#${modalId}_editJobAdId`).val(), 10),
+                                IsDeleted: $(`#${modalId}_editStatus`).val() === "Inactive"
+                            }),
+                            success: function (res) {
+                                console.log("✅ Response:", res);
+                                if (res.success) {
+                                    AppUtils.toastMessage("Vacancy updated successfully!", "success");
+                                    HarverVacanciesPage.Refresh();
+                                } else {
+                                    AppUtils.toastMessage(res.message || "Update failed", "warning");
+                                }
+                            },
+                            error: function (xhr, status, err) {
+                                console.error("❌ Update failed:", err);
+                            }
+                        });
+
+
+                        $(`#${modalId}`).modal("hide");
+                    }
+                },
+                Cancel: {
+                    Enabled: true,
+                    text: "Cancel",
+                    btnClass: "btn btn-secondary btn-sm",
+                    autoDismiss: true
+                }
+            }
+        });
+
+        // ✅ Fetch and populate Job Advertisements dropdown
+        try {
+            const jobAdsResponse = await $.ajax({
+                url: "/ATSConfig/GetJobAdvertisements",
+                type: "GET"
+            });
+
+            console.log("📄 Raw Job Ads Response:", jobAdsResponse);
+
+            // ✅ Extract job ads array from the response
+            let jobAds = [];
+
+            if (Array.isArray(jobAdsResponse?.message)) {
+                jobAds = jobAdsResponse.message; // ← this is where the actual array is
+            } else if (Array.isArray(jobAdsResponse?.data)) {
+                jobAds = jobAdsResponse.data;
+            } else if (Array.isArray(jobAdsResponse?.Data)) {
+                jobAds = jobAdsResponse.Data;
+            } else {
+                jobAds = jobAdsResponse;
+            }
+
+            console.log("📦 Normalized Job Ads (final):", jobAds);
+
+            const dropdown = $(`#${modalId}_editJobAdId`);
+            dropdown.empty();
+
+            if (Array.isArray(jobAds) && jobAds.length > 0) {
+                jobAds.forEach(ad => {
+                    const id = ad.Id || ad.id || "";
+                    const displayText = `[${ad.CATSJobId || ad.catsJobId || id}] ${ad.Name || ad.name || ad.PublishedTitle || ad.publishedTitle || "Job Advertisement"}`;
+
+                    dropdown.append(`
+                        <option value="${id}" ${id == rowData.JobAdvertisement_Id ? "selected" : ""}>
+                            ${escapeHtml(displayText)}
+                        </option>
+                    `);
+                });
+            } else {
+                dropdown.append(`<option value="">No Job Advertisements found</option>`);
+            }
+        } catch (err) {
+            console.error("❌ Failed to load Job Advertisements:", err);
+            $(`#${modalId}_editJobAdId`)
+                .html('<option value="">Failed to load options</option>');
+        }
+
+
+
     };
 
-    return { init: init };
 
+    const escapeHtml = (text) => {
+        if (text === null || text === undefined) return "";
+        if (typeof text !== "string") text = text.toString();
+
+        return text
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    };
+
+
+    const init = function () {
+        initDataTable();
+        initNewButton();
+    };
+
+    return {
+        init: init,
+        Refresh: () => { if (DataTable) DataTable.ajax.reload(); }
+    };
 })();
 
-// =========================
-// 🔹 4. Initialize on Ready
-// =========================
 $(document).ready(function () {
     HarverVacanciesPage.init();
 });

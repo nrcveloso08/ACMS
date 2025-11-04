@@ -1,10 +1,98 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ATS.Service.ATS;
+using ATS.Service.ViewModels.AdvertisementSource;
+using ATS.Service.ViewModels.Vacancies;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ATS.Web.Controllers
 {
     public class ATSConfigController : Controller
     {
+        private readonly IAdvertisementSourceService _advertisementSourceService;
+        private readonly IHarverService _harverService;
+        private readonly IJobAdvertisementService _jobAdvertisementService;
+
+        public ATSConfigController(IAdvertisementSourceService advertisementSourceService,
+            IHarverService harverService,
+            IJobAdvertisementService jobAdvertisementService)
+        {
+            _advertisementSourceService = advertisementSourceService;
+            _harverService = harverService;
+            _jobAdvertisementService = jobAdvertisementService;
+        }
+
         public IActionResult Index() => View();
+
+        public async Task<IActionResult> GetAdvertisementSources()
+        {
+            try
+            {
+                var result = await _advertisementSourceService.GetAll();
+                return Json(new { success = true, data = result });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddOrUpdate([FromBody] AdvertisementSourceVM obj)
+        {
+            try
+            {
+                if (obj == null)
+                    return Json(new { success = false, message = "Invalid request: No data provided." });
+
+                var result = await _advertisementSourceService.AddOrUpdate(obj);
+                return Json(new { success = true, data = result });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+
+        public async Task<IActionResult> GetHarverVacancies()
+        {
+            try
+            {
+                var result = await _harverService.GetAll();
+                return Json(new { success = true, data = result });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> HarverVacancyAddOrUpdate([FromBody] VacancyVM obj)
+        {
+            try
+            {
+                if (obj == null)
+                    return Json(new { success = false, message = "Invalid request: No data provided." });
+
+                var result = await _harverService.AddOrUpdate(obj);
+                return Json(new { success = true, data = result });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+
+        public async Task<IActionResult> GetJobAdvertisements()
+        {
+            try
+            {
+                var result = await _jobAdvertisementService.GetAll();
+                return Json(new { success = true, message = result });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
 
         public IActionResult AdvertisementSource()
             => PartialView("~/Views/ATSConfig/Partials/_AdvertisementSourcePartial.cshtml");

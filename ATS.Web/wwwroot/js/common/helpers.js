@@ -375,7 +375,14 @@ AppUtils.ajaxCall = function (options) {
                     AppUtils.loadModal('successModal', {
                         title: "Success",
                         body: `<p>${config.successMessage}</p>`,
-                        buttons: { Ok: { Enabled: true, text: "OK", btnClass: "btn-success" } }
+                        buttons: {
+                            Ok: {
+                                Enabled: true,
+                                text: "OK",
+                                btnClass: "btn-success",
+                                autoDismiss: true // ✅ Let loadModal handle closing
+                            }
+                        }
                     });
                 }
 
@@ -386,9 +393,16 @@ AppUtils.ajaxCall = function (options) {
                 if (config.showLoader) AppUtils.hideLoader(config.loaderTarget);
 
                 AppUtils.loadModal('errorModal', {
-                    title: "Error",
-                    body: `<p>${config.errorMessage}</p>`,
-                    buttons: { Ok: { Enabled: true, text: "OK", btnClass: "btn-danger" } }
+                    title: "Success",
+                    body: `<p>${config.successMessage}</p>`,
+                    buttons: {
+                        Ok: {
+                            Enabled: true,
+                            text: "OK",
+                            btnClass: "btn-danger",
+                            autoDismiss: true // ✅ Let loadModal handle closing
+                        }
+                    }
                 });
 
                 if (typeof config.onError === 'function') config.onError(xhr);
@@ -404,18 +418,24 @@ AppUtils.ajaxCall = function (options) {
 AppUtils.showLoader = function (target) {
     const $target = $(target);
     if ($target.find('.app-loader').length === 0) {
+        const isBody = target === 'body' || $target.is('body');
         const loaderHtml = `
             <div class="app-loader" style="
-                position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+                position: ${isBody ? 'fixed' : 'absolute'};
+                top: 0; left: 0; right: 0; bottom: 0;
                 display: flex; justify-content: center; align-items: center;
-                background: rgba(255,255,255,0.6); z-index: 9999;">
-                <div class="spinner-border text-primary" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
+                background: rgba(255,255,255,0.6);
+                z-index: 2000;">
+                <div class="spinner-border text-primary" role="status"></div>
             </div>`;
-        $target.css('position', 'relative').append(loaderHtml);
+        if (isBody) {
+            $('body').append(loaderHtml);
+        } else {
+            $target.css('position', 'relative').append(loaderHtml);
+        }
     }
 };
+
 
 /**
  * Hide loader overlay

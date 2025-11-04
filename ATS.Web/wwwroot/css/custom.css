@@ -653,3 +653,20 @@ body.aside-minimize .app-footer {
     transform: translateY(0) scale(1);
     opacity: 1;
 }
+.dataTables_processing {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    z-index: 10;
+}
+
+.dataTables_wrapper.processing .dataTables_processing {
+    display: flex !important;
+}
+
