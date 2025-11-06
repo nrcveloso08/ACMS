@@ -50,10 +50,12 @@ C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Web\bin\Debug\net8.0\ATS.Web.run
 C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Web\bin\Debug\net8.0\ATS.Web.dll
 C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Web\bin\Debug\net8.0\ATS.Web.pdb
 C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Web\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Web\bin\Debug\net8.0\ATS.Data.dll
+C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Web\bin\Debug\net8.0\ATS.DTO.dll
 C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Web\bin\Debug\net8.0\ATS.Service.dll
-C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Web\bin\Debug\net8.0\ATS.Service.ViewModels.dll
-C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Web\bin\Debug\net8.0\ATS.Service.ViewModels.pdb
+C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Web\bin\Debug\net8.0\ATS.DTO.pdb
 C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Web\bin\Debug\net8.0\ATS.Service.pdb
+C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Web\bin\Debug\net8.0\ATS.Data.pdb
 C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Web\obj\Debug\net8.0\ATS.Web.csproj.AssemblyReference.cache
 C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Web\obj\Debug\net8.0\rpswa.dswa.cache.json
 C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Web\obj\Debug\net8.0\ATS.Web.GeneratedMSBuildEditorConfig.editorconfig

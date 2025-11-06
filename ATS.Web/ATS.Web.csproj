@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ATS.Service.ViewModels\ATS.Service.ViewModels.csproj" />
+    <ProjectReference Include="..\ATS.DTO\ATS.DTO.csproj" />
     <ProjectReference Include="..\ATS.Service\ATS.Service.csproj" />
   </ItemGroup>
 

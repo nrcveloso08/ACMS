@@ -472,4 +472,110 @@ AppUtils.toastMessage = function (message, type = "info") {
     setTimeout(() => toast.fadeOut(500, () => toast.remove()), 4000);
 };
 
+/**
+ * Initialize a Metronic-styled Select2 dropdown.
+ * Supports:
+ *  - Static JSON data (with GeoLocation > Country > Name hierarchy)
+ *  - Dynamic AJAX loading (via data-source or options.ajax)
+ *  - Default selection
+ *  - Auto-grouping by GeoLocationName and Country
+ *
+ * Example:
+ * <select id="LocationId" data-source="/Locations/GetAll"></select>
+ *
+ * AppUtils.initSelectDropdown('#LocationId', {
+ *     placeholder: "Select Location",
+ *     defaultValue: 99
+ * });
+ */
+AppUtils.initSelectDropdown = function (selector, options = {}) {
+    const $element = $(selector);
+    if ($element.length === 0) return;
+
+    const defaultOptions = {
+        placeholder: "Select an option",
+        allowClear: true,
+        width: '100%',
+        data: null,              // Static JSON data
+        ajax: null,              // Custom AJAX config
+        defaultValue: null,      // Optional pre-select value (ID)
+        dropdownParent: $element.parent()
+    };
+
+    const settings = $.extend(true, {}, defaultOptions, options);
+    const dataSourceUrl = $element.data('source') || null;
+
+    // Safe cleanup if already initialized
+    if ($element.hasClass("select2-hidden-accessible")) {
+        $element.select2('destroy');
+    }
+
+    // Build Select2 config
+    const select2Config = {
+        placeholder: settings.placeholder,
+        allowClear: settings.allowClear,
+        width: settings.width,
+        dropdownParent: settings.dropdownParent
+    };
+
+    /**
+     * 🧠 Helper: Transform data into grouped format
+     * Groups → GeoLocationName → Country → Locations
+     */
+    function transformLocationData(data) {
+        if (!Array.isArray(data)) return [];
+
+        const geoGroups = {};
+
+        data.forEach(item => {
+            const geo = item.GeoLocationName || "Unknown Region";
+            const country = item.Country || "Unknown Country";
+            const name = item.Name || "Unnamed Location";
+
+            if (!geoGroups[geo]) geoGroups[geo] = {};
+            if (!geoGroups[geo][country]) geoGroups[geo][country] = [];
+
+            geoGroups[geo][country].push({
+                id: item.Id,
+                text: name
+            });
+        });
+
+        // Convert nested object → Select2 grouped structure
+        const result = Object.keys(geoGroups).map(geo => ({
+            text: geo,
+            children: Object.keys(geoGroups[geo]).map(country => ({
+                text: country,
+                children: geoGroups[geo][country]
+            }))
+        }));
+
+        return result;
+    }
+
+    // --- Handle static JSON data ---
+    if (settings.data && Array.isArray(settings.data)) {
+        select2Config.data = transformLocationData(settings.data);
+    }
+    // --- Handle dynamic AJAX-based data ---
+    else if (dataSourceUrl || settings.ajax) {
+        const ajaxUrl = dataSourceUrl || settings.ajax?.url;
+        select2Config.ajax = {
+            url: ajaxUrl,
+            delay: 250,
+            processResults: function (data) {
+                return { results: transformLocationData(data) };
+            },
+            cache: true
+        };
+    }
+
+    // --- Initialize Select2 ---
+    $element.select2(select2Config);
+
+    // --- Set default value if provided ---
+    if (settings.defaultValue) {
+        $element.val(settings.defaultValue).trigger('change');
+    }
+};
 

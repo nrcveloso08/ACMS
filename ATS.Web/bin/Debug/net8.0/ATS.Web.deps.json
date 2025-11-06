@@ -8,8 +8,8 @@
     ".NETCoreApp,Version=v8.0": {
       "ATS.Web/1.0.0": {
         "dependencies": {
-          "ATS.Service": "1.0.0",
-          "ATS.Service.ViewModels": "1.0.0"
+          "ATS.DTO": "1.0.0",
+          "ATS.Service": "1.0.0"
         },
         "runtime": {
           "ATS.Web.dll": {}
@@ -23,21 +23,33 @@
           }
         }
       },
-      "ATS.Service/1.0.0": {
+      "ATS.Data/1.0.0": {
         "dependencies": {
-          "ATS.Service.ViewModels": "1.0.0",
+          "ATS.DTO": "1.0.0",
           "Newtonsoft.Json": "13.0.4"
         },
         "runtime": {
-          "ATS.Service.dll": {
+          "ATS.Data.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
         }
       },
-      "ATS.Service.ViewModels/1.0.0": {
+      "ATS.DTO/1.0.0": {
         "runtime": {
-          "ATS.Service.ViewModels.dll": {
+          "ATS.DTO.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "ATS.Service/1.0.0": {
+        "dependencies": {
+          "ATS.DTO": "1.0.0",
+          "ATS.Data": "1.0.0"
+        },
+        "runtime": {
+          "ATS.Service.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -58,12 +70,17 @@
       "path": "newtonsoft.json/13.0.4",
       "hashPath": "newtonsoft.json.13.0.4.nupkg.sha512"
     },
-    "ATS.Service/1.0.0": {
+    "ATS.Data/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "ATS.Service.ViewModels/1.0.0": {
+    "ATS.DTO/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ATS.Service/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

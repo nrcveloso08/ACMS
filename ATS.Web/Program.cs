@@ -1,6 +1,6 @@
-﻿using ATS.Service;
-using ATS.Service.ATS;
-using ATS.Service.KITT;
+﻿using ATS.Data;
+using ATS.Data.Repository;
+using ATS.Service;
 using ATS.Service.WebServiceHelper;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.Options;
@@ -51,11 +51,18 @@ else
 }
 
 
+// ✅ Register repository layer components
+builder.Services.AddScoped<IAdvertisementSourceRepository, AdvertisementSourceRepository>();
+builder.Services.AddScoped<IHarverRepository, HarverRepository>();
+builder.Services.AddScoped<IJobAdvertisementRepository, JobAdvertisementRepository>();
+builder.Services.AddScoped<ILocationRepository, LocationRepository> ();
+builder.Services.AddScoped<IRequisitionRequestService, RequisitionRequestRepository> ();
+builder.Services.AddScoped<ILanguageRepository, LanguageRepository> ();
+
 // ✅ Register business/service layer components
 builder.Services.AddScoped<IAdvertisementSourceService, AdvertisementSourceService>();
 builder.Services.AddScoped<IHarverService, HarverService>();
 builder.Services.AddScoped<IJobAdvertisementService, JobAdvertisementService>();
-builder.Services.AddScoped<ILocationService, LocationService> ();
 
 // =========================================
 // 3️⃣ BUILD THE APPLICATION

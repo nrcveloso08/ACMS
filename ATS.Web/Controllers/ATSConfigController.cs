@@ -1,7 +1,7 @@
-﻿using ATS.Service.ATS;
-using ATS.Service.ViewModels.AdvertisementSource;
-using ATS.Service.ViewModels.JobAdvertisement;
-using ATS.Service.ViewModels.Vacancies;
+﻿using ATS.DTO.AdvertisementSource;
+using ATS.DTO.JobAdvertisement;
+using ATS.DTO.Vacancies;
+using ATS.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ATS.Web.Controllers
@@ -36,7 +36,7 @@ namespace ATS.Web.Controllers
             }
         }
         [HttpPost]
-        public async Task<IActionResult> AddOrUpdate([FromBody] AdvertisementSourceVM obj)
+        public async Task<IActionResult> AddOrUpdate([FromBody] AdvertisementSource obj)
         {
             try
             {
@@ -66,7 +66,7 @@ namespace ATS.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> HarverVacancyAddOrUpdate([FromBody] VacancyVM obj)
+        public async Task<IActionResult> HarverVacancyAddOrUpdate([FromBody] Vacancy obj)
         {
             try
             {
@@ -96,7 +96,7 @@ namespace ATS.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> JobAdAddOrUpdate([FromBody] JobAdvertisementVM obj)
+        public async Task<IActionResult> JobAdAddOrUpdate([FromBody] JobAdvertisement obj)
         {
             try
             {

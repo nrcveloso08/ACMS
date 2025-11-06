@@ -1,14 +1,13 @@
-﻿using ATS.Service.ViewModels.InterviewSchedule;
-using Microsoft.AspNetCore.Http;
+﻿using ATS.DTO.InterviewSchedule;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ATS.Web.Controllers
 {
     public class InterviewScheduleController : Controller
     {
-        private static readonly List<InterviewScheduleVM> _mockSchedules = new()
+        private static readonly List<InterviewSchedule> _mockSchedules = new()
     {
-        new InterviewScheduleVM
+        new InterviewSchedule
         {
             TimeSlot = "08:30 AM",
             Applicants = new List<ApplicantViewModel>
@@ -17,7 +16,7 @@ namespace ATS.Web.Controllers
                 new ApplicantViewModel { Name = "Test Dummy2", Phone = "+9 (999) 999-9999", Email = "test@example.com", Status = "NCNS" }
             }
         },
-        new InterviewScheduleVM
+        new InterviewSchedule
         {
             TimeSlot = "09:00 AM",
             Applicants = new List<ApplicantViewModel>

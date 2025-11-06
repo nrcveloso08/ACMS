@@ -1,4 +1,4 @@
-﻿using ATS.Service.ViewModels.CSI;
+﻿using ATS.DTO.CSI;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ATS.Web.Controllers
@@ -12,7 +12,7 @@ namespace ATS.Web.Controllers
 
 
         [HttpPost]
-        public IActionResult Create([FromBody] CsiScheduleVM model)
+        public IActionResult Create([FromBody] CsiSchedule model)
         {
             if (!ModelState.IsValid)
                 return BadRequest("Invalid data.");
