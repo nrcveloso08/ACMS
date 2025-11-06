@@ -1,5 +1,6 @@
 ﻿using ATS.Service;
 using ATS.Service.ATS;
+using ATS.Service.KITT;
 using ATS.Service.WebServiceHelper;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.Options;
@@ -34,10 +35,27 @@ builder.Services.AddSingleton<IWebServiceHelper>(sp =>
     return new WebServiceHelper(apiSettings.BaseUrl);
 });
 
+// ✅ Initialize KITT API instance
+var configuration = builder.Configuration;
+var kittBaseUrl = configuration["ApiSettings:KittBaseUrl"];
+var kittToken = configuration["ApiSettings:KittToken"];
+
+if (!string.IsNullOrWhiteSpace(kittBaseUrl))
+{
+    WebServiceHelper.InitializeKitt(kittBaseUrl, token: kittToken);
+    Console.WriteLine($"🤖 KITT API Base URL Loaded: {kittBaseUrl}");
+}
+else
+{
+    Console.WriteLine("⚠️ Warning: ApiSettings:KittBaseUrl not configured.");
+}
+
+
 // ✅ Register business/service layer components
 builder.Services.AddScoped<IAdvertisementSourceService, AdvertisementSourceService>();
 builder.Services.AddScoped<IHarverService, HarverService>();
 builder.Services.AddScoped<IJobAdvertisementService, JobAdvertisementService>();
+builder.Services.AddScoped<ILocationService, LocationService> ();
 
 // =========================================
 // 3️⃣ BUILD THE APPLICATION

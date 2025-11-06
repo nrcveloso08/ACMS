@@ -124,7 +124,7 @@ var HarverVacanciesPage = (function () {
                 </div>
                 <div class="form-group mb-3">
                     <label class="fw-semibold">Status</label>
-                    <select id="${modalId}_newStatus" class="form-select form-select-sm">
+                    <select id="${modalId}_newStatus" class="form-select form-select-sm form-control">
                         <option value="Active">Active</option>
                         <option value="Inactive">Inactive</option>
                     </select>
@@ -380,11 +380,7 @@ var HarverVacanciesPage = (function () {
             $(`#${modalId}_editJobAdId`)
                 .html('<option value="">Failed to load options</option>');
         }
-
-
-
     };
-
 
     const escapeHtml = (text) => {
         if (text === null || text === undefined) return "";

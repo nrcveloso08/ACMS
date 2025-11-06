@@ -9,5 +9,6 @@ namespace ATS.Service
     public class ApiSettings
     {
         public string BaseUrl { get; set; }
+        public string KittBaseUrl { get; set; }
     }
 }

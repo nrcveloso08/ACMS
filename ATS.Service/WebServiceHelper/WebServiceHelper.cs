@@ -19,6 +19,8 @@ namespace ATS.Service.WebServiceHelper
         private readonly string _defaultClientId;
         private readonly string _defaultClientSecret;
 
+        public static WebServiceHelper KittInstance { get; private set; }
+
         /// <summary>
         /// Constructor with optional default credentials and base URL.
         /// Ensures HttpClient is initialized with a valid BaseAddress.
@@ -40,6 +42,11 @@ namespace ATS.Service.WebServiceHelper
             _defaultToken = token;
             _defaultClientId = clientId;
             _defaultClientSecret = clientSecret;
+        }
+
+        public static void InitializeKitt(string baseUrl, string token = null, string clientId = null, string clientSecret = null)
+        {
+            KittInstance = new WebServiceHelper(baseUrl, token, clientId, clientSecret);
         }
 
         /// <summary>
@@ -86,12 +93,8 @@ namespace ATS.Service.WebServiceHelper
         /// <summary>
         /// Generic GET request that deserializes JSON to T.
         /// </summary>
-        public async Task<T> GetAsync<T>(
-     string relativePath,
-     NameValueCollection queryParams = null,
-     string token = null,
-     string clientId = null,
-     string clientSecret = null)
+        public async Task<T> GetAsync<T>(string relativePath, NameValueCollection queryParams = null, string token = null,
+            string clientId = null, string clientSecret = null)
         {
             string relativeUrl = BuildUrl(relativePath, queryParams);
             string fullUrl = $"{_baseUrl}/{relativeUrl}";

@@ -23,89 +23,26 @@
         </div>
 
         <div class="table-responsive">
-            <table id="tblJobAdvertisement" class="table table-hover align-middle table-bordered table-striped w-100">
+            <table id="tblJobAdvertisements" class="table table-hover align-middle table-bordered table-striped w-100">
                 <thead class="table-light">
-                    <tr>
-                        <th style="width: 60px;">Id</th>
-                        <th style="min-width: 250px;">Name</th>
-                        <th style="min-width: 200px;">Published Title</th>
-                        <th style="min-width: 100px;">Language</th>
-                        <th style="min-width: 180px;">Location</th>
-                        <th style="min-width: 150px;">Group</th>
-                        <th style="min-width: 120px;">Live Jobs Publishing</th>
-                        <th style="min-width: 130px;">Appointment Page</th>
-                        <th style="min-width: 120px;">SMS Service</th>
-                        <th style="min-width: 120px;">Referral Link</th>
-                        <th style="min-width: 100px;">SMS OPT</th>
-                        <th style="min-width: 100px;">Status</th>
-                        <th style="width: 140px;">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Example static rows; replace with server-side data -->
-                    <tr>
-                        <td>1</td>
-                        <td>Tampa (CSR)</td>
-                        <td>Customer Service Representative</td>
-                        <td>English</td>
-                        <td>Clearwater, Florida, United States</td>
-                        <td>-</td>
-                        <td>Inactive</td>
-                        <td>Active</td>
-                        <td>Inactive</td>
-                        <td>Active</td>
-                        <td>Active</td>
-                        <td>Active</td>
-                        <td class="text-center">
-                            <div class="btn-group">
-                                <button class="btn btn-success btn-sm me-2 editJobAd" title="Edit">
-                                    <i class="fas fa-edit me-1"></i> Edit
-                                </button>
-                                <button class="btn btn-outline-secondary btn-sm detailsJobAd" title="Details">
-                                    <i class="fas fa-info-circle me-1"></i> Details
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
+                  
+                </thead>             
             </table>
         </div>
     </div>
 </div>
-@section Scripts {
-    <script>
-        $(document).ready(function () {
-            // Initialize DataTable
-            $("#tblJobAdvertisement").DataTable({
-                pageLength: 10,
-                lengthChange: true,
-                lengthMenu: [10, 25, 50, 100],
-                ordering: true,
-                responsive: true,
-                columnDefs: [
-                    { orderable: false, targets: 12 }
-                ]
-            });
+<script src="~/js/ats-config/job-adv/job-adv.js"></script>
+<style>
+    .toggle-item {
+        min-width: 160px; /* ensures consistent width per toggle */
+        margin-right: 10px; /* adds gap between items */
+        margin-bottom: 10px; /* wrap nicely if screen smaller */
+    }
 
-            // New Job Ad
-            $("#btnAddJobAd").on("click", function () {
-                alert("Open modal to add new Job Advertisement");
-                // TODO: Implement modal logic
-            });
+    .toggle-flag:hover {
+        filter: brightness(1.1);
+        transform: scale(1.05);
+        transition: all 0.2s ease-in-out;
+    }
 
-            // Edit Button
-            $(document).on("click", ".editJobAd", function () {
-                const id = $(this).closest("tr").find("td:first").text();
-                alert("Edit Job Advertisement ID: " + id);
-                // TODO: Implement edit logic
-            });
-
-            // Details Button
-            $(document).on("click", ".detailsJobAd", function () {
-                const id = $(this).closest("tr").find("td:first").text();
-                alert("View details for Job Advertisement ID: " + id);
-                // TODO: Implement modal or details view logic
-            });
-        });
-    </script>
-}
+</style>

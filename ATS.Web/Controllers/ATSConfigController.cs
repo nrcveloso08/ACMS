@@ -1,5 +1,6 @@
 ﻿using ATS.Service.ATS;
 using ATS.Service.ViewModels.AdvertisementSource;
+using ATS.Service.ViewModels.JobAdvertisement;
 using ATS.Service.ViewModels.Vacancies;
 using Microsoft.AspNetCore.Mvc;
 
@@ -87,6 +88,23 @@ namespace ATS.Web.Controllers
             {
                 var result = await _jobAdvertisementService.GetAll();
                 return Json(new { success = true, message = result });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> JobAdAddOrUpdate([FromBody] JobAdvertisementVM obj)
+        {
+            try
+            {
+                if (obj == null)
+                    return Json(new { success = false, message = "Invalid request: No data provided." });
+
+                var result = await _jobAdvertisementService.AddOrUpdate(obj);
+                return Json(new { success = true, data = result });
             }
             catch (Exception ex)
             {

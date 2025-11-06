@@ -5,218 +5,389 @@
 "use strict";
 
 var JobAdvertisementPage = (function () {
+    let DataTable = null;
 
     // =========================
-    // 🔹 1. Private Variables
-    // =========================
-    let table;
-
-    const dummyJobAds = [
-        { id: 1, name: "Customer Service - Manila", title: "Customer Support Associate", lang: "English", location: "Manila, PH", group: "Support", liveJob: "Yes", appointmentPage: "Available", smsService: "Enabled", referralLink: "https://ref.job/1", smsOpt: "Yes", status: "Active" },
-        { id: 2, name: "Software Engineer - Toronto", title: "Software Engineer", lang: "English", location: "Toronto, CA", group: "Engineering", liveJob: "Yes", appointmentPage: "Available", smsService: "Disabled", referralLink: "https://ref.job/2", smsOpt: "No", status: "Active" },
-        { id: 3, name: "Sales Executive - Lisbon", title: "Sales Executive", lang: "Portuguese", location: "Lisbon, PT", group: "Sales", liveJob: "No", appointmentPage: "N/A", smsService: "Enabled", referralLink: "https://ref.job/3", smsOpt: "Yes", status: "Inactive" },
-        { id: 4, name: "Recruiter - Guadalajara", title: "Recruitment Specialist", lang: "Spanish", location: "Guadalajara, MX", group: "HR", liveJob: "Yes", appointmentPage: "Available", smsService: "Enabled", referralLink: "https://ref.job/4", smsOpt: "Yes", status: "Active" },
-        { id: 5, name: "Finance Officer - Denver", title: "Finance Officer", lang: "English", location: "Denver, US", group: "Finance", liveJob: "No", appointmentPage: "N/A", smsService: "Disabled", referralLink: "https://ref.job/5", smsOpt: "No", status: "Active" },
-        { id: 6, name: "Trainer - Cebu", title: "Training Specialist", lang: "English", location: "Cebu, PH", group: "L&D", liveJob: "Yes", appointmentPage: "Available", smsService: "Enabled", referralLink: "https://ref.job/6", smsOpt: "Yes", status: "Inactive" },
-        { id: 7, name: "QA Tester - Bogota", title: "QA Analyst", lang: "Spanish", location: "Bogotá, CO", group: "Quality", liveJob: "Yes", appointmentPage: "Available", smsService: "Enabled", referralLink: "https://ref.job/7", smsOpt: "Yes", status: "Active" },
-        { id: 8, name: "Marketing - Tampa", title: "Marketing Coordinator", lang: "English", location: "Tampa, US", group: "Marketing", liveJob: "No", appointmentPage: "N/A", smsService: "Disabled", referralLink: "https://ref.job/8", smsOpt: "No", status: "Inactive" },
-        { id: 9, name: "Data Analyst - Lisbon", title: "Data Analyst", lang: "Portuguese", location: "Lisbon, PT", group: "Analytics", liveJob: "Yes", appointmentPage: "Available", smsService: "Enabled", referralLink: "https://ref.job/9", smsOpt: "Yes", status: "Active" },
-        { id: 10, name: "HR Assistant - WFH", title: "HR Assistant", lang: "English", location: "Remote / WFH", group: "HR", liveJob: "Yes", appointmentPage: "Available", smsService: "Enabled", referralLink: "https://ref.job/10", smsOpt: "Yes", status: "Active" }
-    ];
-
-    // =========================
-    // 🔹 2. Private Functions
+    // 🔹 Initialize DataTable (Unchanged)
     // =========================
     const initDataTable = function () {
-        table = $("#tblJobAdvertisements").DataTable({
-            data: dummyJobAds,
-            columns: [
-                { data: "id", title: "Id" },
-                { data: "name", title: "Name" },
-                { data: "title", title: "Published Title" },
-                { data: "lang", title: "Language" },
-                { data: "location", title: "Location" },
-                { data: "group", title: "Group" },
-                { data: "liveJob", title: "Live Jobs Publishing" },
-                { data: "appointmentPage", title: "Appointment Page" },
-                { data: "smsService", title: "SMS Service" },
-                { data: "referralLink", title: "Referral Link", render: function (data) { return `<a href="${data}" target="_blank">${data}</a>`; } },
-                { data: "smsOpt", title: "SMS OPT" },
-                {
-                    data: "status",
-                    title: "Status",
-                    render: function (data) {
-                        const color = data === "Active" ? "success" : "secondary";
-                        return `<span class="badge badge-${color}">${data}</span>`;
+        DataTable = $('#tblJobAdvertisements').DataTable({
+            processing: true,
+            responsive: true,
+            autoWidth: true,
+            destroy: true,
+            search: true,
+            ajax: {
+                url: "/ATSConfig/GetJobAdvertisements",
+                type: "GET",
+                dataSrc: function (json) {
+                    console.log("📦 Job Ads API Response:", json);
+
+                    if (json && json.success && Array.isArray(json.message)) {
+                        console.log("✅ Parsed Job Ads Count:", json.message.length);
+                        console.log("🔍 Sample Record:", json.message[0]);
+                        return json.message;
                     }
+
+                    console.warn("⚠️ Unexpected response format:", json);
+                    AppUtils.toastMessage("Failed to parse Job Advertisements.", "error");
+                    return [];
+                },
+                error: function (xhr, status, error) {
+                    console.error("❌ DataTable load failed:", error);
+                }
+            },
+            columns: [
+                { data: "id", title: "ID", visible: false },
+                { data: "name", title: "Name" },
+                { data: "publishedTitle", title: "Published Title" },
+                { data: "languageId", title: "Language" },
+                { data: "locationId", title: "Location" },
+                { data: "legacyRecruitmentLob", title: "Group" },
+                {
+                    data: "isPublishedToLiveJobs",
+                    title: "Live Jobs Publishing",
+                    render: (data) =>
+                        data
+                            ? `<span class="badge bg-success">Active</span>`
+                            : `<span class="badge bg-secondary">Inactive</span>`
+                },
+                {
+                    data: "selfSchedulerAppointmentEnabled",
+                    title: "Appointment Page",
+                    render: (data) =>
+                        data
+                            ? `<span class="badge bg-success">Active</span>`
+                            : `<span class="badge bg-secondary">Inactive</span>`
+                },
+                {
+                    data: "isSMSEnabled",
+                    title: "SMS Service",
+                    render: (data) =>
+                        data
+                            ? `<span class="badge bg-success">Active</span>`
+                            : `<span class="badge bg-secondary">Inactive</span>`
+                },
+                {
+                    data: "isReferralEnabled",
+                    title: "Referral Link",
+                    render: (data) =>
+                        data
+                            ? `<span class="badge bg-success">Active</span>`
+                            : `<span class="badge bg-secondary">Inactive</span>`
+                },
+                {
+                    data: "isSMSOptEnabled",
+                    title: "SMS OPT",
+                    render: (data) =>
+                        data
+                            ? `<span class="badge bg-success">Active</span>`
+                            : `<span class="badge bg-secondary">Inactive</span>`
+                },
+                {
+                    data: "isDeleted",
+                    title: "Status",
+                    render: (data) =>
+                        !data
+                            ? `<span class="badge bg-success">Active</span>`
+                            : `<span class="badge bg-secondary">Inactive</span>`
                 },
                 {
                     data: null,
-                    title: "Action",
+                    title: "Actions",
                     orderable: false,
                     className: "text-center",
                     render: function () {
                         return `
-                            <div class="dropdown">
-                                <button class="btn btn-sm btn-light btn-icon" data-toggle="dropdown">
-                                    <i class="fa fa-cog text-secondary"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right shadow-sm">
-                                    <a class="dropdown-item editJobAd" href="#">
-                                        <i class="fas fa-edit text-primary me-2"></i> Edit
-                                    </a>
-                                    <a class="dropdown-item deactivateJobAd" href="#">
-                                        <i class="fas fa-ban text-danger me-2"></i> Deactivate
-                                    </a>
-                                    <a class="dropdown-item detailsJobAd" href="#">
-                                        <i class="fas fa-info-circle text-info me-2"></i> Details
-                                    </a>
-                                </div>
-                            </div>`;
+                            <a class="btn btn-sm btn-light-primary action-item" 
+                               data-action="editJobAd" href="#" title="Edit">
+                                <i class="fa fa-edit"></i>
+                            </a>`;
                     }
                 }
             ],
-            responsive: true,
+            dom: `<'row'<'col-sm-12 col-md-6'f>>
+                  <'row'<'col-sm-12'tr>>
+                  <'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7 dataTables_pager'lp>>`,
             pageLength: 10,
-            autoWidth: false,
-            ordering: true,
-            dom: "Bfrtip",
-            buttons: [
-                {
-                    extend: "excelHtml5",
-                    text: '<i class="fas fa-file-excel me-2"></i> Export to Excel',
-                    className: "btn btn-success btn-sm shadow-sm d-none"
-                }
-            ]
+            language: {
+                processing: `
+                    <div style="display:flex;justify-content:center;align-items:center;height:100%;">
+                        <i class="fa fa-spinner fa-spin fa-3x text-primary"></i>
+                    </div>`
+            }
+        });
+
+        // ✅ Handle Edit Click
+        DataTable.on("click", "a.action-item", function (e) {
+            e.preventDefault();
+            const rowData = DataTable.row($(this).parents("tr")).data();
+            if (rowData) renderJobAdModal(rowData);
         });
     };
 
-    const bindEvents = function () {
+    // =========================
+    // 🔹 Render Modal (New/Edit)
+    // =========================
+    const renderJobAdModal = function (rowData = null) {
+        const isEdit = !!rowData;
+        const modalId = (isEdit ? "editJobAdModal_" : "newJobAdModal_") + Date.now();
 
-        // Export to Excel
-        $("#btnExportExcel").on("click", function () {
-            table.button(".buttons-excel").trigger();
-        });
+        // ✅ Normalize field casing (convert from camelCase → PascalCase)
+        const job = isEdit
+            ? {
+                Id: rowData.id || rowData.Id || 0,
+                Name: rowData.name || rowData.Name || "",
+                PublishedTitle: rowData.publishedTitle || rowData.PublishedTitle || "",
+                LegacyRecruitmentLob: rowData.legacyRecruitmentLob || rowData.LegacyRecruitmentLob || "",
+                IsPublishedToLiveJobs: rowData.isPublishedToLiveJobs ?? rowData.IsPublishedToLiveJobs ?? false,
+                SelfSchedulerAppointmentEnabled: rowData.selfSchedulerAppointmentEnabled ?? rowData.SelfSchedulerAppointmentEnabled ?? false,
+                IsSMSEnabled: rowData.isSMSEnabled ?? rowData.IsSMSEnabled ?? false,
+                IsReferralEnabled: rowData.isReferralEnabled ?? rowData.IsReferralEnabled ?? false,
+                IsSMSOptEnabled: rowData.isSMSOptEnabled ?? rowData.IsSMSOptEnabled ?? false,
+                HarverVacancyURL: rowData.harverVacancyURL || rowData.HarverVacancyURL || "",
+                IsDeleted: rowData.isDeleted ?? rowData.IsDeleted ?? false,
+                CatsJobId: rowData.catsJobId || rowData.CatsJobId || "",
+                Location: rowData.location || rowData.Location || "",
+                Language: rowData.language || rowData.Language || "",
+                Address: rowData.address || rowData.Address || "",
+                PhoneNumber: rowData.phoneNumber || rowData.PhoneNumber || "",
+                ZipCode: rowData.zipCode || rowData.ZipCode || "",
+                JobDescription: rowData.jobDescription || rowData.JobDescription || "",
+                InstructionHTML: rowData.instructionHTML || rowData.InstructionHTML || ""
+            }
+            : {
+                Id: 0,
+                Name: "",
+                PublishedTitle: "",
+                LegacyRecruitmentLob: "",
+                IsPublishedToLiveJobs: false,
+                SelfSchedulerAppointmentEnabled: false,
+                IsSMSEnabled: false,
+                IsReferralEnabled: false,
+                IsSMSOptEnabled: false,
+                HarverVacancyURL: "",
+                IsDeleted: false,
+                CatsJobId: "",
+                Location: "",
+                Language: "",
+                Address: "",
+                PhoneNumber: "",
+                ZipCode: "",
+                JobDescription: "",
+                InstructionHTML: ""
+            };
 
-        // Add New Job Advertisement
-        $("#btnNewJobAd").on("click", function () {
-            AppUtils.loadModal("newJobAdModal", {
-                title: "<i class='fas fa-plus-circle me-2 text-primary'></i> New Job Advertisement",
-                body: `
-                    <form id="frmNewJobAd">
-                        <div class="form-group mb-3">
-                            <label class="fw-semibold">Name <span class="text-danger">*</span></label>
-                            <input type="text" id="txtName" class="form-control form-control-sm" required />
-                        </div>
-                        <div class="form-group mb-3">
-                            <label class="fw-semibold">Published Title <span class="text-danger">*</span></label>
-                            <input type="text" id="txtTitle" class="form-control form-control-sm" required />
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label class="fw-semibold">Language</label>
-                                <input type="text" id="txtLang" class="form-control form-control-sm" />
-                            </div>
-                            <div class="col-md-6">
-                                <label class="fw-semibold">Location</label>
-                                <input type="text" id="txtLocation" class="form-control form-control-sm" />
-                            </div>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label class="fw-semibold">Group</label>
-                            <input type="text" id="txtGroup" class="form-control form-control-sm" />
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label class="fw-semibold">Live Jobs Publishing</label>
-                                <select id="selLiveJob" class="form-select form-select-sm">
-                                    <option value="Yes">Yes</option>
-                                    <option value="No">No</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="fw-semibold">Appointment Page</label>
-                                <select id="selAppointmentPage" class="form-select form-select-sm">
-                                    <option value="Available">Available</option>
-                                    <option value="N/A">N/A</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label class="fw-semibold">SMS Service</label>
-                            <select id="selSMSService" class="form-select form-select-sm">
-                                <option value="Enabled">Enabled</option>
-                                <option value="Disabled">Disabled</option>
-                            </select>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label class="fw-semibold">Referral Link</label>
-                            <input type="url" id="txtReferralLink" class="form-control form-control-sm" placeholder="https://..." />
-                        </div>
-                        <div class="form-group mb-3">
-                            <label class="fw-semibold">SMS OPT</label>
-                            <select id="selSMSOpt" class="form-select form-select-sm">
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                            </select>
-                        </div>
-                    </form>
-                `,
-                buttons: {
-                    Save: {
-                        Enabled: true,
-                        text: "<i class='fas fa-save me-2'></i> Save",
-                        btnClass: "btn btn-primary btn-sm",
-                        autoDismiss: false,
-                        action: function () {
-                            if (!AppUtils.validateForm("#frmNewJobAd")) return;
+        const bodyHtml = getJobAdModalBody(job, modalId);
 
-                            const newAd = {
-                                id: table.data().count() + 1,
-                                name: $("#txtName").val().trim(),
-                                title: $("#txtTitle").val().trim(),
-                                lang: $("#txtLang").val().trim(),
-                                location: $("#txtLocation").val().trim(),
-                                group: $("#txtGroup").val().trim(),
-                                liveJob: $("#selLiveJob").val(),
-                                appointmentPage: $("#selAppointmentPage").val(),
-                                smsService: $("#selSMSService").val(),
-                                referralLink: $("#txtReferralLink").val().trim(),
-                                smsOpt: $("#selSMSOpt").val(),
-                                status: "Active"
-                            };
-
-                            table.row.add(newAd).draw(false);
-                            AppUtils.showToast?.("New job advertisement added successfully!", "success");
-                            $("#newJobAdModal").modal("hide");
-                        }
-                    },
-                    Cancel: {
-                        Enabled: true,
-                        text: "Cancel",
-                        btnClass: "btn btn-secondary btn-sm",
-                        autoDismiss: true
+        AppUtils.loadModal(modalId, {
+            title: `<i class='fas ${isEdit ? "fa-edit text-primary" : "fa-plus-circle text-success"} me-2'></i>${isEdit ? "Edit Job Advertisement" : "New Job Advertisement"}`,
+            body: bodyHtml,
+            buttons: {
+                Save: {
+                    Enabled: true,
+                    text: `<i class='fas fa-save me-2'></i>${isEdit ? "Update" : "Save"}`,
+                    btnClass: "btn btn-primary btn-sm",
+                    autoDismiss: false,
+                    action: async () => {
+                        const payload = collectJobAdFormData(modalId, job);
+                        await AppUtils.ajaxCall({
+                            url: "/ATSConfig/JobAdAddOrUpdate",
+                            type: "POST",
+                            data: payload,
+                            successMessage: `"${payload.Name}" saved successfully.`,
+                            onSuccess: (response) => {
+                                if (response.success) JobAdvertisementPage.Refresh();
+                            }
+                        });
+                        $(`#${modalId}`).modal("hide");
                     }
+                },
+                Cancel: {
+                    Enabled: true,
+                    text: "Cancel",
+                    btnClass: "btn btn-secondary btn-sm",
+                    autoDismiss: true
                 }
-            });
+            }
         });
+
+        // ✅ Keep toggle behavior
+        $(document).on("click", `#${modalId} .toggle-flag`, function () {
+            const flag = $(this).data("flag");
+            job[flag] = !job[flag];
+            const isActive = job[flag];
+            $(this)
+                .removeClass("bg-success bg-danger")
+                .addClass(isActive ? "bg-success" : "bg-danger")
+                .text(isActive ? "ACTIVE" : "INACTIVE");
+        });
+
+        // ✅ Widen modal
+        setTimeout(() => {
+            const $modalDialog = $(`#${modalId}`).find(".modal-dialog");
+            $modalDialog.css({
+                "max-width": "900px",
+                "width": "90%"
+            });
+        }, 100);
     };
 
+
     // =========================
-    // 🔹 3. Public Init
+    // 🔹 Generic Modal Body (Your version)
     // =========================
+    function getJobAdModalBody(job, modalId) {
+        return `
+        <form id="${modalId}_frmJobAd">
+            <div class="row mb-2">
+                <div class="col-md-3">
+                    <label class="fw-semibold">ID</label>
+                    <input type="text" class="form-control form-control-sm" value="${job.Id || ""}" readonly>
+                </div>
+                <div class="col-md-3">
+                    <label class="fw-semibold">Group (optional)</label>
+                    <input type="text" id="${modalId}_LegacyRecruitmentLob" class="form-control form-control-sm" value="${job.LegacyRecruitmentLob || ""}">
+                </div>
+                <div class="col-md-3">
+                    <label class="fw-semibold">Status</label><br/>
+                    <span class="badge ${!job.IsDeleted ? "bg-success" : "bg-secondary"}">
+                        ${!job.IsDeleted ? "ACTIVE" : "INACTIVE"}
+                    </span>
+                </div>
+            </div>
+
+<div class="form-group mb-3">
+    <label class="fw-semibold d-block mb-2">Feature Toggles</label>
+    <div class="d-flex flex-wrap align-items-center gap-3 justify-content-start">
+        ${renderToggle(modalId, "IsPublishedToLiveJobs", job.IsPublishedToLiveJobs, "Live Jobs Publishing")}
+        ${renderToggle(modalId, "IsSMSEnabled", job.IsSMSEnabled, "Email Parser SMS Invite")}
+        ${renderToggle(modalId, "IsReferralEnabled", job.IsReferralEnabled, "Referral Link")}
+        ${renderToggle(modalId, "SelfSchedulerAppointmentEnabled", job.SelfSchedulerAppointmentEnabled, "Appointment Page")}
+        ${renderToggle(modalId, "IsSMSOptEnabled", job.IsSMSOptEnabled, "SMS OPT")}
+    </div>
+</div>
+
+
+
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label class="fw-semibold">CATS Job ID</label>
+                    <input type="text" id="${modalId}_CatsJobId" class="form-control form-control-sm" value="${job.CatsJobId || ""}">
+                </div>
+                <div class="col-md-4">
+                    <label class="fw-semibold">Name</label>
+                    <input type="text" id="${modalId}_Name" class="form-control form-control-sm" value="${job.Name || ""}" required>
+                </div>
+                <div class="col-md-4">
+                    <label class="fw-semibold">Published Title</label>
+                    <input type="text" id="${modalId}_PublishedTitle" class="form-control form-control-sm" value="${job.PublishedTitle || ""}" required>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label class="fw-semibold">Phone Number</label>
+                    <input type="text" id="${modalId}_PhoneNumber" class="form-control form-control-sm" value="${job.PhoneNumber || ""}">
+                </div>
+                <div class="col-md-4">
+                    <label class="fw-semibold">Zip Code</label>
+                    <input type="text" id="${modalId}_ZipCode" class="form-control form-control-sm" value="${job.ZipCode || ""}">
+                </div>
+                <div class="col-md-4">
+                    <label class="fw-semibold">Harver Vacancy URL</label>
+                    <input type="url" id="${modalId}_HarverVacancyURL" class="form-control form-control-sm" value="${job.HarverVacancyURL || ""}">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="fw-semibold">Location</label>
+                    <input type="text" id="${modalId}_Location" class="form-control form-control-sm" value="${job.Location || ""}">
+                </div>
+                <div class="col-md-6">
+                    <label class="fw-semibold">Language</label>
+                    <input type="text" id="${modalId}_Language" class="form-control form-control-sm" value="${job.Language || ""}">
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="fw-semibold">Address</label>
+                <input type="text" id="${modalId}_Address" class="form-control form-control-sm" value="${job.Address || ""}">
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="fw-semibold">Job Description</label>
+                <textarea id="${modalId}_JobDescription" class="form-control form-control-sm" rows="6">${job.JobDescription || ""}</textarea>
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="fw-semibold">Instruction HTML</label>
+                <textarea id="${modalId}_InstructionHTML" class="form-control form-control-sm" rows="4">${job.InstructionHTML || ""}</textarea>
+            </div>
+        </form>`;
+    }
+
+    function renderToggle(modalId, flag, value, label) {
+        const isActive =
+            value === true || value === "true" || value === 1 || value === "1";
+
+        const badgeClass = isActive ? "bg-success" : "bg-danger";
+        const text = isActive ? "ACTIVE" : "INACTIVE";
+
+        return `
+        <div class="mb-2">
+            <label class="fw-semibold d-block mb-1">${label}</label>
+            <span class="toggle-flag badge ${badgeClass} px-3 py-2"
+                  data-flag="${flag}"
+                  style="cursor: pointer; font-size: 0.85rem; user-select: none;">
+                ${text}
+            </span>
+        </div>`;
+    }
+
+
+
+    function collectJobAdFormData(modalId, job) {
+        return {
+            Id: job.Id,
+            Name: $(`#${modalId}_Name`).val(),
+            PublishedTitle: $(`#${modalId}_PublishedTitle`).val(),
+            LegacyRecruitmentLob: $(`#${modalId}_LegacyRecruitmentLob`).val(),
+            CatsJobId: $(`#${modalId}_CatsJobId`).val(),
+            Location: $(`#${modalId}_Location`).val(),
+            Language: $(`#${modalId}_Language`).val(),
+            Address: $(`#${modalId}_Address`).val(),
+            PhoneNumber: $(`#${modalId}_PhoneNumber`).val(),
+            ZipCode: $(`#${modalId}_ZipCode`).val(),
+            HarverVacancyURL: $(`#${modalId}_HarverVacancyURL`).val(),
+            JobDescription: $(`#${modalId}_JobDescription`).val(),
+            InstructionHTML: $(`#${modalId}_InstructionHTML`).val(),
+            IsPublishedToLiveJobs: job.IsPublishedToLiveJobs,
+            IsSMSEnabled: job.IsSMSEnabled,
+            IsReferralEnabled: job.IsReferralEnabled,
+            IsSMSOptEnabled: job.IsSMSOptEnabled,
+            SelfSchedulerAppointmentEnabled: job.SelfSchedulerAppointmentEnabled,
+            IsDeleted: job.IsDeleted
+        };
+    }
+
     const init = function () {
         initDataTable();
-        bindEvents();
+        $(document).on("click", "#btnNewJobAd", function (e) {
+            e.preventDefault();
+            renderJobAdModal();
+        });
     };
 
-    return { init: init };
-
+    return {
+        init: init,
+        Refresh: function () {
+            if (DataTable) DataTable.ajax.reload();
+        }
+    };
 })();
 
-// =========================
-// 🔹 4. Initialize on Ready
-// =========================
 $(document).ready(function () {
     JobAdvertisementPage.init();
 });
