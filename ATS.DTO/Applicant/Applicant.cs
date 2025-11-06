@@ -78,7 +78,7 @@ namespace ATS.DTO.Applicant
         //public bool TrainingEmailSent { get; set; }
         //public ComputerPickupSchedule ComputerSchedule { get; set; }
         //public HRInformation HRInformation { get; set; }
-        //public string Dayforce_Id { get; set; }
+        public string Dayforce_Id { get; set; }
         //public string SSN { get; set; }
         //public bool RehireEligibility { get; set; }
         //public int OnboardingPolicyXrefCode_Id { get; set; }

@@ -27,6 +27,8 @@ namespace ATS.DTO.Location
         public string LocationGroupName { get; set; }
         public int GeoLocation_Id { get; set; }
         public string GeoLocationName { get; set; }
+        public string PhoneMaskingFormat { get; set; }
+        public string InternationalCode { get; set; }
 
     }
 }

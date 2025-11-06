@@ -7,6 +7,7 @@ namespace ATS.Data.Repository
     {
         Task<List<JobAdvertisement>> GetAll();
         Task<JobAdvertisement> AddOrUpdate(JobAdvertisement obj);
+        Task<JobAdvertisement?> Get(int id);
     }
 
     public class JobAdvertisementRepository : IJobAdvertisementRepository
@@ -39,5 +40,11 @@ namespace ATS.Data.Repository
 
         }
 
+        public async Task<JobAdvertisement?> Get(int id)
+        {
+            var data = await this.GetAll();
+
+            return data.FirstOrDefault(x => x.Id == id);
+        }
     }
 }

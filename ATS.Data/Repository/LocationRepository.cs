@@ -6,6 +6,7 @@ namespace ATS.Data.Repository
     public interface ILocationRepository
     {
         Task<List<Location>> GetAll();
+        Task<Location?> Get(int id);
     }
 
     public class LocationRepository : ILocationRepository
@@ -22,5 +23,14 @@ namespace ATS.Data.Repository
             return await _webServiceHelper.GetAsync<List<Location>>("/v1/Location/GetAll");
         }
 
+
+        public async Task<Location?> Get(int id)
+        {
+            var data = await this.GetAll();
+
+            return data.FirstOrDefault(x => x.Id == id);
+
+
+        }
     }
 }
