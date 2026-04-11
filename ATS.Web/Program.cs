@@ -62,6 +62,7 @@ builder.Services.AddScoped<IJobAdvertisementRepository, JobAdvertisementReposito
 builder.Services.AddScoped<ILocationRepository, LocationRepository>();
 builder.Services.AddScoped<IRequisitionRequestService, RequisitionRequestRepository>();
 builder.Services.AddScoped<ILanguageRepository, LanguageRepository>();
+builder.Services.AddScoped<IVacancyRepository, VacancyRepository>();
 
 // Applicant-related Repositories
 builder.Services.AddScoped<IApplicantRepository, ApplicantRepository>();
@@ -83,6 +84,7 @@ builder.Services.AddScoped<IAdvertisementSourceService, AdvertisementSourceServi
 builder.Services.AddScoped<IHarverService, HarverService>();
 builder.Services.AddScoped<IJobAdvertisementService, JobAdvertisementService>();
 builder.Services.AddScoped<ICandidateDetailService, CandidateDetailService>();
+builder.Services.AddScoped<IVacancyService, VacancyService>();
 
 // Additional Service Dependencies
 builder.Services.AddScoped<IDayforceService, DayforceService>();

@@ -11,14 +11,16 @@ namespace ATS.Web.Controllers
         private readonly IAdvertisementSourceService _advertisementSourceService;
         private readonly IHarverService _harverService;
         private readonly IJobAdvertisementService _jobAdvertisementService;
+        private readonly IVacancyService _vacancyService;
 
         public ATSConfigController(IAdvertisementSourceService advertisementSourceService,
             IHarverService harverService,
-            IJobAdvertisementService jobAdvertisementService)
+            IJobAdvertisementService jobAdvertisementService, IVacancyService vacancyService)
         {
             _advertisementSourceService = advertisementSourceService;
             _harverService = harverService;
             _jobAdvertisementService = jobAdvertisementService;
+            _vacancyService = vacancyService;
         }
 
         public IActionResult Index() => View();
@@ -112,6 +114,33 @@ namespace ATS.Web.Controllers
             }
         }
 
+        [HttpGet("GetAll")]
+        public async Task<IActionResult> GetAll([FromQuery] bool includeDeleted = false)
+        {
+            var result = await _vacancyService.GetAll(includeDeleted);
+            return Ok(result);
+        }
+
+        [HttpGet("Get")]
+        public async Task<IActionResult> Get([FromQuery] int id)
+        {
+            var vacancy = await _vacancyService.Get(id);
+            if (vacancy == null)
+                return NotFound();
+
+            return Ok(vacancy);
+        }
+
+        [HttpPost("AddOrUpdate")]
+        public async Task<IActionResult> AddOrUpdate([FromBody] Vacancy vacancy)
+        {
+            if (vacancy == null)
+                return BadRequest("Vacancy must be provided.");
+
+            var result = await _vacancyService.AddOrUpdate(vacancy);
+            return Ok(result);
+        }
+
         public IActionResult AdvertisementSource()
             => PartialView("~/Views/ATSConfig/Partials/_AdvertisementSourcePartial.cshtml");
 
@@ -154,5 +183,4 @@ namespace ATS.Web.Controllers
         public IActionResult JobAdvertisement()
             => PartialView("~/Views/ATSConfig/Partials/_JobAdvertisementPartial.cshtml");
     }
-
 }
