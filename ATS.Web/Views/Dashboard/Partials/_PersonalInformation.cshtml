@@ -1,80 +1,78 @@
 ﻿<div class="card mb-4 shadow-sm">
     <div class="card-header bg-light d-flex align-items-center">
         <i class="fas fa-user text-primary me-2"></i> &nbsp;
-        <h5 class="mb-0 fw-bold"> Personal Information</h5>
+        <h5 class="mb-0 fw-bold">Personal Information</h5>
     </div>
 
     <div class="card-body">
-        <form>
+        <form id="personalInformationForm">
             <div class="row g-3">
 
                 <!-- Row 1: Name Fields -->
                 <div class="col-lg-3 col-md-6 col-12">
-                    <label class="form-label">First Name</label>
-                    <input type="text" class="form-control" placeholder="Enter first name" value="Dummy 01">
+                    <label class="form-label" for="FirstName">First Name</label>
+                    <input type="text" class="form-control" id="FirstName" name="FirstName">
                 </div>
 
                 <div class="col-lg-3 col-md-6 col-12">
-                    <label class="form-label">Last Name</label>
-                    <input type="text" class="form-control" placeholder="Enter last name" value="Dummy 01">
+                    <label class="form-label" for="LastName">Last Name</label>
+                    <input type="text" class="form-control" id="LastName" name="LastName">
                 </div>
 
                 <div class="col-lg-3 col-md-6 col-12">
-                    <label class="form-label">Street</label>
-                    <input type="text" class="form-control" placeholder="Street">
+                    <label class="form-label" for="Street">Street</label>
+                    <input type="text" class="form-control" id="Street" name="Street">
                 </div>
 
                 <div class="col-lg-3 col-md-6 col-12">
-                    <label class="form-label">Apartment Number</label>
-                    <input type="text" class="form-control" placeholder="Apartment Number">
+                    <label class="form-label" for="ApartmentNumber">Apartment Number</label>
+                    <input type="text" class="form-control" id="ApartmentNumber" name="ApartmentNumber">
                 </div>
 
                 <!-- Row 2: Address -->
                 <div class="col-lg-3 col-md-6 col-12">
-                    <label class="form-label">City</label>
-                    <input type="text" class="form-control" placeholder="City">
+                    <label class="form-label" for="City">City</label>
+                    <input type="text" class="form-control" id="City" name="City">
                 </div>
 
                 <div class="col-lg-3 col-md-6 col-12">
-                    <label class="form-label">State</label>
-                    <input type="text" class="form-control" placeholder="State">
+                    <label class="form-label" for="State">State</label>
+                    <input type="text" class="form-control" id="State" name="State">
                 </div>
 
                 <div class="col-lg-3 col-md-6 col-12">
-                    <label class="form-label">Postal Code</label>
-                    <input type="text" class="form-control" placeholder="Postal Code">
+                    <label class="form-label" for="PostalCode">Postal Code</label>
+                    <input type="text" class="form-control" id="PostalCode" name="PostalCode">
                 </div>
 
                 <div class="col-lg-3 col-md-6 col-12">
-                    <label class="form-label">Country Name</label>
-                    <input type="text" class="form-control" placeholder="Country Name" value="Peru">
+                    <label class="form-label" for="CountryName">Country Name</label>
+                    <input type="text" class="form-control" id="Country" name="CountryName">
                 </div>
 
                 <!-- Row 3: Date & Type -->
                 <div class="col-lg-3 col-md-6 col-12">
-                    <label class="form-label">Date of Birth</label>
-                    <input type="date" class="form-control">
+                    <label class="form-label" for="DateOfBirth">Date of Birth</label>
+                    <input type="date" class="form-control" id="DateOfBirth" name="DateOfBirth">
                 </div>
 
                 <div class="col-lg-3 col-md-6 col-12">
-                    <label class="form-label">Hire Type</label>
-                    <select class="form-select form-control">
-                        <option selected>Internal</option>
-                        <option>External</option>
+                    <label class="form-label" for="HireType">Hire Type</label>
+                    <select class="form-select form-control" id="HireType" name="HireType">
+                        <option value=""></option>
                     </select>
                 </div>
 
                 <div class="col-lg-3 col-md-6 col-12">
-                    <label class="form-label">WhatsApp Alerts</label>
-                    <select class="form-select form-control">
-                        <option>No</option>
-                        <option>Yes</option>
+                    <label class="form-label" for="WhatsAppAlerts">WhatsApp Alerts</label>
+                    <select class="form-select form-control" id="WhatsAppAlerts" name="WhatsAppAlerts">
+                        <option value=""></option>
                     </select>
                 </div>
 
                 <div class="col-lg-3 col-md-6 col-12">
-                    <label class="form-label">Harver Video Link</label>
-                    <input type="text" class="form-control" placeholder="Enter Harver link">
+                    <label class="form-label" for="HarverVideoLink">Harver Video Link</label>
+                    <input type="text" class="form-control" id="HarverVideoLink" name="HarverVideoLink">
                 </div>
 
                 <!-- Row 4: Contact Info -->
@@ -86,27 +84,23 @@
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text text-icon btn-primary-contact contact-btn">
-                                        <a href="#" title="Set as Primary" class="btn btn-icon disableOnly">
-                                            <i class="fa fa-star"></i>
-                                        </a>
+                                        <a href="#" title="Set as Primary" class="btn btn-icon disableOnly"><i class="fa fa-star"></i></a>
                                     </span>
                                     <span class="input-group-text text-icon copy-icon contact-btn">
-                                        <a href="#" title="Copy Number" class="btn btn-icon">
-                                            <i class="fa fa-phone"></i>
-                                        </a>
+                                        <a href="#" title="Copy Number" class="btn btn-icon"><i class="fa fa-phone"></i></a>
                                     </span>
                                 </div>
-                                <input type="tel" class="form-control atsField phone-mask" placeholder="+99 (999) 999-9999" value="+99 (999) 999-9999">
+
+                                <!-- initial repeater item: use class for selecting many -->
+                                <input type="tel" class="form-control atsField phone-mask phone-number-item" name="phoneNumbers[]" />
+
                                 <div class="input-group-append">
-                                    <a href="javascript:;" data-repeater-delete class="btn btn-danger btn-icon">
-                                        <i class="fa fa-times"></i>
-                                    </a>
+                                    <a href="javascript:;" data-repeater-delete class="btn btn-danger btn-icon"><i class="fa fa-times"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Add Button -->
                     <div class="text-end mt-2">
                         <div data-repeater-create class="btn btn-warning btn-sm d-inline-flex align-items-center">
                             <i class="la la-plus me-1"></i> Add Phone
@@ -122,33 +116,30 @@
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text text-icon btn-primary-contact contact-btn">
-                                        <a href="#" title="Set as Primary" class="btn btn-icon disableOnly">
-                                            <i class="fa fa-star"></i>
-                                        </a>
+                                        <a href="#" title="Set as Primary" class="btn btn-icon disableOnly"><i class="fa fa-star"></i></a>
                                     </span>
                                     <span class="input-group-text text-icon copy-icon contact-btn">
-                                        <a href="#" title="Copy Email" class="btn btn-icon">
-                                            <i class="fa fa-envelope"></i>
-                                        </a>
+                                        <a href="#" title="Copy Email" class="btn btn-icon"><i class="fa fa-envelope"></i></a>
                                     </span>
                                 </div>
-                                <input type="email" class="form-control atsField ats-email-input" placeholder="example@email.com" value="test@gmail.com">
+
+                                <!-- initial repeater item: use class for selecting many -->
+                                <input type="email" class="form-control atsField ats-email-input email-item" name="emailAddresses[]" />
+
                                 <div class="input-group-append">
-                                    <a href="javascript:;" data-repeater-delete class="btn btn-danger btn-icon">
-                                        <i class="fa fa-times"></i>
-                                    </a>
+                                    <a href="javascript:;" data-repeater-delete class="btn btn-danger btn-icon"><i class="fa fa-times"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Add Button -->
                     <div class="text-end mt-2">
                         <div data-repeater-create class="btn btn-warning btn-sm d-inline-flex align-items-center">
                             <i class="la la-plus me-1"></i> Add Email
                         </div>
                     </div>
                 </div>
+
             </div>
         </form>
     </div>

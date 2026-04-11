@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATS.DTO.Dayforce
 {
-    public class EmployeeStatus
+    public class DayforceEmployeeStatus
     {
         public int Id { get; set; }
         public string EmployeeNumber { get; set; }

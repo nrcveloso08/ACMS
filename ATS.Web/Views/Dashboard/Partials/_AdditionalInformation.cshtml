@@ -1,42 +1,117 @@
-﻿<div class="card mb-4 shadow-sm">
-    <div class="card-header bg-light d-flex align-items-center">
-        <i class="fas fa-user text-primary me-2"></i> &nbsp;
-        <h5 class="mb-0">Additional Information</h5>
+﻿@model ATS.DTO.Applicant.ApplicantDetails
+
+<div class="card p-4 shadow-sm mt-4" id="additionalInformationSection">
+    <h4 class="mb-3">Additional Information</h4>
+
+    <!-- ================================================= -->
+    <!-- Common Applicant Additional Information -->
+    <!-- ================================================= -->
+    @* <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="JobAdRequisitionId" class="form-label fw-bold">Job Advertisement Requisition ID</label>
+            <input id="JobAdRequisitionId" type="text" class="form-control" readonly />
+        </div>
+        <div class="col-md-6">
+            <label for="RecentApplicationId" class="form-label fw-bold">Recent Application ID</label>
+            <input id="RecentApplicationId" type="text" class="form-control" readonly />
+        </div>
     </div>
 
-    <div class="card-body">
-        <form>
-            <div class="row g-3">
-                <!-- EPS -->
-                <div class="col-md-6 col-12">
-                    <label class="form-label">EPS</label>
-                    <input type="text" class="form-control" placeholder="EPS">
-                </div>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="HarverVacancyURL" class="form-label fw-bold">Harver Vacancy URL</label>
+            <input id="HarverVacancyURL" type="text" class="form-control" readonly />
+        </div>
+        <div class="col-md-6">
+            <label for="HarverProfileUrl" class="form-label fw-bold">Harver Profile URL</label>
+            <input id="HarverProfileUrl" type="text" class="form-control" readonly />
+        </div>
+    </div>
 
-                <!-- Cédula -->
-                <div class="col-md-6 col-12">
-                    <label class="form-label">Cédula</label>
-                    <input type="text" class="form-control" placeholder="Cédula" value="1234567890">
-                </div>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="HarverVideoUrl" class="form-label fw-bold">Harver Video URL</label>
+            <input id="HarverVideoUrl" type="text" class="form-control" readonly />
+        </div>
+        <div class="col-md-6">
+            <label for="EmploymentStatusGroupName" class="form-label fw-bold">Employment Status</label>
+            <input id="EmploymentStatusGroupName" type="text" class="form-control" readonly />
+        </div>
+    </div>
 
-                <!-- Pensiones -->
-                <div class="col-md-6 col-12">
-                    <label class="form-label">Pensiones</label>
-                    <input type="text" class="form-control" placeholder="Pensiones">
-                </div>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="StatusReasonName" class="form-label fw-bold">Status Reason</label>
+            <input id="StatusReasonName" type="text" class="form-control" readonly />
+        </div>
+    </div> *@
 
-                <!-- Cesantía -->
-                <div class="col-md-6 col-12">
-                    <label class="form-label">Cesantía</label>
-                    <input type="text" class="form-control" placeholder="Cesantía">
-                </div>
+    <!-- ================================================= -->
+    <!-- Jamaica Specific Section -->
+    <!-- ================================================= -->
+    <div id="jamaicaAdditionalSection" class="country-section" style="display:none;">
+        <h5 class="mt-4 mb-2 text-primary"><i class="fa fa-flag me-1"></i> Jamaica Requirements</h5>
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <label for="TRN" class="form-label fw-bold">TRN</label>
+                <input id="TRN" type="text" class="form-control" readonly />
             </div>
-
-            <div class="text-end mt-4">
-                <button type="button" class="btn btn-success px-4">
-                    <i class="fas fa-save me-1"></i> Save
-                </button>
+            <div class="col-md-6">
+                <label for="NIS" class="form-label fw-bold">NIS</label>
+                <input id="NIS" type="text" class="form-control" readonly />
             </div>
-        </form>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <label for="IdType" class="form-label fw-bold">ID Type</label>
+                <input id="IdType" type="text" class="form-control" readonly />
+            </div>
+            <div class="col-md-6">
+                <label for="IdNumber" class="form-label fw-bold">ID Number</label>
+                <input id="IdNumber" type="text" class="form-control" readonly />
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================= -->
+    <!-- Guatemala Specific Section -->
+    <!-- ================================================= -->
+    <div id="guatemalaAdditionalSection" class="country-section" style="display:none;">
+        <h5 class="mt-4 mb-2 text-primary"><i class="fa fa-flag me-1"></i> Guatemala Information</h5>
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <label for="BirthDate" class="form-label fw-bold">Birth Date</label>
+                <input id="BirthDate" type="text" class="form-control" readonly />
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================= -->
+    <!-- Hyderabad Specific Section -->
+    <!-- ================================================= -->
+    <div id="hyderabadAdditionalSection" class="country-section" style="display:none;">
+        <h5 class="mt-4 mb-2 text-primary"><i class="fa fa-flag me-1"></i> Hyderabad Information</h5>
+        <div class="row mb-2">
+            <div class="col-md-4">
+                <label for="EmployeeRole" class="form-label fw-bold">Employee Role</label>
+                <input id="EmployeeRole" type="text" class="form-control" readonly />
+            </div>
+            <div class="col-md-4">
+                <label for="WaveCategory" class="form-label fw-bold">Wave Category</label>
+                <input id="WaveCategory" type="text" class="form-control" readonly />
+            </div>
+            <div class="col-md-4">
+                <label for="GrossSalary" class="form-label fw-bold">Gross Salary</label>
+                <input id="GrossSalary" type="text" class="form-control" readonly />
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <label for="HourlyRate" class="form-label fw-bold">Hourly Rate</label>
+                <input id="HourlyRate" type="text" class="form-control" readonly />
+            </div>
+        </div>
     </div>
 </div>

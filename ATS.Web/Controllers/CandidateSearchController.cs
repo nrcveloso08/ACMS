@@ -39,7 +39,7 @@ namespace ATS.Web.Controllers
         }
 
         // GET: CandidateSearchController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<IActionResult> Edit(Guid id)
         {
             return View();
         }

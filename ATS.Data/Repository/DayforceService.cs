@@ -12,7 +12,7 @@ namespace ATS.Data.Repository
 {
     public interface IDayforceService
     {
-        Task<EmployeeStatus?> GetEmployeeStatus(string dayforceId);
+        Task<DayforceEmployeeStatus?> GetEmployeeStatus(string dayforceId);
     }
 
     public class DayforceService: IDayforceService
@@ -24,14 +24,14 @@ namespace ATS.Data.Repository
             _webServiceHelper = webServiceHelper;
         }
 
-        public async Task<EmployeeStatus?> GetEmployeeStatus(string dayforceId)
+        public async Task<DayforceEmployeeStatus?> GetEmployeeStatus(string dayforceId)
         {
            NameValueCollection  parameters = new NameValueCollection
            {
                  {"dayforceId", dayforceId.ToString() }
            };
 
-            var data = await _webServiceHelper.GetAsync<EmployeeStatus?>("/v1/Dayforce/ValidateEmployeeStatus", parameters);
+            var data = await _webServiceHelper.GetAsync<DayforceEmployeeStatus?>("/v1/Dayforce/ValidateEmployeeStatus", parameters);
 
             return data;
         }

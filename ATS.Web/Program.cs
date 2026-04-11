@@ -51,18 +51,42 @@ else
 }
 
 
-// ✅ Register repository layer components
+// =========================================
+// ✅ REGISTER REPOSITORY LAYER COMPONENTS
+// =========================================
+
+// Core Repositories
 builder.Services.AddScoped<IAdvertisementSourceRepository, AdvertisementSourceRepository>();
 builder.Services.AddScoped<IHarverRepository, HarverRepository>();
 builder.Services.AddScoped<IJobAdvertisementRepository, JobAdvertisementRepository>();
-builder.Services.AddScoped<ILocationRepository, LocationRepository> ();
-builder.Services.AddScoped<IRequisitionRequestService, RequisitionRequestRepository> ();
-builder.Services.AddScoped<ILanguageRepository, LanguageRepository> ();
+builder.Services.AddScoped<ILocationRepository, LocationRepository>();
+builder.Services.AddScoped<IRequisitionRequestService, RequisitionRequestRepository>();
+builder.Services.AddScoped<ILanguageRepository, LanguageRepository>();
 
-// ✅ Register business/service layer components
+// Applicant-related Repositories
+builder.Services.AddScoped<IApplicantRepository, ApplicantRepository>();
+builder.Services.AddScoped<IApplicantPhoneNumberRepository, ApplicantPhoneNumberRepository>();
+builder.Services.AddScoped<IApplicantEmailAddressRepository, ApplicantEmailAddressRepository>();
+builder.Services.AddScoped<IApplicantAddressRepository, ApplicantAddressRepository>();
+builder.Services.AddScoped<IApplicationRepository, ApplicationRepository>();
+
+// Local Country-Specific Repositories
+builder.Services.AddScoped<IJamaicaRepository, JamaicaRepository>();
+builder.Services.AddScoped<IGuatemalaRepository, GuatemalaRepository>();
+builder.Services.AddScoped<IHyderabadRepository, HyderabadRepository>();
+
+// =========================================
+// ✅ REGISTER SERVICE LAYER COMPONENTS
+// =========================================
+
 builder.Services.AddScoped<IAdvertisementSourceService, AdvertisementSourceService>();
 builder.Services.AddScoped<IHarverService, HarverService>();
 builder.Services.AddScoped<IJobAdvertisementService, JobAdvertisementService>();
+builder.Services.AddScoped<ICandidateDetailService, CandidateDetailService>();
+
+// Additional Service Dependencies
+builder.Services.AddScoped<IDayforceService, DayforceService>();
+
 
 // =========================================
 // 3️⃣ BUILD THE APPLICATION

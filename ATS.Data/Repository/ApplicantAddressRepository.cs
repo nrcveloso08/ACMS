@@ -28,7 +28,7 @@ namespace ATS.Data.Repository
          NameValueCollection parameters = new NameValueCollection {
                         {"applicantId", id.ToString() }
                     };
-            return _webServiceHelper.GetAsync<ApplicantAddress>("/v1/ApplicantAddress/GetByApplicantId", parameters);
+            return _webServiceHelper.GetAsync<ApplicantAddress>("/v1/ApplicantAddress/GetAddressByApplicantId", parameters);
         }
     }
 }
