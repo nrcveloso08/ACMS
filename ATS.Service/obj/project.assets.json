@@ -32,6 +32,9 @@
       "ATS.DTO/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.4"
+        },
         "compile": {
           "bin/placeholder/ATS.DTO.dll": {}
         },

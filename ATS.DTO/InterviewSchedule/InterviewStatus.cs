@@ -76,4 +76,19 @@ namespace ATS.DTO.InterviewSchedule
 
         Terminated = 23
     }
+    public class InterviewStatusDTO
+    {
+        public InterviewStatus InterviewStatus { get; set; }
+        public string Name { get; set; }
+        public IList<StatusDisposition> Dispositions { get; set; }
+    }
+    public class StatusDisposition
+    {
+        public int Id { get; set; }
+        public InterviewStatus InterviewStatus { get; set; }
+        public int Location_Id { get; set; }
+        public string Name { get; set; }
+    }
+
+
 }

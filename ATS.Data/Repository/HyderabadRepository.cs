@@ -1,35 +1,50 @@
 ﻿using ATS.DTO.Hyderabad;
 using ATS.Service.WebServiceHelper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Specialized;
 
 namespace ATS.Data.Repository
 {
-    public interface IHyderabadRepository
+    public interface IHyderabadLocalRepository
     {
-        Task<HyderabadAdditionalInfo?> GetAdditionalInfoByApplicant(Guid applicantId);
+        Task<HyderabadAdditionalInfo> AddOrUpdateAdditionalInfo(
+            HyderabadAdditionalInfo hyberadadAdditionalInfo);
+
+        Task<HyderabadAdditionalInfo> GetLocalAdditionalInfo(Guid applicantId);
     }
 
-    public class HyderabadRepository: IHyderabadRepository
+    public class HyderabadLocalRepository : IHyderabadLocalRepository
     {
         private readonly IWebServiceHelper _webServiceHelper;
 
-        public HyderabadRepository(IWebServiceHelper webServiceHelper)
+        public HyderabadLocalRepository(IWebServiceHelper webServiceHelper)
         {
             _webServiceHelper = webServiceHelper;
         }
 
-        public async Task<HyderabadAdditionalInfo?> GetAdditionalInfoByApplicant(Guid applicantId)
+        public async Task<HyderabadAdditionalInfo> AddOrUpdateAdditionalInfo(
+            HyderabadAdditionalInfo hyberadadAdditionalInfo)
         {
-            var parameters = new System.Collections.Specialized.NameValueCollection
+            if (hyberadadAdditionalInfo == null)
+                throw new ArgumentNullException(nameof(hyberadadAdditionalInfo));
+
+            return await _webServiceHelper.PostAsync
+                <HyderabadAdditionalInfo, HyderabadAdditionalInfo>(
+                    "/v1/HyderabadLocal/AddOrUpdateAdditionalInfo",
+                    hyberadadAdditionalInfo
+                );
+        }
+
+        public async Task<HyderabadAdditionalInfo> GetLocalAdditionalInfo(Guid applicantId)
+        {
+            NameValueCollection parameters = new NameValueCollection
             {
                 { "applicantId", applicantId.ToString() }
             };
-            var data = await _webServiceHelper.GetAsync<HyderabadAdditionalInfo?>("/v1/HyderabadLocal/GetLocalAdditionalInfo", parameters);
-            return data;
+
+            return await _webServiceHelper.GetAsync<HyderabadAdditionalInfo>(
+                "/v1/HyderabadLocal/GetLocalAdditionalInfo",
+                parameters
+            );
         }
     }
 }
