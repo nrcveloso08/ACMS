@@ -74,7 +74,7 @@ builder.Services.AddScoped<IApplicationRepository, ApplicationRepository>();
 // Local Country-Specific Repositories
 builder.Services.AddScoped<IJamaicaRepository, JamaicaRepository>();
 builder.Services.AddScoped<IGuatemalaRepository, GuatemalaRepository>();
-builder.Services.AddScoped<IHyderabadRepository, HyderabadRepository>();
+builder.Services.AddScoped<IHyderabadRepository, HyderabadLocalRepository>();
 
 // =========================================
 // ✅ REGISTER SERVICE LAYER COMPONENTS
