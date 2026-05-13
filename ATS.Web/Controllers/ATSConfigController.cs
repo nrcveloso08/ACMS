@@ -114,15 +114,13 @@ namespace ATS.Web.Controllers
             }
         }
 
-        [HttpGet("GetAll")]
-        public async Task<IActionResult> GetAll([FromQuery] bool includeDeleted = false)
+        public async Task<IActionResult> VacancyGetAll([FromQuery] bool includeDeleted = false)
         {
             var result = await _vacancyService.GetAll(includeDeleted);
             return Ok(result);
         }
 
-        [HttpGet("Get")]
-        public async Task<IActionResult> Get([FromQuery] int id)
+        public async Task<IActionResult> VacancyGet([FromQuery] int id)
         {
             var vacancy = await _vacancyService.Get(id);
             if (vacancy == null)
@@ -131,14 +129,27 @@ namespace ATS.Web.Controllers
             return Ok(vacancy);
         }
 
-        [HttpPost("AddOrUpdate")]
-        public async Task<IActionResult> AddOrUpdate([FromBody] Vacancy vacancy)
+        [HttpPost]
+        public async Task<IActionResult> VacancyAddOrUpdate([FromBody] Vacancy vacancy)
         {
             if (vacancy == null)
-                return BadRequest("Vacancy must be provided.");
+                return BadRequest(new { success = false, message = "Vacancy must be provided." });
 
-            var result = await _vacancyService.AddOrUpdate(vacancy);
-            return Ok(result);
+            if (string.IsNullOrWhiteSpace(vacancy.Name) || string.IsNullOrWhiteSpace(vacancy.VacancyId))
+                return BadRequest(new { success = false, message = "Vacancy Name and Code are required." });
+
+            if (vacancy.JobAdvertisement_Id <= 0)
+                return BadRequest(new { success = false, message = "Invalid Job Advertisement ID." });
+
+            try
+            {
+                var result = await _vacancyService.AddOrUpdate(vacancy);
+                return Json(new { success = true, data = result });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
         }
 
         public IActionResult AdvertisementSource()

@@ -1,3 +1,9 @@
+C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service\obj\Debug\net8.0\ATS.Service.csproj.AssemblyReference.cache
+C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service\obj\Debug\net8.0\ATS.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service\obj\Debug\net8.0\ATS.Service.AssemblyInfoInputs.cache
+C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service\obj\Debug\net8.0\ATS.Service.AssemblyInfo.cs
+C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service\obj\Debug\net8.0\ATS.Service.csproj.CoreCompileInputs.cache
+C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service\obj\Debug\net8.0\ATS.Service.sourcelink.json
 C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service\bin\Debug\net8.0\ATS.Service.deps.json
 C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service\bin\Debug\net8.0\ATS.Service.dll
 C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service\bin\Debug\net8.0\ATS.Service.pdb
@@ -5,12 +11,6 @@ C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service\bin\Debug\net8.0\ATS.Dat
 C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service\bin\Debug\net8.0\ATS.DTO.dll
 C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service\bin\Debug\net8.0\ATS.Data.pdb
 C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service\bin\Debug\net8.0\ATS.DTO.pdb
-C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service\obj\Debug\net8.0\ATS.Service.csproj.AssemblyReference.cache
-C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service\obj\Debug\net8.0\ATS.Service.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service\obj\Debug\net8.0\ATS.Service.AssemblyInfoInputs.cache
-C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service\obj\Debug\net8.0\ATS.Service.AssemblyInfo.cs
-C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service\obj\Debug\net8.0\ATS.Service.csproj.CoreCompileInputs.cache
-C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service\obj\Debug\net8.0\ATS.Service.sourcelink.json
 C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service\obj\Debug\net8.0\ATS.Serv.845359A1.Up2Date
 C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service\obj\Debug\net8.0\ATS.Service.dll
 C:\Users\enrico.veloso\Documents\GitHub\ATS\ATS.Service\obj\Debug\net8.0\refint\ATS.Service.dll

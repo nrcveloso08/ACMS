@@ -12,7 +12,7 @@ namespace ATS.Service
     {
         Task<List<AdvertisementSource>> GetAll();
         Task<AdvertisementSource> AddOrUpdate(AdvertisementSource obj);
-        Task<object> Get(Guid id);
+        Task<object> Get(int id);
     }
     
     public class AdvertisementSourceService: IAdvertisementSourceService
@@ -34,7 +34,7 @@ namespace ATS.Service
             return await _advertisementSourceRepository.AddOrUpdate(obj);
         }
 
-        public async Task<object> Get(Guid id)
+        public async Task<object> Get(int id)
         {
             return await _advertisementSourceRepository.Get(id);
         }

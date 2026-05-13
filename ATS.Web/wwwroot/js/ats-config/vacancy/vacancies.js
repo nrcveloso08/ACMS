@@ -13,10 +13,9 @@ var VacanciesPage = (function () {
             autoWidth: true,
             destroy: true,
             ajax: {
-                url: "/api/vacancy/GetAll",
+                url: "/ATSConfig/VacancyGetAll",
                 type: "GET",
                 dataSrc: function (json) {
-                    // ATSResult may wrap the data as a JSON string, or just be array
                     let raw = json?.data || json?.Data || json;
                     let data = [];
                     if (typeof raw === "string") {
@@ -26,7 +25,7 @@ var VacanciesPage = (function () {
                     }
                     return data;
                 },
-                error: function (xhr, status, error) {
+                error: function () {
                     AppUtils.toastMessage("Failed to load vacancies.", "error");
                     return [];
                 }
@@ -64,85 +63,10 @@ var VacanciesPage = (function () {
                 return;
             }
             if (action === "editVacancy") {
-                renderEditModal(rowData);
+                renderVacancyModal(rowData);
             }
         });
     };
-
-    // =============================
-    // Dynamic Add/Edit Modal
-    // =============================
-    function renderEditModal(rowData) {
-        const isEdit = !!rowData;
-        const modalId = (isEdit ? "editVacancyModal_" : "newVacancyModal_") + Date.now();
-        const bodyHtml = `
-            <form id="${modalId}_frmVacancy">
-                <div class="form-group mb-3">
-                    <label class="fw-semibold">Vacancy Name</label>
-                    <input type="text" id="${modalId}_vacancyName" class="form-control form-control-sm" value="${isEdit ? rowData.Name : ""}" required />
-                </div>
-                <div class="form-group mb-3">
-                    <label class="fw-semibold">Vacancy Code</label>
-                    <input type="text" id="${modalId}_vacancyCode" class="form-control form-control-sm" value="${isEdit ? rowData.VacancyId : ""}" required />
-                </div>
-                <div class="form-group mb-3">
-                    <label class="fw-semibold">Job Advertisement ID</label>
-                    <input type="number" id="${modalId}_jobAdId" class="form-control form-control-sm" value="${isEdit ? rowData.JobAdvertisement_Id : ""}" required />
-                </div>
-                <div class="form-group mb-3">
-                    <label class="fw-semibold">Status</label>
-                    <select id="${modalId}_isActive" class="form-select form-select-sm">
-                        <option value="active" ${isEdit && !rowData.IsDeleted ? "selected" : ""}>Active</option>
-                        <option value="inactive" ${isEdit && rowData.IsDeleted ? "selected" : ""}>Inactive</option>
-                    </select>
-                </div>
-            </form>
-        `;
-
-        AppUtils.Modal({
-            id: modalId,
-            title: isEdit ? "Edit Vacancy" : "New Vacancy",
-            size: "modal-md",
-            body: bodyHtml,
-            buttons: {
-                Save: {
-                    Enabled: true,
-                    text: "<i class='fas fa-save me-2'></i> Save",
-                    btnClass: "btn btn-primary btn-sm",
-                    autoDismiss: false,
-                    action: function () {
-                        const vacancy = {
-                            Id: isEdit ? rowData.Id : 0,
-                            Name: $(`#${modalId}_vacancyName`).val().trim(),
-                            VacancyId: $(`#${modalId}_vacancyCode`).val().trim(),
-                            JobAdvertisement_Id: parseInt($(`#${modalId}_jobAdId`).val(), 10) || 0,
-                            IsDeleted: $(`#${modalId}_isActive`).val() === "inactive"
-                        };
-                        $.ajax({
-                            url: "/api/vacancy/AddOrUpdate",
-                            type: "POST",
-                            contentType: "application/json",
-                            data: JSON.stringify(vacancy),
-                            success: function () {
-                                AppUtils.toastMessage("Vacancy saved successfully!", "success");
-                                DataTable.ajax.reload(null, false);
-                                $(`#${modalId}`).modal("hide");
-                            },
-                            error: function () {
-                                AppUtils.toastMessage("An error occurred.", "error");
-                            }
-                        });
-                    }
-                },
-                Cancel: {
-                    Enabled: true,
-                    text: "Cancel",
-                    btnClass: "btn btn-secondary btn-sm",
-                    autoDismiss: true
-                }
-            }
-        });
-    }
 
     // =============================
     // New Vacancy Button
@@ -150,20 +74,139 @@ var VacanciesPage = (function () {
     const initNewButton = function () {
         $(document).on("click", "#btnNewVacancy", function (e) {
             e.preventDefault();
-            renderEditModal(null);
+            renderVacancyModal(null);
         });
     };
 
     // =============================
-    // Public API
+    // Modal Renderer (Add/Edit)
     // =============================
-    return {
-        Init: function () {
-            initDataTable();
-            initNewButton();
-        }
-    };
-})();
+    function renderVacancyModal(rowData) {
+        const isEdit = !!rowData;
+        const modalId = (isEdit ? "editVacancyModal_" : "newVacancyModal_") + Date.now();
+
+        const vacancy = isEdit
+            ? {
+                Id: rowData.Id || 0,
+                Name: rowData.Name || "",
+                VacancyId: rowData.VacancyId || "",
+                JobAdvertisement_Id: rowData.JobAdvertisement_Id || "",
+                IsDeleted: !!rowData.IsDeleted
+            }
+            : {
+                Id: 0,
+                Name: "",
+                VacancyId: "",
+                JobAdvertisement_Id: "",
+                IsDeleted: false
+            };
+
+        const bodyHtml = `
+            <form id="${modalId}_frmVacancy">
+                <div class="form-group mb-3">
+                    <label class="fw-semibold">Vacancy Name</label>
+                    <input type="text" id="${modalId}_vacancyName" class="form-control form-control-sm" value="${escapeHtml(vacancy.Name)}" required />
+                </div>
+                <div class="form-group mb-3">
+                    <label class="fw-semibold">Vacancy Code</label>
+                    <input type="text" id="${modalId}_vacancyCode" class="form-control form-control-sm" value="${escapeHtml(vacancy.VacancyId)}" required />
+                </div>
+                <div class="form-group mb-3">
+                    <label class="fw-semibold">Job Advertisement ID</label>
+                    <input type="number" id="${modalId}_jobAdId" class="form-control form-control-sm" value="${escapeHtml(vacancy.JobAdvertisement_Id)}" required />
+                </div>
+                <div class="form-group mb-3">
+                    <label class="fw-semibold">Status</label>
+                    <select id="${modalId}_isActive" class="form-select form-select-sm">
+                        <option value="active" ${!vacancy.IsDeleted ? "selected" : ""}>Active</option>
+                        <option value="inactive" ${vacancy.IsDeleted ? "selected" : ""}>Inactive</option>
+                    </select>
+                </div>
+            </form>
+        `;
+
+        AppUtils.loadModal(modalId, {
+            title: isEdit ? "<i class='fas fa-edit text-primary me-2'></i> Edit Vacancy" : "<i class='fas fa-plus-circle text-success me-2'></i> New Vacancy",
+            body: bodyHtml,
+            buttons: {
+                Save: {
+                    Enabled: true,
+                    text: "<i class='fas fa-save me-2'></i> Save",
+                    btnClass: "btn btn-primary btn-sm",
+                    autoDismiss: false,
+                    action: async () => {
+                        const name = $(`#${modalId}_vacancyName`).val().trim();
+                        const code = $(`#${modalId}_vacancyCode`).val().trim();
+                        const jobAdId = parseInt($(`#${modalId}_jobAdId`).val(), 10) || 0;
+                        const isDeleted = $(`#${modalId}_isActive`).val() === "inactive";
+
+                        if (!name || !code || !jobAdId) {
+                            AppUtils.toastMessage("Please complete all required fields.", "warning");
+                            return;
+                        }
+
+                        const payload = {
+                            Id: vacancy.Id,
+                            Name: name,
+                            VacancyId: code,
+                            JobAdvertisement_Id: jobAdId,
+                            IsDeleted: isDeleted
+                        };
+
+                        await AppUtils.ajaxCall({
+                            url: "/ATSConfig/VacancyAddOrUpdate",
+                            type: "POST",
+                            contentType: "application/json",
+                            data: JSON.stringify(payload),
+                            successMessage: `"${name}" saved successfully.`,
+                            onSuccess: (res) => {
+                                if (res && (res.success || res.Success)) {
+                                    VacanciesPage.Refresh();
+                                }
+                            },
+                            onError: (xhr) => {
+                                console.error("❌ Error Details:", xhr.responseText);
+                                AppUtils.toastMessage("An error occurred while saving the vacancy.", "error");
+                            }
+                        });
+
+        $(`#${modalId}`).modal("hide");
+    }
+},
+    Cancel: {
+        Enabled: true,
+        text: "Cancel",
+        btnClass: "btn btn-secondary btn-sm",
+        autoDismiss: true
+                }
+            }
+        });
+    }
+
+function escapeHtml(text) {
+    if (text === null || text === undefined) return "";
+    if (typeof text !== "string") text = text.toString();
+    return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+// =============================
+// Public API
+// =============================
+return {
+    Init: function () {
+        initDataTable();
+        initNewButton();
+    },
+    Refresh: function () {
+        if (DataTable) DataTable.ajax.reload();
+    }
+};
+}) ();
 
 $(document).ready(function () {
     VacanciesPage.Init();

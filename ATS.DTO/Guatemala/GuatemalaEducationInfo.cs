@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATS.DTO.Guatemala
 {
-    internal class GuatemalaEducationInfo
+    public class GuatemalaEducationInfo
     {
         public int Id { get; set; }
         public Guid Applicant_Id { get; set; }

@@ -1,6 +1,8 @@
 ﻿using ATS.DTO.AdvertisementSource;
 using ATS.Service.WebServiceHelper;
-using System.Collections.Specialized;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ATS.Data.Repository
 {
@@ -8,7 +10,7 @@ namespace ATS.Data.Repository
     {
         Task<List<AdvertisementSource>> GetAll();
         Task<AdvertisementSource> AddOrUpdate(AdvertisementSource obj);
-        Task<object> Get(Guid id);
+        Task<AdvertisementSource> Get(int id);
     }
 
     public class AdvertisementSourceRepository : IAdvertisementSourceRepository
@@ -20,40 +22,55 @@ namespace ATS.Data.Repository
             _webServiceHelper = webServiceHelper;
         }
 
-        public async Task<object> Get(Guid id)
-        {
-            NameValueCollection parameters = new NameValueCollection {
-                        {"id", id.ToString() }
-                    };
-            return await _webServiceHelper.GetAsync<object>("/v1/Applicant/GetApplicant", parameters);
-        }
-
         public async Task<List<AdvertisementSource>> GetAll()
         {
-            return await _webServiceHelper.GetAsync<List<AdvertisementSource>>("/v1/AdvertisementSource/GetAll");
+            return await _webServiceHelper.GetAsync<List<AdvertisementSource>>(
+                "/v1/AdvertisementSource/GetAll"
+            );
         }
 
         public async Task<AdvertisementSource> AddOrUpdate(AdvertisementSource obj)
         {
-            string endpoint = string.Empty;
             if (obj == null)
                 throw new ArgumentNullException(nameof(obj));
 
             if (obj.Id == 0)
             {
-                // Add
-                endpoint = $"/v1/AdvertisementSource/Add?newName={Uri.EscapeDataString(obj.Name)}";
-                return await _webServiceHelper.PostAsync<object, AdvertisementSource>(endpoint, null);
+                return await Add(obj.Name);
             }
 
-            // Update
-            endpoint = $"/v1/AdvertisementSource/Update?id={obj.Id}&newName={Uri.EscapeDataString(obj.Name)}";
-            return await _webServiceHelper.PostAsync<object, AdvertisementSource>(endpoint, null);
+            return await Update(obj.Id, obj.Name);
         }
 
+        private async Task<AdvertisementSource> Add(string newName)
+        {
+            var endpoint = $"/v1/AdvertisementSource/Add?newName={Uri.EscapeDataString(newName ?? string.Empty)}";
 
+            return await _webServiceHelper.PostAsync<object, AdvertisementSource>(
+                endpoint,
+                null
+            );
+        }
 
+        private async Task<AdvertisementSource> Update(int id, string newName)
+        {
+            var endpoint = $"/v1/AdvertisementSource/Update?id={id}&newName={Uri.EscapeDataString(newName ?? string.Empty)}";
 
+            return await _webServiceHelper.PostAsync<object, AdvertisementSource>(
+                endpoint,
+                null
+            );
+        }
 
+        public async Task<AdvertisementSource> Get(int id)
+        {
+            var items = await _webServiceHelper.GetAsync<List<AdvertisementSource>>(
+                "/v1/AdvertisementSource/GetAll"
+            );
+
+            var result = items?.FirstOrDefault(x => x.Id == id);
+
+            return result ?? new AdvertisementSource();
+        }
     }
 }
