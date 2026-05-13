@@ -1,5 +1,6 @@
 ﻿using ATS.DTO.Applicant;
 using ATS.DTO.FCRA;
+using ATS.DTO.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;

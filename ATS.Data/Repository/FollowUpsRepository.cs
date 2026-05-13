@@ -1,10 +1,6 @@
 ﻿using ATS.DTO.FollowUp;
-using ATS.Service.UI.Web.DTO.FollowUps;
 using ATS.Service.WebServiceHelper;
-using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Threading.Tasks;
 
 namespace ATS.Data.Repository
 {

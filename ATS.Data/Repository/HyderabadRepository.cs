@@ -4,7 +4,7 @@ using System.Collections.Specialized;
 
 namespace ATS.Data.Repository
 {
-    public interface IHyderabadLocalRepository
+    public interface IHyderabadRepository
     {
         Task<HyderabadAdditionalInfo> AddOrUpdateAdditionalInfo(
             HyderabadAdditionalInfo hyberadadAdditionalInfo);
@@ -12,7 +12,7 @@ namespace ATS.Data.Repository
         Task<HyderabadAdditionalInfo> GetLocalAdditionalInfo(Guid applicantId);
     }
 
-    public class HyderabadLocalRepository : IHyderabadLocalRepository
+    public class HyderabadLocalRepository : IHyderabadRepository
     {
         private readonly IWebServiceHelper _webServiceHelper;
 
