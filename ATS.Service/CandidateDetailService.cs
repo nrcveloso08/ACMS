@@ -189,7 +189,7 @@ namespace ATS.Service
             if (applicant.Location_Id != 37)
                 return;
 
-            var hyderabadInfo = await _hyderabadLocalService.GetAdditionalInfoByApplicant(applicant.Id);
+            var hyderabadInfo = await _hyderabadLocalService.GetLocalAdditionalInfo(applicant.Id);
             if (hyderabadInfo == null)
                 return;
 
