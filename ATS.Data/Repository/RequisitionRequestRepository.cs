@@ -4,7 +4,7 @@ using System.Collections.Specialized;
 
 namespace ATS.Data.Repository
 {
-    public interface IRequisitionRequestService
+    public interface IRequisitionRequestRepository
     {
         Task<IEnumerable<Requisition>> GetAll();
         Task<Requisition> Get(Guid id);
@@ -14,7 +14,7 @@ namespace ATS.Data.Repository
         Task<RequisitionRequestDetail> GetDetailsByRequisitionId(IList<int> requisitionIds);
     }
 
-    public class RequisitionRequestRepository : IRequisitionRequestService
+    public class RequisitionRequestRepository : IRequisitionRequestRepository
     {
         private readonly IWebServiceHelper _webServiceHelper;
 

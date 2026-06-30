@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "UuCIj0/ECrs=",
+  "dgSpecHash": "lbvXFiKJKNI=",
   "success": true,
   "projectFilePath": "C:\\Users\\enrico.veloso\\Documents\\GitHub\\ATS\\ATS.Service\\ATS.Service.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\enrico.veloso\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.2\\microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
+    "C:\\Users\\enrico.veloso\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.2\\microsoft.extensions.logging.abstractions.8.0.2.nupkg.sha512",
     "C:\\Users\\enrico.veloso\\.nuget\\packages\\newtonsoft.json\\13.0.4\\newtonsoft.json.13.0.4.nupkg.sha512"
   ],
   "logs": []

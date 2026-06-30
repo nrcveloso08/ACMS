@@ -1,4 +1,5 @@
 ﻿using ATS.DTO.Applicant;
+using ATS.DTO.CandidateSearch;
 using ATS.DTO.LogEntry;
 
 namespace ATS.Data.Repository
@@ -15,5 +16,6 @@ namespace ATS.Data.Repository
         Task<LogEntry> GetLatestNote(Guid applicantId);
         Task<bool> RemoveApplicantPII(Guid applicantId);
         Task<int> SetApplicantIsSmsEnabledTrue(Guid applicantId);
+        Task<CandidateSearchApplicantPageDto> SearchApplicantsByInfo(CandidateSearchApplicantFilters filters);
     }
 }

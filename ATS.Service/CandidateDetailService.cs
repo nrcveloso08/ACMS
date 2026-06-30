@@ -23,10 +23,10 @@ namespace ATS.Service
         private readonly IApplicantPhoneNumberRepository _phoneNumberRepository;
         private readonly IApplicantEmailAddressRepository _emailRepository;
         private readonly IApplicantAddressRepository _addressRepository;
-        private readonly IDayforceService _dayforceService;
-        private readonly IJamaicaRepository _jamaicaLocalService;
+        private readonly IDayforceRepository _dayforceService;
+        private readonly IJamaicaLocalRepository _jamaicaLocalService;
         private readonly IGuatemalaRepository _guatemalaLocalService;
-        private readonly IHyderabadRepository _hyderabadLocalService;
+        private readonly IHyderabadLocalRepository _hyderabadLocalService;
 
         public CandidateDetailService(
             IApplicantRepository applicantRepository,
@@ -36,10 +36,10 @@ namespace ATS.Service
             IApplicantPhoneNumberRepository phoneNumberRepository,
             IApplicantEmailAddressRepository emailRepository,
             IApplicantAddressRepository addressRepository,
-            IDayforceService dayforceService,
-            IJamaicaRepository jamaicaLocalRepository,
+            IDayforceRepository dayforceService,
+            IJamaicaLocalRepository jamaicaLocalRepository,
             IGuatemalaRepository guatemalaLocalRepository,
-            IHyderabadRepository hyderabadLocalRepository)
+            IHyderabadLocalRepository hyderabadLocalRepository)
         {
             _applicantRepository = applicantRepository;
             _locationRepository = locationRepository;

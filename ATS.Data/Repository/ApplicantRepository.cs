@@ -1,4 +1,5 @@
 ﻿using ATS.DTO.Applicant;
+using ATS.DTO.CandidateSearch;
 using ATS.DTO.LogEntry;
 using ATS.Service.WebServiceHelper;
 using System;
@@ -184,6 +185,17 @@ namespace ATS.Data.Repository
             return await _webServiceHelper.PostAsync<object, int>(
                 BuildEndpoint("/v1/Applicant/SetApplicantIsSmsEnabledTrue", parameters),
                 null
+            );
+        }
+
+        public async Task<CandidateSearchApplicantPageDto> SearchApplicantsByInfo(CandidateSearchApplicantFilters filters)
+        {
+            if (filters == null)
+                throw new ArgumentNullException(nameof(filters));
+
+            return await _webServiceHelper.PostAsync<CandidateSearchApplicantFilters, CandidateSearchApplicantPageDto>(
+                "/v1/Applicant/SearchApplicantByInfo",
+                filters
             );
         }
 

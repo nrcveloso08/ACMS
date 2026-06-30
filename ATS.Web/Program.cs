@@ -60,9 +60,12 @@ builder.Services.AddScoped<IAdvertisementSourceRepository, AdvertisementSourceRe
 builder.Services.AddScoped<IHarverRepository, HarverRepository>();
 builder.Services.AddScoped<IJobAdvertisementRepository, JobAdvertisementRepository>();
 builder.Services.AddScoped<ILocationRepository, LocationRepository>();
-builder.Services.AddScoped<IRequisitionRequestService, RequisitionRequestRepository>();
+builder.Services.AddScoped<IRequisitionRequestRepository, RequisitionRequestRepository>();
 builder.Services.AddScoped<ILanguageRepository, LanguageRepository>();
 builder.Services.AddScoped<IVacancyRepository, VacancyRepository>();
+builder.Services.AddScoped<IGeoRepository, GeoRepository>();
+builder.Services.AddScoped<IDocumentTypeRepository, DocumentTypeRepository>();
+builder.Services.AddScoped<IInterviewStatusRepository, InterviewStatusRepository>();
 
 // Applicant-related Repositories
 builder.Services.AddScoped<IApplicantRepository, ApplicantRepository>();
@@ -72,9 +75,9 @@ builder.Services.AddScoped<IApplicantAddressRepository, ApplicantAddressReposito
 builder.Services.AddScoped<IApplicationRepository, ApplicationRepository>();
 
 // Local Country-Specific Repositories
-builder.Services.AddScoped<IJamaicaRepository, JamaicaRepository>();
+builder.Services.AddScoped<IJamaicaLocalRepository, JamaicaLocalRepository>();
 builder.Services.AddScoped<IGuatemalaRepository, GuatemalaRepository>();
-builder.Services.AddScoped<IHyderabadRepository, HyderabadLocalRepository>();
+builder.Services.AddScoped<IHyderabadLocalRepository, HyderabadLocalRepository>();
 
 // =========================================
 // ✅ REGISTER SERVICE LAYER COMPONENTS
@@ -86,8 +89,15 @@ builder.Services.AddScoped<IJobAdvertisementService, JobAdvertisementService>();
 builder.Services.AddScoped<ICandidateDetailService, CandidateDetailService>();
 builder.Services.AddScoped<IVacancyService, VacancyService>();
 
+// Newly added skeleton services for Vue ATS App API endpoints
+builder.Services.AddScoped<IApplicantSearchService, ApplicantSearchService>();
+builder.Services.AddScoped<IApplicantDetailsService, ApplicantDetailsService>();
+builder.Services.AddScoped<ICandidateSearchService, CandidateSearchService>();
+builder.Services.AddScoped<ILookupsService, LookupsService>();
+builder.Services.AddScoped<IDashboardService, DashboardService>();
+
 // Additional Service Dependencies
-builder.Services.AddScoped<IDayforceService, DayforceService>();
+builder.Services.AddScoped<IDayforceRepository, DayforceRepository>();
 
 
 // =========================================
